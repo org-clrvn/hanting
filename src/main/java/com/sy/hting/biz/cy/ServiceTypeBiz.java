@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly= true)
 public class ServiceTypeBiz {
-
+ 
     @Autowired
     private IServiceTypeDao dao;
 
