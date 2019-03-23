@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.hting.dao.czh.SystemMapper">
+    <resultMap id="BaseResultMap" type="System">
+        <id column="sysID" property="sysid" jdbcType="INTEGER"/>
+        <result column="exchangeRate" property="exchangerate" jdbcType="INTEGER"/>
+        <result column="charge" property="charge" jdbcType="INTEGER"/>
+        <result column="signIn" property="signin" jdbcType="INTEGER"/>
+        <result column="postIntegral" property="postintegral" jdbcType="INTEGER"/>
+        <result column="track" property="track" jdbcType="INTEGER"/>
+        <result column="releaseBeauty" property="releasebeauty" jdbcType="INTEGER"/>
+        <result column="logisticMin" property="logisticmin" jdbcType="INTEGER"/>
+        <result column="logisticMinSeller" property="logisticminseller" jdbcType="INTEGER"/>
+        <result column="logisticWeight" property="logisticweight" jdbcType="INTEGER"/>
+        <result column="logisticPrice" property="logisticprice" jdbcType="INTEGER"/>
+        <result column="bond" property="bond" jdbcType="REAL"/>
+        <result column="videoSize" property="videosize" jdbcType="INTEGER"/>
+        <result column="closeorderdays" property="closeorderdays" jdbcType="INTEGER"/>
+        <result column="receivedays" property="receivedays" jdbcType="INTEGER"/>
+        <result column="refunddays" property="refunddays" jdbcType="INTEGER"/>
+        <result column="refundconfirmdays" property="refundconfirmdays" jdbcType="INTEGER"/>
+        <result column="shopFreeStatus" property="shopfreestatus" jdbcType="BIT"/>
+        <result column="freeTime" property="freetime" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        sysID,
+        exchangeRate,
+        charge,
+        signIn,
+        postIntegral,
+        track,
+        releaseBeauty,
+        logisticMin,
+        logisticMinSeller,
+        logisticWeight,
+        logisticPrice,
+        bond,
+        videoSize,
+        closeorderdays,
+        receivedays,
+        refunddays,
+        refundconfirmdays,
+        shopFreeStatus,
+        freeTime
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="SystemExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from system
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from system
+        where sysID = #{sysid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from system
+        where sysID = #{sysid,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="SystemExample">
+        delete from system
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="System">
+        insert into system (sysID, exchangeRate, charge,
+                            signIn, postIntegral, track,
+                            releaseBeauty, logisticMin, logisticMinSeller,
+                            logisticWeight, logisticPrice, bond,
+                            videoSize, closeorderdays, receivedays,
+                            refunddays, refundconfirmdays, shopFreeStatus,
+                            freeTime)
+        values (#{sysid,jdbcType=INTEGER}, #{exchangerate,jdbcType=INTEGER}, #{charge,jdbcType=INTEGER},
+                #{signin,jdbcType=INTEGER}, #{postintegral,jdbcType=INTEGER}, #{track,jdbcType=INTEGER},
+                #{releasebeauty,jdbcType=INTEGER}, #{logisticmin,jdbcType=INTEGER}, #{logisticminseller,jdbcType=INTEGER},
+                #{logisticweight,jdbcType=INTEGER}, #{logisticprice,jdbcType=INTEGER}, #{bond,jdbcType=REAL},
+                #{videosize,jdbcType=INTEGER}, #{closeorderdays,jdbcType=INTEGER}, #{receivedays,jdbcType=INTEGER},
+                #{refunddays,jdbcType=INTEGER}, #{refundconfirmdays,jdbcType=INTEGER}, #{shopfreestatus,jdbcType=BIT},
+                #{freetime,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="System">
+        insert into system
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="sysid != null">
+                sysID,
+            </if>
+            <if test="exchangerate != null">
+                exchangeRate,
+            </if>
+            <if test="charge != null">
+                charge,
+            </if>
+            <if test="signin != null">
+                signIn,
+            </if>
+            <if test="postintegral != null">
+                postIntegral,
+            </if>
+            <if test="track != null">
+                track,
+            </if>
+            <if test="releasebeauty != null">
+                releaseBeauty,
+            </if>
+            <if test="logisticmin != null">
+                logisticMin,
+            </if>
+            <if test="logisticminseller != null">
+                logisticMinSeller,
+            </if>
+            <if test="logisticweight != null">
+                logisticWeight,
+            </if>
+            <if test="logisticprice != null">
+                logisticPrice,
+            </if>
+            <if test="bond != null">
+                bond,
+            </if>
+            <if test="videosize != null">
+                videoSize,
+            </if>
+            <if test="closeorderdays != null">
+                closeorderdays,
+            </if>
+            <if test="receivedays != null">
+                receivedays,
+            </if>
+            <if test="refunddays != null">
+                refunddays,
+            </if>
+            <if test="refundconfirmdays != null">
+                refundconfirmdays,
+            </if>
+            <if test="shopfreestatus != null">
+                shopFreeStatus,
+            </if>
+            <if test="freetime != null">
+                freeTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="sysid != null">
+                #{sysid,jdbcType=INTEGER},
+            </if>
+            <if test="exchangerate != null">
+                #{exchangerate,jdbcType=INTEGER},
+            </if>
+            <if test="charge != null">
+                #{charge,jdbcType=INTEGER},
+            </if>
+            <if test="signin != null">
+                #{signin,jdbcType=INTEGER},
+            </if>
+            <if test="postintegral != null">
+                #{postintegral,jdbcType=INTEGER},
+            </if>
+            <if test="track != null">
+                #{track,jdbcType=INTEGER},
+            </if>
+            <if test="releasebeauty != null">
+                #{releasebeauty,jdbcType=INTEGER},
+            </if>
+            <if test="logisticmin != null">
+                #{logisticmin,jdbcType=INTEGER},
+            </if>
+            <if test="logisticminseller != null">
+                #{logisticminseller,jdbcType=INTEGER},
+            </if>
+            <if test="logisticweight != null">
+                #{logisticweight,jdbcType=INTEGER},
+            </if>
+            <if test="logisticprice != null">
+                #{logisticprice,jdbcType=INTEGER},
+            </if>
+            <if test="bond != null">
+                #{bond,jdbcType=REAL},
+            </if>
+            <if test="videosize != null">
+                #{videosize,jdbcType=INTEGER},
+            </if>
+            <if test="closeorderdays != null">
+                #{closeorderdays,jdbcType=INTEGER},
+            </if>
+            <if test="receivedays != null">
+                #{receivedays,jdbcType=INTEGER},
+            </if>
+            <if test="refunddays != null">
+                #{refunddays,jdbcType=INTEGER},
+            </if>
+            <if test="refundconfirmdays != null">
+                #{refundconfirmdays,jdbcType=INTEGER},
+            </if>
+            <if test="shopfreestatus != null">
+                #{shopfreestatus,jdbcType=BIT},
+            </if>
+            <if test="freetime != null">
+                #{freetime,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="SystemExample" resultType="java.lang.Integer">
+        select count(*) from system
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update system
+        <set>
+            <if test="record.sysid != null">
+                sysID = #{record.sysid,jdbcType=INTEGER},
+            </if>
+            <if test="record.exchangerate != null">
+                exchangeRate = #{record.exchangerate,jdbcType=INTEGER},
+            </if>
+            <if test="record.charge != null">
+                charge = #{record.charge,jdbcType=INTEGER},
+            </if>
+            <if test="record.signin != null">
+                signIn = #{record.signin,jdbcType=INTEGER},
+            </if>
+            <if test="record.postintegral != null">
+                postIntegral = #{record.postintegral,jdbcType=INTEGER},
+            </if>
+            <if test="record.track != null">
+                track = #{record.track,jdbcType=INTEGER},
+            </if>
+            <if test="record.releasebeauty != null">
+                releaseBeauty = #{record.releasebeauty,jdbcType=INTEGER},
+            </if>
+            <if test="record.logisticmin != null">
+                logisticMin = #{record.logisticmin,jdbcType=INTEGER},
+            </if>
+            <if test="record.logisticminseller != null">
+                logisticMinSeller = #{record.logisticminseller,jdbcType=INTEGER},
+            </if>
+            <if test="record.logisticweight != null">
+                logisticWeight = #{record.logisticweight,jdbcType=INTEGER},
+            </if>
+            <if test="record.logisticprice != null">
+                logisticPrice = #{record.logisticprice,jdbcType=INTEGER},
+            </if>
+            <if test="record.bond != null">
+                bond = #{record.bond,jdbcType=REAL},
+            </if>
+            <if test="record.videosize != null">
+                videoSize = #{record.videosize,jdbcType=INTEGER},
+            </if>
+            <if test="record.closeorderdays != null">
+                closeorderdays = #{record.closeorderdays,jdbcType=INTEGER},
+            </if>
+            <if test="record.receivedays != null">
+                receivedays = #{record.receivedays,jdbcType=INTEGER},
+            </if>
+            <if test="record.refunddays != null">
+                refunddays = #{record.refunddays,jdbcType=INTEGER},
+            </if>
+            <if test="record.refundconfirmdays != null">
+                refundconfirmdays = #{record.refundconfirmdays,jdbcType=INTEGER},
+            </if>
+            <if test="record.shopfreestatus != null">
+                shopFreeStatus = #{record.shopfreestatus,jdbcType=BIT},
+            </if>
+            <if test="record.freetime != null">
+                freeTime = #{record.freetime,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update system
+        set sysID = #{record.sysid,jdbcType=INTEGER},
+        exchangeRate = #{record.exchangerate,jdbcType=INTEGER},
+        charge = #{record.charge,jdbcType=INTEGER},
+        signIn = #{record.signin,jdbcType=INTEGER},
+        postIntegral = #{record.postintegral,jdbcType=INTEGER},
+        track = #{record.track,jdbcType=INTEGER},
+        releaseBeauty = #{record.releasebeauty,jdbcType=INTEGER},
+        logisticMin = #{record.logisticmin,jdbcType=INTEGER},
+        logisticMinSeller = #{record.logisticminseller,jdbcType=INTEGER},
+        logisticWeight = #{record.logisticweight,jdbcType=INTEGER},
+        logisticPrice = #{record.logisticprice,jdbcType=INTEGER},
+        bond = #{record.bond,jdbcType=REAL},
+        videoSize = #{record.videosize,jdbcType=INTEGER},
+        closeorderdays = #{record.closeorderdays,jdbcType=INTEGER},
+        receivedays = #{record.receivedays,jdbcType=INTEGER},
+        refunddays = #{record.refunddays,jdbcType=INTEGER},
+        refundconfirmdays = #{record.refundconfirmdays,jdbcType=INTEGER},
+        shopFreeStatus = #{record.shopfreestatus,jdbcType=BIT},
+        freeTime = #{record.freetime,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="System">
+        update system
+        <set>
+            <if test="exchangerate != null">
+                exchangeRate = #{exchangerate,jdbcType=INTEGER},
+            </if>
+            <if test="charge != null">
+                charge = #{charge,jdbcType=INTEGER},
+            </if>
+            <if test="signin != null">
+                signIn = #{signin,jdbcType=INTEGER},
+            </if>
+            <if test="postintegral != null">
+                postIntegral = #{postintegral,jdbcType=INTEGER},
+            </if>
+            <if test="track != null">
+                track = #{track,jdbcType=INTEGER},
+            </if>
+            <if test="releasebeauty != null">
+                releaseBeauty = #{releasebeauty,jdbcType=INTEGER},
+            </if>
+            <if test="logisticmin != null">
+                logisticMin = #{logisticmin,jdbcType=INTEGER},
+            </if>
+            <if test="logisticminseller != null">
+                logisticMinSeller = #{logisticminseller,jdbcType=INTEGER},
+            </if>
+            <if test="logisticweight != null">
+                logisticWeight = #{logisticweight,jdbcType=INTEGER},
+            </if>
+            <if test="logisticprice != null">
+                logisticPrice = #{logisticprice,jdbcType=INTEGER},
+            </if>
+            <if test="bond != null">
+                bond = #{bond,jdbcType=REAL},
+            </if>
+            <if test="videosize != null">
+                videoSize = #{videosize,jdbcType=INTEGER},
+            </if>
+            <if test="closeorderdays != null">
+                closeorderdays = #{closeorderdays,jdbcType=INTEGER},
+            </if>
+            <if test="receivedays != null">
+                receivedays = #{receivedays,jdbcType=INTEGER},
+            </if>
+            <if test="refunddays != null">
+                refunddays = #{refunddays,jdbcType=INTEGER},
+            </if>
+            <if test="refundconfirmdays != null">
+                refundconfirmdays = #{refundconfirmdays,jdbcType=INTEGER},
+            </if>
+            <if test="shopfreestatus != null">
+                shopFreeStatus = #{shopfreestatus,jdbcType=BIT},
+            </if>
+            <if test="freetime != null">
+                freeTime = #{freetime,jdbcType=INTEGER},
+            </if>
+        </set>
+        where sysID = #{sysid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="System">
+        update system
+        set exchangeRate      = #{exchangerate,jdbcType=INTEGER},
+            charge            = #{charge,jdbcType=INTEGER},
+            signIn            = #{signin,jdbcType=INTEGER},
+            postIntegral      = #{postintegral,jdbcType=INTEGER},
+            track             = #{track,jdbcType=INTEGER},
+            releaseBeauty     = #{releasebeauty,jdbcType=INTEGER},
+            logisticMin       = #{logisticmin,jdbcType=INTEGER},
+            logisticMinSeller = #{logisticminseller,jdbcType=INTEGER},
+            logisticWeight    = #{logisticweight,jdbcType=INTEGER},
+            logisticPrice     = #{logisticprice,jdbcType=INTEGER},
+            bond              = #{bond,jdbcType=REAL},
+            videoSize         = #{videosize,jdbcType=INTEGER},
+            closeorderdays    = #{closeorderdays,jdbcType=INTEGER},
+            receivedays       = #{receivedays,jdbcType=INTEGER},
+            refunddays        = #{refunddays,jdbcType=INTEGER},
+            refundconfirmdays = #{refundconfirmdays,jdbcType=INTEGER},
+            shopFreeStatus    = #{shopfreestatus,jdbcType=BIT},
+            freeTime          = #{freetime,jdbcType=INTEGER}
+        where sysID = #{sysid,jdbcType=INTEGER}
+    </update>
+</mapper>

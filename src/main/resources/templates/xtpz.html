@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Strict//EN' 'http://www.w3.org/TR/html4/strict.dtd'>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+    <link rel="stylesheet" href="http://127.0.0.1:1111/layui/css/layui.css"/>
+    <link rel="stylesheet" href="http://127.0.0.1:1111/css/style.css"/>
+    <title></title>
+</head>
+<body class="oneColLiqCtrHdr"
+      th:onload="|fo.freetime.value=${list.freetime};layui.form.render('select'),fo.shopfreestatus.checked=${list.shopfreestatus};layui.form.render('checkbox')|">
+<div id="container">
+    <div id="header">
+        <h3>系统配置</h3>
+    </div>
+    <div id="mainContent">
+        <br>
+        <form class="layui-form" name=fo onsubmit="return false;">
+            <table border="0" cellspacing="1" cellpadding="6" width="100%"
+                   class="table">
+                <tbody>
+                <tr>
+                    <td width="200" align="right"></td>
+                    <td width="300" align="left"><strong>积分设置</strong></td>
+                    <td width="200" align="right"></td>
+                    <td width="300" align="left"><strong>物流重置设置</strong></td>
+                </tr>
+                <tr>
+                    <td width="200" align="right"><span>金币比率：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="exchangerate"
+                                   class="layui-input" v-model="System.exchangerate">
+                        </div>
+                        1元==XX金币
+                    </td>
+                    <td width="200" align="right"><span>普通会员：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="logisticmin"
+                                   class="layui-input" v-model="System.logisticmin">
+                        </div>
+                        kg（至少多少公斤）
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="200" align="right"><span>收费比例：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="charge"
+                                   class="layui-input" v-model="System.charge">
+                        </div>
+                        %
+                    </td>
+                    <td width="200" align="right"><span>商家会员：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="logisticminseller"
+                                   class="layui-input" v-model="System.logisticminseller">
+                        </div>
+                        kg（至少多少公斤）
+                    </td>
+                </tr>
+                <tr>
+                    <td width="200" align="right"><span>签到获得：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="signin"
+                                   class="layui-input" v-model="System.signin">
+                        </div>
+                        积分
+                    </td>
+                    <td width="200" align="right"><span>上门取货：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="logisticweight"
+                                   class="layui-input" v-model="System.logisticweight">
+                        </div>
+                        kg（至少多少公斤）
+                    </td>
+                </tr>
+                <tr>
+                    <td width="200" align="right"><span>发帖获得：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="postintegral"
+                                   class="layui-input" v-model="System.postintegral">
+                        </div>
+                        积分
+                    </td>
+                    <td width="200" align="right"><span>单价：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="logisticprice"
+                                   class="layui-input" v-model="System.logisticprice">
+                        </div>
+                        金币/kg
+                    </td>
+                </tr>
+                <tr>
+                    <td width="200" align="right"><span>跟帖获得：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="track"
+                                   class="layui-input" v-model="System.track">
+                        </div>
+                        积分
+                    </td>
+                    <td width="200" align="right"><span>保证金：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="bond"
+                                   class="layui-input" v-model="System.bond">
+                        </div>
+                        金币
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td width="200" align="right"><span>发布美妆获得：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="releasebeauty"
+                                   class="layui-input" v-model="System.releasebeauty">
+                        </div>
+                        积分<br>
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="" value="0"
+                                   class="layui-input">
+                        </div>
+                        金币
+                    </td>
+                    <td width="200" align="right"><span>视频大小：</span></td>
+                    <td width="300" align="left">
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="videosize"
+                                   class="layui-input" v-model="System.videosize">
+                        </div>
+                        MB
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="right">&nbsp;</td>
+                    <td colspan="3"><strong>交易设置</strong></td>
+                </tr>
+                <tr>
+                    <td align="right"><span>自动关闭未付款订单</span></td>
+                    <td colspan="3">下单几天后
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="closeorderdays	"
+                                   class="layui-input" v-model="System.closeorderdays">
+                        </div>
+                        天 （订单下单未付款，n天自动关闭，0为不自动关闭）
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span>自动确认服务</span></td>
+                    <td colspan="3">自动确定服务天数
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="receivedays"
+                                   class="layui-input" v-model="System.receivedays">
+                        </div>
+                        天 （订单完成后，n天自动确认服务，0为不自动确认服务）
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span>退款申请</span></td>
+                    <td colspan="3">完成订单
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="refunddays"
+                                   class="layui-input" v-model="System.refunddays">
+                        </div>
+                        天后 （订单完成后，用户在n天内可以发起退款申请，设置0天不允许完成订单退款）
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right"><span>退款申请自动确认</span></td>
+                    <td colspan="3">退款申请
+                        <div class="layui-input-inline" style="width: 70px;">
+                            <input style="height: 30px;" type="text" name="refundconfirmdays"
+                                   class="layui-input" v-model="System.refundconfirmdays">
+                        </div>
+                        天后 （用户发起退款申请后，订单退款申请几天后自动确认）
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="200" align="right"><span>是否开启店铺免费体验模式：</span></td>
+                    <td width="300" align="left">
+                        <input type="checkbox" lay-skin="switch"
+                               lay-text="开启|关闭" name=shopfreestatus :checked="System.shopfreestatus">
+                    </td>
+                    <td width="200" align="right"><span>店铺免费体验月数：</span></td>
+                    <td width="300" align="left">
+                        <div style="width: 105px;">
+                            <select name="freetime" :value="System.freetime">
+                                <option value="0"></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="right">&nbsp;</td>
+                    <td colspan="3"><input @click="updateSystem()" type="submit" class='ys' value="保存"/>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="http://127.0.0.1:1111/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:1111/layui/layui.all.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:1111/js/vue.js"></script>
+<script type="text/javascript">
+    /* $(function(){
+        $("body").ready(function(){
+            var result=$('[name=shopfreestatus]').val();
+            $('[name=shopfreestatus]').prop('checked', result);
+        });
+    }); */
+    /* //Demo
+     layui.use('form', function () {
+         /!* $('[name=shopfreestatus]').prop('checked', result); *!/
+         var form = layui.form;
+         //监听提交
+         form.on('submit(formDemo)', function (data) {
+             layer.msg(JSON.stringify(data.field));
+             return false;
+         });
+     });*/
+</script>
+<script type="text/javascript">
+    vmSystem = new Vue({
+        el: "#container",
+        data: {
+            System: {}
+        },
+        methods: {
+            updateSystem: function () {
+                var _this = this;
+                _this.System.freetime = $("[name=freetime]").val().trim();
+                if ($("[name=shopfreestatus]").next(".layui-form-switch").hasClass("layui-form-onswitch")) {
+                    _this.System.shopfreestatus = 1;
+                } else {
+                    _this.System.shopfreestatus = 0;
+                }
+                $.ajax("/czh/system/update", {
+                    contentType: "application/json",
+                    type: "put",
+                    dataType: "json",
+                    data: JSON.stringify(_this.System),
+                    success: function (data) {
+                        if (data.code == "200") {
+                            layer.alert("保存成功！");
+                        } else {
+                            layer.alert(data.msg);
+                        }
+                    }
+                });
+            }
+        },
+        created: function () {
+            var _this = this;
+            $.getJSON("/czh/system/query", {}, function (data) {
+                _this.System = data;
+            });
+        }
+    });
+</script>
+</html>
