@@ -1,5 +1,6 @@
 package com.sy.hting.action.tj;
 
+import com.sy.hting.biz.tj.OrdersAndServicesBiz;
 import com.sy.hting.biz.tj.UserBiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
@@ -21,10 +22,13 @@ public class PersonCenterAction {
 
     @Autowired
     private UserBiz biz;
+    @Autowired
+    private OrdersAndServicesBiz oasbiz;
 
     @GetMapping("index")
     public String gotoPage(Model model, Session session){
         model.addAttribute("user", biz.findUserById(24));
+        model.addAttribute("oasList",oasbiz.queryOas(24));
         return "grzx-index";
     }
 

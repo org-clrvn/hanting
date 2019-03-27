@@ -84,7 +84,7 @@
 			<div class="member_right site_msg_w">
 				<dl class="pre_udl">
 					<dt>
-						<!--<img th:src="${user.userimgpath}" />-->
+						<img th:src="${user.userImgPath}" />
 					</dt>
 					<dd>
 						<div class="pre_c_name">
@@ -98,32 +98,34 @@
 							class="qm_i"></span>签到送积分</a>
 					</dd>
 				</dl>
-				<!--<ul class="pre_about_info">
-					<li><a th:href="@{/c/lhy/order/query/list(status=1)}">待付款<span class="pre_asp" th:text="${orderInfo.topay}">1</span></a>
+				<ul class="pre_about_info">
+					<li><a>待付款<span class="pre_asp">1</span></a>
 					</li>
-					<li><a th:href="@{/c/lhy/order/query/list(status=3)}">商家接单<span
-							class="pre_asp" th:text="${orderInfo.receipt}">0</span></a></li>
-					<li><a th:href="@{/c/lhy/order/query/list(status=4)}">待确认<span class="pre_asp" th:text="${orderInfo.tbconfirmed}">0</span></a>
+					<li><a>商家接单<span
+							class="pre_asp">0</span></a></li>
+					<li><a>待确认<span class="pre_asp">0</span></a>
 					</li>
-					<li class="last"><a th:href="@{/c/lhy/order/query/list(status=5,commentstatus=1)}">待评价<span
-							class="pre_asp" th:text="${orderInfo.tbevaluated}">0</span></a></li>
-				</ul>-->
+					<li class="last"><a>待评价<span
+							class="pre_asp">0</span></a></li>
+				</ul>
 				<h2 class="pre_h2_title">最新预订了</h2>
-				<!--<ul class="you_yd_news">
-					<li th:each="temp:${list}">
+				<ul class="you_yd_news">
+
+					<li th:each="oas : ${oasList}">
 						<div class="you_yd_img">
-							<img th:src="${temp.service.servicecoverimg}" width="135" height="90"/>
+							<img width="135" height="90"/>
 						</div>
-						<a th:href="@{/c/lhy/order/query/detail(orderid=${temp.orderid})}" class="btn_a_yyd">查看详细</a>
+						<a class="btn_a_yyd">查看详细</a>
 						<div class="you_yd_text">
-							<div class="yd_xm_title" th:text="${temp.service.servicetitle}"></div>
-							<p th:text="${temp.service.servicefutitle}"></p>
+							<div class="yd_xm_title" th:text="${oas.serviceTitle}"></div>
+							<p th:text="${oas.serviceFuTitle}"></p>
 							<p>
-								<span class="num_1" th:text="${temp.service.serviceprice}"></span>
+								<span class="num_1" th:text="${oas.servicePrice}"></span>
 							</p>
+							[[${oas.population}]]人
 						</div>
 					</li>
-				</ul>-->
+				</ul>
 
 			</div>
 			<!--member right end-->
