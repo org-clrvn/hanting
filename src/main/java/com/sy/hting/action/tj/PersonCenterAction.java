@@ -31,7 +31,11 @@ public class PersonCenterAction {
         model.addAttribute("oasList",oasbiz.queryOas(24));
         return "grzx-index";
     }
-
+    @GetMapping("order")
+    public String gotoOrder(Model model, Session session){
+        model.addAttribute("orderDfk",oasbiz.queryOrderDfk(24));
+        return "grzx-order";
+    }
 
 
 

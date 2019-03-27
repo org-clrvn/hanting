@@ -2,13 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sy.hting.dao.tj.IOrdersDao">
     <select id="queryOas" resultType="OrdersAndServices">
-        SELECT `services`.`serviceTitle`,`services`.`serviceFuTitle`,`services`.`servicePrice`,`orders`.`population` FROM `orders`
-        JOIN `services` ON `orders`.`serviceID` = `services`.`serviceID` WHERE `orders`.`userID` = 24 ORDER BY `orders`.`orderTime` DESC
+        SELECT `services`.`serviceTitle`, `services`.`serviceFuTitle`, `services`.`servicePrice`, `orders`.`population`
+        FROM `orders`
+        JOIN `services` ON `orders`.`serviceID` = `services`.`serviceID`
+        WHERE `orders`.`userID` = 24
+        ORDER BY `orders`.`orderTime` DESC
     </select>
     <select id="queryOrderDfk" resultType="OrdersAndServices">
-        SELECT `services`.*,`orders`.* FROM `orders`
+        SELECT `services`.*, `orders`.*
+        FROM `orders`
         JOIN `services` ON `orders`.`serviceID` = `services`.`serviceID`
-        WHERE `orders`.`userID` = #{0} AND `orders`.`orderStatus`=1
+        WHERE `orders`.`userID` = #{0}
+        AND `orders`.`orderStatus` = 1
         ORDER BY `orders`.`orderTime` DESC
     </select>
 </mapper>
