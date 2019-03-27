@@ -35,6 +35,10 @@ WHERE `stid` = #{st.stid};
     </update>
 
     <delete id="delServicetypeBystid">
+DELETE
+FROM
+  `hanting1`.`servicetype`
+WHERE `stPid` = #{stid};
         DELETE
 FROM
   `hanting1`.`servicetype`
@@ -71,5 +75,6 @@ VALUES
   );
 
     </insert>
+
 
 </mapper>
