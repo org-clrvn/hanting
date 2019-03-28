@@ -1,7 +1,7 @@
 package com.sy.hting.biz.tj;
 
 import com.sy.hting.dao.tj.IOrdersDao;
-import com.sy.hting.vo.OrdersAndServices;
+import com.sy.hting.vo.tj.OrdersAndServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;

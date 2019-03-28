@@ -1,4 +1,4 @@
-package com.sy.hting.vo;
+package com.sy.hting.vo.tj;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
 package com.sy.hting.dao.tj;
 
-import com.sy.hting.vo.OrdersAndServices;
+import com.sy.hting.vo.tj.OrdersAndServices;
 
 import java.util.List;
 
