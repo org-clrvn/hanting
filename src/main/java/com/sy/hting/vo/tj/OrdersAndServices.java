@@ -122,6 +122,148 @@ public class OrdersAndServices {
 
     private String documentpath;// 韩语翻译文档文件路径
 
+    private Integer trusteeship;// 托管状态 0:未托管，1：托管
+
+    private String reason;// 管理员理由
+
+    private Integer stateboolean;// 用户状态(可禁用用户1正常0禁用)
+
+    private String registerIP;// 注册IP地址
+
+    private Integer mailboxVerification;// 邮箱验证/邮箱激活(0激活1未激活)
+
+    private String userPhone;// 联系电话
+
+    private Float userMoney;// 用户金币
+
+    private Integer merchantExp;// 商家经验值，用来提升星级
+
+    private Integer experience;// 免费体验月数
+
+    private String identityPositiveImg;// 证件正面图片路径
+
+    private Date userRegistrationTime;// 用户注册时间
+
+    private String constellation;// 星座
+
+    private Integer provincialID;// 外键，省级地址编号
+
+    private Integer authenticationer;// 二号服务平台认证(0认证1未认证)
+
+    private String majorNameText;// 擅长专业
+
+    private Float height;// 身高
+
+    private String qq;// QQ
+
+    private String profession;// 职业
+
+    private Integer userSex;// 用户性别，1：男，2：女
+
+    private Integer userIntegral;// 用户积分
+
+    private Float firstServiceMoney;// 第一个服务交易额
+
+    private Integer creditScore;// 信誉积分(默认60/满分100 20为1颗星)
+
+    private String merchantEmail;// 商家联系邮箱
+
+    private Date recentEntry;// 用户最后登入时间
+
+    private Integer cityID;// 外键，市级地址编号
+
+    private Date trusteeshipStartTime;// 托管开始时间
+
+    private Integer guaranteeMoney;// 店铺保证金
+
+    private String merchantPhone;// 商家联系电话
+
+    private Date auditTime;// 审核时间
+
+    private Integer countyID;// 外键，县/区级地址编号
+
+    private String adDetail;// 地址详情
+
+    private String signature;// 店铺签名
+
+    private String userRealName;// 用户真实姓名
+
+    private String shopName;// 店铺名称
+
+    private Float secondServiceMoney;// 第二个服务交易额
+
+    private String identityNegativeImg;// 证件反面图片路径
+
+    private Integer liveCityID;// 所在城市编号
+
+    private Integer identityType;// 证件类型，海外用户为空，大陆商家用户：1：身份证号码，2：护照号码
+
+    private Integer businessState;// 营业状态(1营业2暂停3关闭)
+
+    private String shopImg;// 商家店铺图片路径
+
+    private Integer firstServiceID;// 第一个服务类别编号，外键，引用服务类型表
+
+    private String identityNumder;// 证件号码
+
+    private Integer trusteeshipMonth;// 托管月数
+
+    private Integer merchantType;// 商家类别，0：不是商家，1：大陆商家用户，2：海外商家用户
+
+    private Date merchantRegistrationTime;// 商家注册时间
+
+    private Integer authentication;// 一号服务平台认证(0认证1未认证)
+
+    private Float merchantLevel;// 商家星级
+
+    private Integer collectCount;// 商家被收藏数
+
+    private Integer orderCount;// 商家被订单数
+
+    private String contactMailbox;// 邮箱
+
+    private String identityHandImg;// 证件手持图片路径
+
+    private String selfIntroduction;// 自我介绍
+
+    private Integer secondServiceID;// 第二个服务类别编号，外键，引用服务类型表
+
+    private String userName;// 用户名(第三方注册成功后复制过来)
+
+    private String identityRealName;// 海外证件真实姓名，大陆商家用户为空
+
+    private String lastEntry;// 最后登入IP地址
+
+    private String languageNameText;// 服务语言
+
+    private String weChat;// 微信
+
+    private Integer experienceStatus;// 免费体验状态(0开启1关闭)
+
+    private String userImgPath;// 用户头像地址(第三方注册成功后复制过来)
+
+    private Integer age;// 年龄
+
+    private Integer stPid;// 递归编号(父ID)
+
+    private Integer proportion;// 违约金比例
+
+    private Integer toExamine;// 是否审核（1未审核2审核）
+
+    private Integer display;// 是否显示(1不显示，2显示
+
+    private String stName;// 服务名称
+
+    private String advertisement;// 广告图片地址
+
+    private Integer confirmTime;// 自动确认时间
+
+    private Integer sort;// 排序(层次作用 默认0 0是一级服务 以此类推)
+
+    private Integer operationTime;// 未操作时间
+
+    private Integer violatedNumber;// 服务违约天数
+
     public Integer getCountry() {
         return country;
     }
@@ -594,17 +736,575 @@ public class OrdersAndServices {
         this.documentpath = documentpath;
     }
 
-    public String getRemarks() {
-        return remarks;
+    public Integer getTrusteeship() {
+        return trusteeship;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setTrusteeship(Integer trusteeship) {
+        this.trusteeship = trusteeship;
     }
 
-    private String remarks;// 备注
+    public String getReason() {
+        return reason;
+    }
 
-    public OrdersAndServices(Integer country, String serviceCoverImg, Date releaseTime, String serviceCity, Integer browseNumber, Integer stid, String serviceIntro, Integer userID, String majoyNameByCN, String adminOpinion, String serviceImgUrlThree, String serviceImgUrlTwo, String serviceCostTypeID, Date serviceEndDate, String goodAtMajoy, Integer shelfState, String schoolNameByCN, Integer recommendBool, Integer resourceID, String majoyNameByROK, String serviceFuTitle, Float weight, String hospitalName, String uploadDataUrl, Integer serviceHour, Date serviceStartDate, String serviceTitle, Integer servicePrice, String downloadTitle, String serviceImgUrlFour, String serviceImgUrlOne, String schoolRegion, Integer auditStatus, String schoolNameByROK, Integer serviceID, String serviceCostInclude, Integer orderType, Float totalPrice, String uploadPath, Date provideServicesTime, Integer orderStatus, Integer resouroeID, Integer number, Date orderTime, Date receiptTime, Integer filesatus, Integer integral, Date scheduledStartTime, Date paymentTime, String orderID, Date scheduledEndTime, Integer commentstatus, Date completeTime, Integer collectGoods, Float smallPlan, Integer population, Integer refundstatus, Integer addressID, String documentpath, String remarks) {
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public Integer getStateboolean() {
+        return stateboolean;
+    }
+
+    public void setStateboolean(Integer stateboolean) {
+        this.stateboolean = stateboolean;
+    }
+
+    public String getRegisterIP() {
+        return registerIP;
+    }
+
+    public void setRegisterIP(String registerIP) {
+        this.registerIP = registerIP;
+    }
+
+    public Integer getMailboxVerification() {
+        return mailboxVerification;
+    }
+
+    public void setMailboxVerification(Integer mailboxVerification) {
+        this.mailboxVerification = mailboxVerification;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
+    }
+
+    public Float getUserMoney() {
+        return userMoney;
+    }
+
+    public void setUserMoney(Float userMoney) {
+        this.userMoney = userMoney;
+    }
+
+    public Integer getMerchantExp() {
+        return merchantExp;
+    }
+
+    public void setMerchantExp(Integer merchantExp) {
+        this.merchantExp = merchantExp;
+    }
+
+    public Integer getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Integer experience) {
+        this.experience = experience;
+    }
+
+    public String getIdentityPositiveImg() {
+        return identityPositiveImg;
+    }
+
+    public void setIdentityPositiveImg(String identityPositiveImg) {
+        this.identityPositiveImg = identityPositiveImg;
+    }
+
+    public Date getUserRegistrationTime() {
+        return userRegistrationTime;
+    }
+
+    public void setUserRegistrationTime(Date userRegistrationTime) {
+        this.userRegistrationTime = userRegistrationTime;
+    }
+
+    public String getConstellation() {
+        return constellation;
+    }
+
+    public void setConstellation(String constellation) {
+        this.constellation = constellation;
+    }
+
+    public Integer getProvincialID() {
+        return provincialID;
+    }
+
+    public void setProvincialID(Integer provincialID) {
+        this.provincialID = provincialID;
+    }
+
+    public Integer getAuthenticationer() {
+        return authenticationer;
+    }
+
+    public void setAuthenticationer(Integer authenticationer) {
+        this.authenticationer = authenticationer;
+    }
+
+    public String getMajorNameText() {
+        return majorNameText;
+    }
+
+    public void setMajorNameText(String majorNameText) {
+        this.majorNameText = majorNameText;
+    }
+
+    public Float getHeight() {
+        return height;
+    }
+
+    public void setHeight(Float height) {
+        this.height = height;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public Integer getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(Integer userSex) {
+        this.userSex = userSex;
+    }
+
+    public Integer getUserIntegral() {
+        return userIntegral;
+    }
+
+    public void setUserIntegral(Integer userIntegral) {
+        this.userIntegral = userIntegral;
+    }
+
+    public Float getFirstServiceMoney() {
+        return firstServiceMoney;
+    }
+
+    public void setFirstServiceMoney(Float firstServiceMoney) {
+        this.firstServiceMoney = firstServiceMoney;
+    }
+
+    public Integer getCreditScore() {
+        return creditScore;
+    }
+
+    public void setCreditScore(Integer creditScore) {
+        this.creditScore = creditScore;
+    }
+
+    public String getMerchantEmail() {
+        return merchantEmail;
+    }
+
+    public void setMerchantEmail(String merchantEmail) {
+        this.merchantEmail = merchantEmail;
+    }
+
+    public Date getRecentEntry() {
+        return recentEntry;
+    }
+
+    public void setRecentEntry(Date recentEntry) {
+        this.recentEntry = recentEntry;
+    }
+
+    public Integer getCityID() {
+        return cityID;
+    }
+
+    public void setCityID(Integer cityID) {
+        this.cityID = cityID;
+    }
+
+    public Date getTrusteeshipStartTime() {
+        return trusteeshipStartTime;
+    }
+
+    public void setTrusteeshipStartTime(Date trusteeshipStartTime) {
+        this.trusteeshipStartTime = trusteeshipStartTime;
+    }
+
+    public Integer getGuaranteeMoney() {
+        return guaranteeMoney;
+    }
+
+    public void setGuaranteeMoney(Integer guaranteeMoney) {
+        this.guaranteeMoney = guaranteeMoney;
+    }
+
+    public String getMerchantPhone() {
+        return merchantPhone;
+    }
+
+    public void setMerchantPhone(String merchantPhone) {
+        this.merchantPhone = merchantPhone;
+    }
+
+    public Date getAuditTime() {
+        return auditTime;
+    }
+
+    public void setAuditTime(Date auditTime) {
+        this.auditTime = auditTime;
+    }
+
+    public Integer getCountyID() {
+        return countyID;
+    }
+
+    public void setCountyID(Integer countyID) {
+        this.countyID = countyID;
+    }
+
+    public String getAdDetail() {
+        return adDetail;
+    }
+
+    public void setAdDetail(String adDetail) {
+        this.adDetail = adDetail;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getUserRealName() {
+        return userRealName;
+    }
+
+    public void setUserRealName(String userRealName) {
+        this.userRealName = userRealName;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public Float getSecondServiceMoney() {
+        return secondServiceMoney;
+    }
+
+    public void setSecondServiceMoney(Float secondServiceMoney) {
+        this.secondServiceMoney = secondServiceMoney;
+    }
+
+    public String getIdentityNegativeImg() {
+        return identityNegativeImg;
+    }
+
+    public void setIdentityNegativeImg(String identityNegativeImg) {
+        this.identityNegativeImg = identityNegativeImg;
+    }
+
+    public Integer getLiveCityID() {
+        return liveCityID;
+    }
+
+    public void setLiveCityID(Integer liveCityID) {
+        this.liveCityID = liveCityID;
+    }
+
+    public Integer getIdentityType() {
+        return identityType;
+    }
+
+    public void setIdentityType(Integer identityType) {
+        this.identityType = identityType;
+    }
+
+    public Integer getBusinessState() {
+        return businessState;
+    }
+
+    public void setBusinessState(Integer businessState) {
+        this.businessState = businessState;
+    }
+
+    public String getShopImg() {
+        return shopImg;
+    }
+
+    public void setShopImg(String shopImg) {
+        this.shopImg = shopImg;
+    }
+
+    public Integer getFirstServiceID() {
+        return firstServiceID;
+    }
+
+    public void setFirstServiceID(Integer firstServiceID) {
+        this.firstServiceID = firstServiceID;
+    }
+
+    public String getIdentityNumder() {
+        return identityNumder;
+    }
+
+    public void setIdentityNumder(String identityNumder) {
+        this.identityNumder = identityNumder;
+    }
+
+    public Integer getTrusteeshipMonth() {
+        return trusteeshipMonth;
+    }
+
+    public void setTrusteeshipMonth(Integer trusteeshipMonth) {
+        this.trusteeshipMonth = trusteeshipMonth;
+    }
+
+    public Integer getMerchantType() {
+        return merchantType;
+    }
+
+    public void setMerchantType(Integer merchantType) {
+        this.merchantType = merchantType;
+    }
+
+    public Date getMerchantRegistrationTime() {
+        return merchantRegistrationTime;
+    }
+
+    public void setMerchantRegistrationTime(Date merchantRegistrationTime) {
+        this.merchantRegistrationTime = merchantRegistrationTime;
+    }
+
+    public Integer getAuthentication() {
+        return authentication;
+    }
+
+    public void setAuthentication(Integer authentication) {
+        this.authentication = authentication;
+    }
+
+    public Float getMerchantLevel() {
+        return merchantLevel;
+    }
+
+    public void setMerchantLevel(Float merchantLevel) {
+        this.merchantLevel = merchantLevel;
+    }
+
+    public Integer getCollectCount() {
+        return collectCount;
+    }
+
+    public void setCollectCount(Integer collectCount) {
+        this.collectCount = collectCount;
+    }
+
+    public Integer getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(Integer orderCount) {
+        this.orderCount = orderCount;
+    }
+
+    public String getContactMailbox() {
+        return contactMailbox;
+    }
+
+    public void setContactMailbox(String contactMailbox) {
+        this.contactMailbox = contactMailbox;
+    }
+
+    public String getIdentityHandImg() {
+        return identityHandImg;
+    }
+
+    public void setIdentityHandImg(String identityHandImg) {
+        this.identityHandImg = identityHandImg;
+    }
+
+    public String getSelfIntroduction() {
+        return selfIntroduction;
+    }
+
+    public void setSelfIntroduction(String selfIntroduction) {
+        this.selfIntroduction = selfIntroduction;
+    }
+
+    public Integer getSecondServiceID() {
+        return secondServiceID;
+    }
+
+    public void setSecondServiceID(Integer secondServiceID) {
+        this.secondServiceID = secondServiceID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getIdentityRealName() {
+        return identityRealName;
+    }
+
+    public void setIdentityRealName(String identityRealName) {
+        this.identityRealName = identityRealName;
+    }
+
+    public String getLastEntry() {
+        return lastEntry;
+    }
+
+    public void setLastEntry(String lastEntry) {
+        this.lastEntry = lastEntry;
+    }
+
+    public String getLanguageNameText() {
+        return languageNameText;
+    }
+
+    public void setLanguageNameText(String languageNameText) {
+        this.languageNameText = languageNameText;
+    }
+
+    public String getWeChat() {
+        return weChat;
+    }
+
+    public void setWeChat(String weChat) {
+        this.weChat = weChat;
+    }
+
+    public Integer getExperienceStatus() {
+        return experienceStatus;
+    }
+
+    public void setExperienceStatus(Integer experienceStatus) {
+        this.experienceStatus = experienceStatus;
+    }
+
+    public String getUserImgPath() {
+        return userImgPath;
+    }
+
+    public void setUserImgPath(String userImgPath) {
+        this.userImgPath = userImgPath;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Integer getStPid() {
+        return stPid;
+    }
+
+    public void setStPid(Integer stPid) {
+        this.stPid = stPid;
+    }
+
+    public Integer getProportion() {
+        return proportion;
+    }
+
+    public void setProportion(Integer proportion) {
+        this.proportion = proportion;
+    }
+
+    public Integer getToExamine() {
+        return toExamine;
+    }
+
+    public void setToExamine(Integer toExamine) {
+        this.toExamine = toExamine;
+    }
+
+    public Integer getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Integer display) {
+        this.display = display;
+    }
+
+    public String getStName() {
+        return stName;
+    }
+
+    public void setStName(String stName) {
+        this.stName = stName;
+    }
+
+    public String getAdvertisement() {
+        return advertisement;
+    }
+
+    public void setAdvertisement(String advertisement) {
+        this.advertisement = advertisement;
+    }
+
+    public Integer getConfirmTime() {
+        return confirmTime;
+    }
+
+    public void setConfirmTime(Integer confirmTime) {
+        this.confirmTime = confirmTime;
+    }
+
+    public Integer getSort() {
+        return sort;
+    }
+
+    public void setSort(Integer sort) {
+        this.sort = sort;
+    }
+
+    public Integer getOperationTime() {
+        return operationTime;
+    }
+
+    public void setOperationTime(Integer operationTime) {
+        this.operationTime = operationTime;
+    }
+
+    public Integer getViolatedNumber() {
+        return violatedNumber;
+    }
+
+    public void setViolatedNumber(Integer violatedNumber) {
+        this.violatedNumber = violatedNumber;
+    }
+
+    public OrdersAndServices(Integer country, String serviceCoverImg, Date releaseTime, String serviceCity, Integer browseNumber, Integer stid, String serviceIntro, Integer userID, String majoyNameByCN, String adminOpinion, String serviceImgUrlThree, String serviceImgUrlTwo, String serviceCostTypeID, Date serviceEndDate, String goodAtMajoy, Integer shelfState, String schoolNameByCN, Integer recommendBool, Integer resourceID, String majoyNameByROK, String serviceFuTitle, Float weight, String hospitalName, String uploadDataUrl, Integer serviceHour, Date serviceStartDate, String serviceTitle, Integer servicePrice, String downloadTitle, String serviceImgUrlFour, String serviceImgUrlOne, String schoolRegion, Integer auditStatus, String schoolNameByROK, Integer serviceID, String serviceCostInclude, Integer orderType, Float totalPrice, String uploadPath, Date provideServicesTime, Integer orderStatus, Integer resouroeID, Integer number, Date orderTime, Date receiptTime, Integer filesatus, Integer integral, Date scheduledStartTime, Date paymentTime, String orderID, Date scheduledEndTime, Integer commentstatus, Date completeTime, Integer collectGoods, Float smallPlan, Integer population, Integer refundstatus, Integer addressID, String documentpath, Integer trusteeship, String reason, Integer stateboolean, String registerIP, Integer mailboxVerification, String userPhone, Float userMoney, Integer merchantExp, Integer experience, String identityPositiveImg, Date userRegistrationTime, String constellation, Integer provincialID, Integer authenticationer, String majorNameText, Float height, String qq, String profession, Integer userSex, Integer userIntegral, Float firstServiceMoney, Integer creditScore, String merchantEmail, Date recentEntry, Integer cityID, Date trusteeshipStartTime, Integer guaranteeMoney, String merchantPhone, Date auditTime, Integer countyID, String adDetail, String signature, String userRealName, String shopName, Float secondServiceMoney, String identityNegativeImg, Integer liveCityID, Integer identityType, Integer businessState, String shopImg, Integer firstServiceID, String identityNumder, Integer trusteeshipMonth, Integer merchantType, Date merchantRegistrationTime, Integer authentication, Float merchantLevel, Integer collectCount, Integer orderCount, String contactMailbox, String identityHandImg, String selfIntroduction, Integer secondServiceID, String userName, String identityRealName, String lastEntry, String languageNameText, String weChat, Integer experienceStatus, String userImgPath, Integer age, Integer stPid, Integer proportion, Integer toExamine, Integer display, String stName, String advertisement, Integer confirmTime, Integer sort, Integer operationTime, Integer violatedNumber) {
         this.country = country;
         this.serviceCoverImg = serviceCoverImg;
         this.releaseTime = releaseTime;
@@ -664,9 +1364,215 @@ public class OrdersAndServices {
         this.refundstatus = refundstatus;
         this.addressID = addressID;
         this.documentpath = documentpath;
-        this.remarks = remarks;
+        this.trusteeship = trusteeship;
+        this.reason = reason;
+        this.stateboolean = stateboolean;
+        this.registerIP = registerIP;
+        this.mailboxVerification = mailboxVerification;
+        this.userPhone = userPhone;
+        this.userMoney = userMoney;
+        this.merchantExp = merchantExp;
+        this.experience = experience;
+        this.identityPositiveImg = identityPositiveImg;
+        this.userRegistrationTime = userRegistrationTime;
+        this.constellation = constellation;
+        this.provincialID = provincialID;
+        this.authenticationer = authenticationer;
+        this.majorNameText = majorNameText;
+        this.height = height;
+        this.qq = qq;
+        this.profession = profession;
+        this.userSex = userSex;
+        this.userIntegral = userIntegral;
+        this.firstServiceMoney = firstServiceMoney;
+        this.creditScore = creditScore;
+        this.merchantEmail = merchantEmail;
+        this.recentEntry = recentEntry;
+        this.cityID = cityID;
+        this.trusteeshipStartTime = trusteeshipStartTime;
+        this.guaranteeMoney = guaranteeMoney;
+        this.merchantPhone = merchantPhone;
+        this.auditTime = auditTime;
+        this.countyID = countyID;
+        this.adDetail = adDetail;
+        this.signature = signature;
+        this.userRealName = userRealName;
+        this.shopName = shopName;
+        this.secondServiceMoney = secondServiceMoney;
+        this.identityNegativeImg = identityNegativeImg;
+        this.liveCityID = liveCityID;
+        this.identityType = identityType;
+        this.businessState = businessState;
+        this.shopImg = shopImg;
+        this.firstServiceID = firstServiceID;
+        this.identityNumder = identityNumder;
+        this.trusteeshipMonth = trusteeshipMonth;
+        this.merchantType = merchantType;
+        this.merchantRegistrationTime = merchantRegistrationTime;
+        this.authentication = authentication;
+        this.merchantLevel = merchantLevel;
+        this.collectCount = collectCount;
+        this.orderCount = orderCount;
+        this.contactMailbox = contactMailbox;
+        this.identityHandImg = identityHandImg;
+        this.selfIntroduction = selfIntroduction;
+        this.secondServiceID = secondServiceID;
+        this.userName = userName;
+        this.identityRealName = identityRealName;
+        this.lastEntry = lastEntry;
+        this.languageNameText = languageNameText;
+        this.weChat = weChat;
+        this.experienceStatus = experienceStatus;
+        this.userImgPath = userImgPath;
+        this.age = age;
+        this.stPid = stPid;
+        this.proportion = proportion;
+        this.toExamine = toExamine;
+        this.display = display;
+        this.stName = stName;
+        this.advertisement = advertisement;
+        this.confirmTime = confirmTime;
+        this.sort = sort;
+        this.operationTime = operationTime;
+        this.violatedNumber = violatedNumber;
     }
+
+    @Override
+    public String toString() {
+        return "OrdersAndServices{" +
+                "country=" + country +
+                ", serviceCoverImg='" + serviceCoverImg + '\'' +
+                ", releaseTime=" + releaseTime +
+                ", serviceCity='" + serviceCity + '\'' +
+                ", browseNumber=" + browseNumber +
+                ", stid=" + stid +
+                ", serviceIntro='" + serviceIntro + '\'' +
+                ", userID=" + userID +
+                ", majoyNameByCN='" + majoyNameByCN + '\'' +
+                ", adminOpinion='" + adminOpinion + '\'' +
+                ", serviceImgUrlThree='" + serviceImgUrlThree + '\'' +
+                ", serviceImgUrlTwo='" + serviceImgUrlTwo + '\'' +
+                ", serviceCostTypeID='" + serviceCostTypeID + '\'' +
+                ", serviceEndDate=" + serviceEndDate +
+                ", goodAtMajoy='" + goodAtMajoy + '\'' +
+                ", shelfState=" + shelfState +
+                ", schoolNameByCN='" + schoolNameByCN + '\'' +
+                ", recommendBool=" + recommendBool +
+                ", resourceID=" + resourceID +
+                ", majoyNameByROK='" + majoyNameByROK + '\'' +
+                ", serviceFuTitle='" + serviceFuTitle + '\'' +
+                ", weight=" + weight +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", uploadDataUrl='" + uploadDataUrl + '\'' +
+                ", serviceHour=" + serviceHour +
+                ", serviceStartDate=" + serviceStartDate +
+                ", serviceTitle='" + serviceTitle + '\'' +
+                ", servicePrice=" + servicePrice +
+                ", downloadTitle='" + downloadTitle + '\'' +
+                ", serviceImgUrlFour='" + serviceImgUrlFour + '\'' +
+                ", serviceImgUrlOne='" + serviceImgUrlOne + '\'' +
+                ", schoolRegion='" + schoolRegion + '\'' +
+                ", auditStatus=" + auditStatus +
+                ", schoolNameByROK='" + schoolNameByROK + '\'' +
+                ", serviceID=" + serviceID +
+                ", serviceCostInclude='" + serviceCostInclude + '\'' +
+                ", orderType=" + orderType +
+                ", totalPrice=" + totalPrice +
+                ", uploadPath='" + uploadPath + '\'' +
+                ", provideServicesTime=" + provideServicesTime +
+                ", orderStatus=" + orderStatus +
+                ", resouroeID=" + resouroeID +
+                ", number=" + number +
+                ", orderTime=" + orderTime +
+                ", receiptTime=" + receiptTime +
+                ", filesatus=" + filesatus +
+                ", integral=" + integral +
+                ", scheduledStartTime=" + scheduledStartTime +
+                ", paymentTime=" + paymentTime +
+                ", orderID='" + orderID + '\'' +
+                ", scheduledEndTime=" + scheduledEndTime +
+                ", commentstatus=" + commentstatus +
+                ", completeTime=" + completeTime +
+                ", collectGoods=" + collectGoods +
+                ", smallPlan=" + smallPlan +
+                ", population=" + population +
+                ", refundstatus=" + refundstatus +
+                ", addressID=" + addressID +
+                ", documentpath='" + documentpath + '\'' +
+                ", trusteeship=" + trusteeship +
+                ", reason='" + reason + '\'' +
+                ", stateboolean=" + stateboolean +
+                ", registerIP='" + registerIP + '\'' +
+                ", mailboxVerification=" + mailboxVerification +
+                ", userPhone='" + userPhone + '\'' +
+                ", userMoney=" + userMoney +
+                ", merchantExp=" + merchantExp +
+                ", experience=" + experience +
+                ", identityPositiveImg='" + identityPositiveImg + '\'' +
+                ", userRegistrationTime=" + userRegistrationTime +
+                ", constellation='" + constellation + '\'' +
+                ", provincialID=" + provincialID +
+                ", authenticationer=" + authenticationer +
+                ", majorNameText='" + majorNameText + '\'' +
+                ", height=" + height +
+                ", qq='" + qq + '\'' +
+                ", profession='" + profession + '\'' +
+                ", userSex=" + userSex +
+                ", userIntegral=" + userIntegral +
+                ", firstServiceMoney=" + firstServiceMoney +
+                ", creditScore=" + creditScore +
+                ", merchantEmail='" + merchantEmail + '\'' +
+                ", recentEntry=" + recentEntry +
+                ", cityID=" + cityID +
+                ", trusteeshipStartTime=" + trusteeshipStartTime +
+                ", guaranteeMoney=" + guaranteeMoney +
+                ", merchantPhone='" + merchantPhone + '\'' +
+                ", auditTime=" + auditTime +
+                ", countyID=" + countyID +
+                ", adDetail='" + adDetail + '\'' +
+                ", signature='" + signature + '\'' +
+                ", userRealName='" + userRealName + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", secondServiceMoney=" + secondServiceMoney +
+                ", identityNegativeImg='" + identityNegativeImg + '\'' +
+                ", liveCityID=" + liveCityID +
+                ", identityType=" + identityType +
+                ", businessState=" + businessState +
+                ", shopImg='" + shopImg + '\'' +
+                ", firstServiceID=" + firstServiceID +
+                ", identityNumder='" + identityNumder + '\'' +
+                ", trusteeshipMonth=" + trusteeshipMonth +
+                ", merchantType=" + merchantType +
+                ", merchantRegistrationTime=" + merchantRegistrationTime +
+                ", authentication=" + authentication +
+                ", merchantLevel=" + merchantLevel +
+                ", collectCount=" + collectCount +
+                ", orderCount=" + orderCount +
+                ", contactMailbox='" + contactMailbox + '\'' +
+                ", identityHandImg='" + identityHandImg + '\'' +
+                ", selfIntroduction='" + selfIntroduction + '\'' +
+                ", secondServiceID=" + secondServiceID +
+                ", userName='" + userName + '\'' +
+                ", identityRealName='" + identityRealName + '\'' +
+                ", lastEntry='" + lastEntry + '\'' +
+                ", languageNameText='" + languageNameText + '\'' +
+                ", weChat='" + weChat + '\'' +
+                ", experienceStatus=" + experienceStatus +
+                ", userImgPath='" + userImgPath + '\'' +
+                ", age=" + age +
+                ", stPid=" + stPid +
+                ", proportion=" + proportion +
+                ", toExamine=" + toExamine +
+                ", display=" + display +
+                ", stName='" + stName + '\'' +
+                ", advertisement='" + advertisement + '\'' +
+                ", confirmTime=" + confirmTime +
+                ", sort=" + sort +
+                ", operationTime=" + operationTime +
+                ", violatedNumber=" + violatedNumber +
+                '}';
+    }
+
     public OrdersAndServices() {
-        super();
     }
 }

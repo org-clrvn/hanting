@@ -153,23 +153,24 @@
 									<div class="c_4">总金币</div> <span class="num_1" th:text="${orderDfk.smallPlan}"></span>
 								</li>
 								<li>
-									<div class="c_4">服务类别</div> <span th:text="${orderDfk.stid}"></span>
+									<div class="c_4">服务类别</div> <span th:text="${orderDfk.stName}"></span>
 								</li>
 								<li>
 									<div class="c_4">商家</div>
-									<p class="shopname"></p>
+									<p th:text="${orderDfk.shopName}" class="shopname"></p>
 								</li>
 								<li>
-									<div class="c_4" style="text-align: center;">商家状态</div> <span style="text-align: center; margin-left: 42px; color: #959595;"></span>
+									<div class="c_4" style="text-align: center;">商家状态</div> <span style="text-align: center; margin-left: 42px; color: #959595;" th:if="${orderDfk.businessState==1}">营业</span>
+                                    <span style="text-align: center; margin-left: 42px; color: #959595;" th:if="${orderDfk.businessState==2}">暂停</span>
+                                    <span style="text-align: center; margin-left: 42px; color: #959595;" th:if="${orderDfk.businessState==3}">关闭</span>
 								</li>
 								<li class="last" style="width: 200px;">
 									<div class="yy_code">
-										<span class="c_4">预订编号</span><span></span>
+										<span class="c_4">预订编号</span><span th:text="${orderDfk.orderID}"></span>
 									</div>
 									<p>
 										<a>查看详细</a>
 										<span class="ht_line2"></span>
-										<a href="" rel="303">站内信商家</a>
 									</p>
 								</li>
 							</ul>
