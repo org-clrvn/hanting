@@ -1,5 +1,6 @@
 package com.sy.hting.dao.cy;
 
+import com.sy.hting.pojo.Orders;
 import com.sy.hting.pojo.Servicecollection;
 import com.sy.hting.pojo.Servicelevel;
 import com.sy.hting.pojo.Sharea;
@@ -43,4 +44,7 @@ public interface IDriveDao {
 
     /*删除收藏*/
     void delCollet(@Param("id") Integer id);
+
+    /*添加预定*/
+    void addOrder(@Param("order") Orders order);
 }

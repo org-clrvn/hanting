@@ -68,4 +68,32 @@
           `hanting1`.`servicecollection`
         WHERE `serColleID` = #{id};
     </delete>
+
+    <insert id="addOrder">
+        INSERT INTO `hanting1`.`orders` (
+            `orderID`,
+            `userID`,
+            `serviceID`,
+            `orderTime`,
+            `remarks`,
+            `scheduledStartTime`,
+            `scheduledEndTime`,
+            `population`,
+            `totalPrice`,
+            `orderStatus`
+        )
+        VALUES
+        (
+            #{order.orderID},
+            #{order.userID},
+            #{order.serviceID},
+            #{order.orderTime},
+            #{order.remarks},
+            #{order.scheduledStartTime},
+            #{order.scheduledEndTime},
+            #{order.population},
+            #{order.totalPrice},
+            #{order.orderStatus}
+        );
+    </insert>
 </mapper>

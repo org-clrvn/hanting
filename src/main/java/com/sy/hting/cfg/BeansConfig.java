@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.github.pagehelper.PageHelper;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 
 @Configuration
 @MapperScan(basePackages = { "com.sy.hting.dao.*" })
@@ -30,4 +32,5 @@ public class BeansConfig {
 		pageHelper.setProperties(properties);
 		return pageHelper;
 	}
+
 }

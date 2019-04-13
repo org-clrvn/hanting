@@ -3,6 +3,7 @@ package com.sy.hting.biz.cy;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sy.hting.dao.cy.IDriveDao;
+import com.sy.hting.pojo.Orders;
 import com.sy.hting.pojo.Servicecollection;
 import com.sy.hting.pojo.Servicelevel;
 import com.sy.hting.pojo.Sharea;
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("all")
 @Service
@@ -58,5 +61,38 @@ public class DriveBiz {
         }else{
             dao.delCollet(s.getSerColleID());
         }
+    }
+
+    public void addOrder(Float totalPrice, Integer userID,  Date scheduledStartTime,  Date scheduledEndTime,
+                         Integer population, Integer serviceID, String remarks){
+
+        Orders order = new Orders();
+
+        order.setTotalPrice(totalPrice);
+        order.setUserID(userID);
+        order.setScheduledStartTime(scheduledStartTime);
+        order.setScheduledEndTime(scheduledEndTime);
+        order.setPopulation(population);
+        order.setServiceID(serviceID);
+        order.setRemarks(remarks);
+
+
+
+        /*下单时间*/
+        order.setOrderTime(new Date());
+        /*订单状态（预定，待付款1）*/
+        order.setOrderStatus(1);
+
+        /*订单号*/
+        Random r = new Random();
+        Date now = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyyMMddHHmmss");
+        String orderId=f.format(now);
+
+        for (int i=0;i<6;i++){
+            orderId+=r.nextInt(10);
+        }
+        order.setOrderID(orderId);
+        dao.addOrder(order);
     }
 }

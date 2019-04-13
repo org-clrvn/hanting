@@ -19,24 +19,6 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 @ServletComponentScan // 支持自定义web过滤器和servlet
 public class WebConfig implements WebMvcConfigurer {
 
-    /**
-     * @return
-     * @title: httpMessageConverters
-     * @description: FastJson配置
-     */
-    @Bean
-    public HttpMessageConverters httpMessageConverters() {
-        FastJsonHttpMessageConverter fjhmc = new FastJsonHttpMessageConverter();
-        fjhmc.setCharset(FastJsonHttpMessageConverter.UTF8);
-        List<MediaType> types = new ArrayList<MediaType>();
-        types.add(MediaType.APPLICATION_JSON_UTF8);
-        fjhmc.setSupportedMediaTypes(types);
-        fjhmc.setFeatures(SerializerFeature.WriteEnumUsingToString, SerializerFeature.WriteMapNullValue,
-                SerializerFeature.QuoteFieldNames, SerializerFeature.PrettyFormat,
-                SerializerFeature.WriteDateUseDateFormat, SerializerFeature.WriteNullNumberAsZero,
-                SerializerFeature.WriteNullStringAsEmpty);
-        return new HttpMessageConverters(fjhmc);
-    }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

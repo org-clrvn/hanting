@@ -1,6 +1,6 @@
 package com.sy.hting.vo.cy;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ public class ServiceDetail {
 
     private String serviceCoverImg;// 封面图
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date releaseTime;// 发布时间
 
     private String serviceCity;// 服务城市(可填多个)
@@ -31,7 +31,7 @@ public class ServiceDetail {
 
     private String serviceCostTypeID;// 费用说明
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date serviceEndDate;// 可预定日期-结束
 
     private String goodAtMajoy;// 擅长专业
@@ -54,7 +54,7 @@ public class ServiceDetail {
 
     private Integer serviceHour;// 小时/天
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date serviceStartDate;// 可预定日期-起始
 
     private String serviceTitle;// 服务标题
@@ -99,7 +99,7 @@ public class ServiceDetail {
 
     private String identityPositiveImg;// 证件正面图片路径
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+      @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date userRegistrationTime;// 用户注册时间
 
     private String constellation;// 星座
@@ -126,19 +126,19 @@ public class ServiceDetail {
 
     private String merchantEmail;// 商家联系邮箱
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+      @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date recentEntry;// 用户最后登入时间
 
     private Integer cityID;// 外键，市级地址编号
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+      @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date trusteeshipStartTime;// 托管开始时间
 
     private Integer guaranteeMoney;// 店铺保证金
 
     private String merchantPhone;// 商家联系电话
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+      @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date auditTime;// 审核时间
 
     private Integer countyID;// 外键，县/区级地址编号
@@ -173,7 +173,7 @@ public class ServiceDetail {
 
     private Integer merchantType;// 商家类别，0：不是商家，1：大陆商家用户，2：海外商家用户
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+      @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date merchantRegistrationTime;// 商家注册时间
 
     private Integer authentication;// 一号服务平台认证(0认证1未认证)
