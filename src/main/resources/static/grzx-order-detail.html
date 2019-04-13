@@ -247,7 +247,7 @@
 				queryUser:function(){
 					myVue = this;
 					var uid = window.sessionStorage.getItem("uid");
-					$.getJSON("http://127.0.0.1:1111/api/queryUserById/"+uid,function(data){
+					$.getJSON("/api/queryUserById/"+uid,function(data){
 						myVue.user=data;
 					});
 					
@@ -255,7 +255,7 @@
 				queryOrderByOid:function(){
 					var oid = window.sessionStorage.getItem("oid");
 					myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryOrderByOid/"+oid,function(data){
+					$.getJSON("/api/queryOrderByOid/"+oid,function(data){
 						myVue.orderDetail = data;
 					});
 				},
@@ -282,7 +282,7 @@
                     }, function (index, layero) {
                         //移除元素
                        	
-						$.getJSON("http://127.0.0.1:1111/api/orderCancel/"+oid,function(data){
+						$.getJSON("/api/orderCancel/"+oid,function(data){
 						if(data.code=="200"){
 							layer.closeAll('dialog');  //加入这个信息点击确定 会关闭这个消息框
                        		layer.msg("取消成功!",{ icon: 1, time: 1000 });

@@ -7,7 +7,7 @@
 
 <title>会员中心_韩汀社区</title>
 
-<link href="Public/css/common.css" rel="stylesheet" />
+<link href="http://127.0.0.1:1111/Public/css/common.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/layui.css" />
 </head>
 
@@ -125,14 +125,14 @@
 								<span class="num_1" v-text="temp.totalPrice"></span>
 							</p>
 						</div>
-						
+
 					</li>
 					<div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-9" >
 						<a href="javascript:;" class="layui-laypage-prev" data-page="0" @click="queryOrderByUidAndStatusId(pageInfo.list[0].orderStatus,pageInfo.prePage)">上一页</a>
 						<a href="javascript:;" class="layui-laypage-next" data-page="2" @click="queryOrderByUidAndStatusId(pageInfo.list[0].orderStatus,pageInfo.nextPage)">下一页</a>
 					</div>
 				</ul>
-				
+
 
 			</div>
 			<!--member right end-->
@@ -215,8 +215,8 @@
 	/*获得登录Id*/
 	window.sessionStorage.setItem("uid",24);
 	var uid = window.sessionStorage.getItem("uid");
-	
-	
+
+
 	var VmCnt = new Vue({
 			el:"#vmCnt",
 			data:{
@@ -226,15 +226,15 @@
 			methods:{
 				queryUser:function(){
 					myVue = this;
-					
-					$.getJSON("http://127.0.0.1:1111/api/queryUserById/"+uid,function(data){
+
+					$.getJSON("/api/queryUserById/"+uid,function(data){
 						myVue.user=data;
 					});
-					
+
 				},
 				queryOrderByUidAndStatusId:function(statusId,pageNum){
 					myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryOrdersByIdAndStatusId/"+uid+"/"
+					$.getJSON("/api/queryOrdersByIdAndStatusId/"+uid+"/"
 					+statusId+"/"+pageNum+"/2",function(data){
 						if(statusId==1){
 							$(".pre_h2_title").html("最新预定了");
@@ -249,8 +249,8 @@
 							$(".pre_h2_title").html("待评价");
 							$("#tip4").html(data.total);
 						}
-						
-						
+
+
 						myVue.pageInfo=data;
 					});
 				},
@@ -266,18 +266,18 @@
 					window.sessionStorage.setItem("serviceId",sid);
 					location.href="fw-zjyXQ.html";
 				}
-				
+
 			},
 			created:function(){
 				this.queryUser();
-				
+
 				this.queryOrderByUidAndStatusId(3,1);
 				this.queryOrderByUidAndStatusId(2,1);
 				this.queryOrderByUidAndStatusId(4,1);
 				this.queryOrderByUidAndStatusId(1,1);
-				
+
 			}
-	
+
 	})
 </script>
 </html>

@@ -268,7 +268,7 @@ copy
 				/*根据父级Id查询所有服务类别*/
 				queryServicetypeBystPid:function(id){
 					myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryServicetypeBystPid/1/10/"+id,function(jason){
+					$.getJSON("/api/queryServicetypeBystPid/1/10/"+id,function(jason){
 						myVue.pageInfo=jason;
 						$("#stPid").html("");
 						if(jason.total==0&&id!=0){
@@ -296,13 +296,13 @@ copy
 						this.loading();
 					}
 						myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryServicetypeBystPid/1/10/"+id,function(jason){
+					$.getJSON("/api/queryServicetypeBystPid/1/10/"+id,function(jason){
 						myVue.pageInfo=jason;
 					});
 				},
 				del:function(id){
 					/*提示该菜单下还剩多少子菜单*/
-					$.getJSON("http://127.0.0.1:1111/api/queryServicetypeBystPid/1/10/"+id,function(jason){
+					$.getJSON("/api/queryServicetypeBystPid/1/10/"+id,function(jason){
 						var count = jason.total;
 						layer.confirm('该服务类型下还有【'+count+'】条子服务,确定删除吗？', {
 						  btn: ['确认', '取消'] //可以无限个按钮
@@ -312,7 +312,7 @@ copy
 						  	layer.close();
 						  	$.ajax({
 							type:"delete",
-							url:"http://127.0.0.1:1111/api/delServicetypeBystid/"+JSON.stringify(id),
+							url:"/api/delServicetypeBystid/"+JSON.stringify(id),
 							contentType:"application/json",
 							dataType:"json",
 							success:function(json){
@@ -330,7 +330,7 @@ copy
 				},
 				loading:function(){
 					myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryServicetypeBystPid/1/100",function(jason){
+					$.getJSON("/api/queryServicetypeBystPid/1/100",function(jason){
 					myVue.pageInfo=jason;
 					/*查询所有二级菜单*/
 					$.each(jason.list, function(index,obj) {

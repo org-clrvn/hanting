@@ -310,7 +310,7 @@
 				serviceCollect:function(){
 					var uid = window.sessionStorage.getItem("uid");
 					myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryMyCollectByUid/"+uid+"/1/5",function(data){
+					$.getJSON("/api/queryMyCollectByUid/"+uid+"/1/5",function(data){
 						myVue.pageInfo=data;
 					});
 				},

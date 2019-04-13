@@ -240,25 +240,25 @@
 			methods:{
 				queryCountries:function(){
 					myVm = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryCountries",function(jason){
+					$.getJSON("/api/queryCountries",function(jason){
 						myVm.Countries=jason;
 					})
 				},
 				queryServices:function(fmid){
 					myVm = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryServicetypeBystPid/1/100/"+fmid,function(jason){
+					$.getJSON("/api/queryServicetypeBystPid/1/100/"+fmid,function(jason){
 						myVm.Services=jason;
 					});
 				},
 				queryLevel:function(fmid){
 					myVm = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryLevel/"+fmid,function(jason){
+					$.getJSON("/api/queryLevel/"+fmid,function(jason){
 						myVm.Levels=jason;
 					});
 				},
 				queryCities:function(id){
 					myVm = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryCities/"+id,function(jason){
+					$.getJSON("/api/queryCities/"+id,function(jason){
 						if(jason.length>0){
 							myVm.Cities=jason;
 							$("#city").show();
@@ -268,7 +268,7 @@
 				},
 				querySecondService:function(id){
 					myVm = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryServicetypeBystPid/1/100/"+id,function(jason){
+					$.getJSON("/api/queryServicetypeBystPid/1/100/"+id,function(jason){
 						if(jason.list.length>0){
 							$(".sonType").show();
 							myVm.SecondServices=jason;
@@ -278,7 +278,7 @@
 				},
 				querypageServices:function(fmid){
 					myVm = this;
-					$.getJSON("http://127.0.0.1:1111/api/queryServices/1/6/"+fmid,function(jason){
+					$.getJSON("/api/queryServices/1/6/"+fmid,function(jason){
 						myVm.PageServices=jason;
 					});
 				},

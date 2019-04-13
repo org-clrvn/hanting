@@ -119,7 +119,7 @@
 			
 			if(userMoney>totalPrice){
 			
-				$.getJSON("http://127.0.0.1:1111/api/orderPay/"+uid+"/"+totalPrice+"/"+oid,function(data){
+				$.getJSON("/api/orderPay/"+uid+"/"+totalPrice+"/"+oid,function(data){
 					if(data.code=="200"){
 						layer.msg("支付成功!",{ icon: 1, time: 1000 });
 								

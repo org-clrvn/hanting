@@ -422,7 +422,7 @@
 			methods:{
 				querySd:function(){
 					myVue = this;
-					$.getJSON("http://127.0.0.1:1111/api/querySd/"+serviceId,function(data){
+					$.getJSON("/api/querySd/"+serviceId,function(data){
 								/*时间选择器*/
 						var laydate = layui.laydate;
 						laydate.render({
@@ -456,7 +456,7 @@
 					})
 				},
 				querySc:function(uid,sid){
-					$.getJSON("http://127.0.0.1:1111/api/queryCollectByUidAndSid/"+uid+"/"+sid,function(data){
+					$.getJSON("/api/queryCollectByUidAndSid/"+uid+"/"+sid,function(data){
 						if(data.code=="200"){
 							$("#collect").html("已收藏");
 						}else{
@@ -469,7 +469,7 @@
 					var serviceId = window.sessionStorage.getItem("serviceId"); 
 					var uid = window.sessionStorage.getItem("uid");
 					 myVue= this;
-					$.getJSON("http://127.0.0.1:1111/api/collect/"+uid+"/"+serviceId,function(data){
+					$.getJSON("/api/collect/"+uid+"/"+serviceId,function(data){
 						myVue.loading();
 						if($("#collect").html()=="收藏"){
 							layer.alert("收藏成功");

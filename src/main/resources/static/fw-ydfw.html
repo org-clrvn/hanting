@@ -176,7 +176,7 @@
 
 		
 		function queryServiceById(id){
-			$.getJSON("http://127.0.0.1:1111/api/querySd/"+id,function(data){
+			$.getJSON("/api/querySd/"+id,function(data){
 				/*渲染服务基本信息*/
 				$("#serviceImg").append("<img src='Uploads/image/2019-3/"+data.serviceCoverImg +"'/>");
 				$("#title").html(data.serviceTitle);
@@ -202,7 +202,7 @@
 			var remakes = $("#remarks").val();
 			var priceSum=$("#payNeed").html();
 			
-			$.getJSON("http://127.0.0.1:1111/api/addOrder/"+priceSum+"/"+uid+"/"+time[0]+"/"+time[1]+"/"+ydpersonCount+"/"+id+"/"+remakes,function(data){
+			$.getJSON("/api/addOrder/"+priceSum+"/"+uid+"/"+time[0]+"/"+time[1]+"/"+ydpersonCount+"/"+id+"/"+remakes,function(data){
 				
 			});
 			setTimeout(function(){
