@@ -84,5 +84,28 @@
             #{refund.applicationTime}
 
         );
+        UPDATE orders
+        SET refundstatus = 1
+        WHERE orderID =  #{refund.orderID}
     </insert>
+
+    <select id="queryRefundDetail" resultType="RefundVo">
+        SELECT * FROM refund r
+        JOIN orders  o
+        ON  r.`orderID`=o.`orderID`
+        JOIN services s
+        ON s.serviceID = o.`serviceID`
+        WHERE r.userID = #{uid}
+        ORDER BY applicationTime DESC
+    </select>
+
+    <select id="queryRefundDetail" resultType="RefundVo">
+        SELECT * FROM refund r
+        JOIN orders  o
+        ON  r.`orderID`=o.`orderID`
+        JOIN services s
+        ON s.serviceID = o.`serviceID`
+        WHERE o.orderID = #{oid}
+        ORDER BY applicationTime DESC
+    </select>
 </mapper>

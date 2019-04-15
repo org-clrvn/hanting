@@ -8,11 +8,14 @@ import com.sy.hting.pojo.Refund;
 import com.sy.hting.pojo.User;
 import com.sy.hting.vo.cy.CollectVo;
 import com.sy.hting.vo.cy.OrderDetail;
+import com.sy.hting.vo.cy.RefundVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly= true)
@@ -51,5 +54,14 @@ public class PersonalBiz {
 
     public void addOrderRefund( Refund refund){
         dao.addOrderRefund(refund);
+    }
+
+    public PageInfo<RefundVo> queryRefundDetail(Integer uid,Integer pageNum,Integer pageSize){
+        PageHelper.startPage(pageNum,pageSize);
+        return  new PageInfo<>(dao.queryRefundDetail(uid));
+    }
+
+    public  RefundVo queryRefundDetailByoid(String oid){
+        return dao.queryRefundDetailByoid(oid);
     }
 }

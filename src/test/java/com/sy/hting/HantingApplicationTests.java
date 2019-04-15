@@ -2,6 +2,7 @@ package com.sy.hting;
 
 import com.sy.hting.biz.cy.DriveBiz;
 import com.sy.hting.biz.cy.PersonalBiz;
+import com.sy.hting.vo.cy.RefundVo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class HantingApplicationTests {
     @Test
     public void contextLoads() {
       // biz.orderPay(24,3500,"20181031162123771312");
-        biz.queryMyCollectByUid(24,1,2);
+        biz.queryRefundDetail(24,1,3);
     }
 
 }

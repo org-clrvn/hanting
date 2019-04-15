@@ -5,6 +5,7 @@ import com.sy.hting.pojo.Refund;
 import com.sy.hting.pojo.User;
 import com.sy.hting.vo.cy.CollectVo;
 import com.sy.hting.vo.cy.OrderDetail;
+import com.sy.hting.vo.cy.RefundVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -34,4 +35,10 @@ public interface IPersonalDao {
 
     /*添加订单退款信息*/
     void addOrderRefund(@Param("refund") Refund refund);
+
+    /*根据用户ID 查询我所有的退款*/
+    List<RefundVo> queryRefundDetail(@Param("uid") Integer uid);
+
+    /*根据订单号查询退款详情*/
+    RefundVo queryRefundDetailByoid(@Param("oid") String oid);
 }

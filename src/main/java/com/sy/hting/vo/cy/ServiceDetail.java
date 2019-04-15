@@ -173,7 +173,7 @@ public class ServiceDetail {
 
     private Integer merchantType;// 商家类别，0：不是商家，1：大陆商家用户，2：海外商家用户
 
-      @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date merchantRegistrationTime;// 商家注册时间
 
     private Integer authentication;// 一号服务平台认证(0认证1未认证)

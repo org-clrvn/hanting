@@ -99,13 +99,15 @@
 						<span class="c_9">* 温馨提示：</span> 本次售后服务将由 商家<a href=""
 							class="c_9 mlr10" id="businessname"></a>为您提供
 					</p>
-					<form method="post" id="formmsg"
-						action="/c/lhy/order/refund/ok" enctype="multipart/form-data">
-						<input type="hidden" name="orderid" th:value="${order.orderid}">
+
+					<form  method="post" id="formmsg" action="/api/addOrderRefund" enctype="multipart/form-data">
+
+						<input name="orderID"  type="hidden"/>
+						<input name="userID"   type="hidden"/>
 						<ul class="member_zl_ul">
 							<li><span class="m_zl_sp">退款原因</span>
 								<div class="m_zl_r">
-									<select class="sel_f sel_f2" name="refundreason">
+									<select class="sel_f sel_f2" name="refundReason">
 										<option value="描述不符">描述不符</option>
 										<option value="尚未接单">尚未接单</option>
 										<option value="其它原因">其它原因</option>
@@ -114,13 +116,13 @@
 							</li>
 							<li><span class="m_zl_sp">退款金币</span>
 								<div class="m_zl_r">
-									<input type="text"  name="applyrefundmoney" readonly="readonly" id="sumPrice" class="input_c w350"> 
+									<input type="text"  name="applyRefundMoney" readonly="readonly"  class="input_c w350">
 									<span style="color: red;">说明：系统收取百分之十的服务费用 </span>
 								</div>
 							</li>
 							<li><span class="m_zl_sp">描述</span>
 								<div class="m_zl_r">
-									<textarea class="input_c in_ms" name="refundexplain" placeholder="为帮助您快速处理，请尽可能详细填写退款原因" id="rexplain"></textarea>
+									<textarea class="input_c in_ms" name="refundExplain" placeholder="为帮助您快速处理，请尽可能详细填写退款原因" id="rexplain"></textarea>
 								</div>
 							</li>
 							<li><span class="m_zl_sp">上传凭证</span>
@@ -142,7 +144,7 @@
 							</li>
 						</ul>
 						<div class="rechang_top2">
-							<button type="submit"  class="btn_jy_a h40 w120">提交</button>
+							<button type="submit"  class="btn_jy_a h40 w120" style="border: none">提交</button>
 								<a href="javascript:void(0);" onclick="history.go(-1)" class="btna_s2 f14 btna_cancel">取消</a>
 						</div>
 								
@@ -234,38 +236,35 @@
 /*1.商家名称*/
 var businessName = window.sessionStorage.getItem("businessName");
 /*2.订单号*/
-var orderID = window.sessionStorage.getItem("orderID");
+$("[name=orderID]").val( window.sessionStorage.getItem("orderID"));
 /*3.订单总金额*/
-var sumPrice = window.sessionStorage.getItem("sumPrice");
+$("[name=applyRefundMoney]").val ( window.sessionStorage.getItem("sumPrice")*0.9);
 /*4.申请人ID*/
-var userID = window.sessionStorage.getItem("uid");
+$("[name=userID]").val(window.sessionStorage.getItem("uid"));
 
-/*5.退款金额*/
-var applyRefundMoney = sumPrice * 0.9;
 $("#businessname").html(businessName);
-$("#sumPrice").val(sumPrice * 0.9);
+
 
 /*提交退款申请*/
-	$("form").submit(
-		function() {
-		var rexplain = $("#rexplain").val();
-		var refundImg = $("#refundImg").text();
-		/*得到上传图片*/
-		var myFile = new FormData();
-		myFile.append("files", $("#file")[0].files[0]);
+	 $("form").submit(function(){
 
-		var refundReason = $("[name=refundreason]").val();
+		 var rexplain = $("#rexplain").val();
+		 var refundImg = $("#refundImg").text();
+		 /*得到上传图片*/
+		 var myFile = new FormData();
+		 myFile.append("files", $("#file")[0].files[0]);
 
-		if(rexplain == '' || refundImg == '') {
-			layer.alert("请填写完整退款信息");
-			return false;
-		} else {
-			
-			
-		}
+		 var refundReason = $("[name=refundreason]").val();
+
+		 if(rexplain == '' || refundImg == '') {
+			 layer.alert("请填写完整退款信息");
+			 return false;
+		 }
+	 })
+
 	
-	}
-	)
+
+
 
 //选择上传文件
 $("[name=file]").on("change",

@@ -308,7 +308,11 @@
 					/*3.订单总金额*/
 					window.sessionStorage.setItem("sumPrice",this.orderDetail.totalPrice);
 					
-					location.href="grzx-order-refund.html";
+					if(this.orderDetail.refundstatus>0){
+						layer.alert("该订单正在退款中");
+					}else{
+						location.href="grzx-order-refund.html";
+					}
 				}
 			},
 			created:function(){
