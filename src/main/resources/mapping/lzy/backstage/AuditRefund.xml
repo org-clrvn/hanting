@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sy.hting.dao.lzy.backstage.IAuditRefundDao">
+
+    <select id="loadUserOrderServicesRefundVo" resultType="UserOrderServicesRefundVo">
+        SELECT * FROM  `user` AS u
+        INNER JOIN `orders` AS o
+        ON u.`userID` = o.`userID`
+        INNER JOIN `services` AS  s
+        ON o.`serviceID` = s.`serviceID`
+        INNER JOIN `refund` AS r
+        ON o.`orderID` = r.`orderID`
+    </select>
+
+
+    <select id="queryUOSRByRefundID" resultType="UserOrderServicesRefundVo">
+        SELECT * FROM  `user` AS u
+        INNER JOIN `orders` AS o
+        ON u.`userID` = o.`userID`
+        INNER JOIN `services` AS  s
+        ON o.`serviceID` = s.`serviceID`
+        INNER JOIN `refund` AS r
+        ON o.`orderID` = r.`orderID`
+        where r.refundID = #{refundID}
+    </select>
+
+</mapper>

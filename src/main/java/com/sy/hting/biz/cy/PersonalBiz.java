@@ -61,7 +61,11 @@ public class PersonalBiz {
         return  new PageInfo<>(dao.queryRefundDetail(uid));
     }
 
-    public  RefundVo queryRefundDetailByoid(String oid){
-        return dao.queryRefundDetailByoid(oid);
+    public  RefundVo queryRefundDetailByOid(String oid){
+        return dao.queryRefundDetailByOid(oid);
+    }
+
+    public void applyAdmin(Integer rid,String oid){
+         dao.applyAdmin(rid,oid);
     }
 }

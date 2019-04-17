@@ -115,8 +115,24 @@ public class PersonalAction {
     }
 
     @ResponseBody
-    @GetMapping("queryRefundDetailByoid/oid")
-    public  RefundVo queryRefundDetailByoid(@PathVariable String oid){
-        return biz.queryRefundDetailByoid(oid);
+    @GetMapping("queryRefundDetailByOid/{oid}")
+    public  RefundVo queryRefundDetailByOid(@PathVariable String oid){
+        return biz.queryRefundDetailByOid(oid);
     }
+
+    @ResponseBody
+    @GetMapping("applyAdmin/{rid}/{oid}")
+    public Map<String,String> applyAdmin(@PathVariable Integer rid,@PathVariable String oid){
+
+        Map<String,String> map = new HashMap<>();
+        try{
+            biz.applyAdmin(rid,oid);
+            map.put("code","200");
+        }catch (Exception e){
+            map.put("code","400");
+            e.printStackTrace();
+        }
+        return map;
+    }
+
 }

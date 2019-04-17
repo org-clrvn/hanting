@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<style>
+    body {
+        font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica,
+        sans-serif;
+        color: #4f6b72;
+        background: #E6EAE9;
+    }
+
+    a {
+        color: #c75f3e;
+        text-decoration: none;
+    }
+
+    .ys {
+        display: inline-block;
+        padding: .3em .5em;
+        background-image: linear-gradient(#ddd, #bbb);
+        border: 1px solid rgba(0, 0, 0, .2);
+        border-radius: .3em;
+        box-shadow: 0 1px white inset;
+        text-align: center;
+        text-shadow: 0 1px 1px black;
+        color: white;
+        font-weight: bold;
+    }
+
+    .ys:active {
+        box-shadow: .05em .1em .2em rgba(0, 0, 0, .6) inset;
+        border-color: rgba(0, 0, 0, .3);
+        background: #bbb;
+    }
+
+    ---------------------
+    作者：An丶
+    来源：CSDN
+    原文：https:
+
+    /
+    /
+    blog.csdn.net
+    /AnPHPer/ article /details/
+
+    79480097
+    ?
+    utm_source
+
+    =
+    copy
+    版权声明：本文为博主原创文章，转载请附上博文链接！
+    #mytable {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    caption {
+        padding: 0 0 5px 0;
+        width: 700px;
+        font: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        text-align: right;
+    }
+
+    th {
+        font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        color: #4f6b72;
+        border-right: 1px solid #C1DAD7;
+        border-bottom: 1px solid #C1DAD7;
+        border-top: 1px solid #C1DAD7;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: left;
+        padding: 6px 6px 6px 12px;
+        background: #CAE8EA no-repeat;
+        text-align: center;
+    }
+
+    /*power by www.winshell.cn*/
+    th.nobg {
+        border-top: 0;
+        border-left: 0;
+        border-right: 1px solid #C1DAD7;
+        background: none;
+    }
+
+    td {
+        border-right: 1px solid #C1DAD7;
+        border-bottom: 1px solid #C1DAD7;
+        background: #fff;
+        font-size: 11px;
+        padding: 6px 6px 6px 12px;
+        color: #4f6b72;
+    }
+
+    /*power by www.winshell.cn*/
+    td.alt {
+        background: #F5FAFA;
+        color: #797268;
+    }
+
+    th.spec {
+        border-left: 1px solid #C1DAD7;
+        border-top: 0;
+        background: #fff no-repeat;
+        font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    th.specalt {
+        border-left: 1px solid #C1DAD7;
+        border-top: 0;
+        background: #f5fafa no-repeat;
+        font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        color: #797268;
+    }
+
+    /*---------for IE 5.x bug*/
+    html > body td {
+        font-size: 11px;
+    }
+
+    body, td, th {
+        font-family: 宋体, Arial;
+        font-size: 12px;
+    }
+
+    ---------------------
+    作者：Clear_Love
+    来源：CSDN
+    原文：https
+    :
+
+    /
+    /
+    blog.csdn.net
+
+    /
+    sminhrosunny
+
+    /
+    article
+
+    /
+    details
+
+    /
+    6625790
+    ?
+    utm_source
+
+    =
+    copy
+    版权声明：本文为博主原创文章，转载请附上博文链接！
+
+    /* table {
+       border-collapse: collapse;
+       margin: 0 auto;
+       text-align: center;
+   }
+
+   table td, table th {
+       border: 1px solid #cad9ea;
+       color: #666;
+       height: 30px;
+   }
+
+   table thead th {
+       background-color: #CCE8EB;
+       width: 100px;
+   }
+
+   table tr:nth-child(odd) {
+       background: #fff;
+   }
+
+   table tr:nth-child(even) {
+       background: #F5FAFA;
+   }
+   ---------------------
+   作者：RoyanWang
+   来源：CSDN
+   原文：https
+   :
+   /
+   /
+   blog.csdn.net
+   /
+   hello_mr_anan
+   /
+   article
+   /
+   details
+   /
+   70257627
+   ?
+   utm_source
+   =
+   copy
+   版权声明：本文为博主原创文章，转载请附上博文链接！ */
+</style>
+<body>
+
+<div id="first-floor">
+    <h1>退款管理</h1>
+    <form method="get" name="search_form" action="/lzkservice/queryre">
+        <table border=0 class="tablesorter" cellSpacing=1 cellPadding=6
+               width="100%">
+            <tbody>
+            <tr>
+                <td>会员名：<input type="text" name="username"/>
+                    退款编号<input type="text" name="refundid">
+                    时间：<input type="date" name="datestart" value="null"/>
+                    --<input type="date" name="dateend" value="null"/>
+                    状态：
+                    <select name="status" id="status">
+                        <option value="0">不限</option>
+                        <option value="9">退款申请中</option>
+                        <option value="10">不同意</option>
+                        <option value="11">申请管理员介入</option>
+                        <option value="13">管理员拒绝</option>
+                        <option value="12">退款完成</option>
+                        <option value="6">退款取消</option>
+                    </select>
+                    <input type="submit" name="button" id="button" value="搜索"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="two-floor">
+    <from method="get" name="form" action="/bt/lzy/c/findUOSRByRefundID">
+        <table id="posts" border=0 class="tablesorter" cellSpacing=1
+               cellPadding=6 width="100%">
+            <thead>
+            <tr>
+                <th width="80"><input type="checkbox" onClick="swapCheck()"></th>
+                <th width="80">退款编号</th>
+                <th width="80">订单号</th>
+                <th width="80">退款申请时间</th>
+                <th width="80">申请会员</th>
+                <th width="80">订单服务</th>
+                <th width="80">金币</th>
+                <th width="80">处理状态</th>
+                <th width="80">处理时间</th>
+                <th width="80">备注</th>
+                <th width="80">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="temp,iterState:${data.list}">
+                <td align="center" nowrap><input type="checkbox" name="ck" th:value="${temp.refundID}"></td>
+                <td align="center" nowrap th:text="${temp.refundID}">15389827632133</td>
+                <td align="center" nowrap th:text="${temp.orderID}">15389827632133</td>
+                <td align="center" nowrap th:text="${#dates.format(temp.applicationTime,'yyyy-MM-dd HH:mm:ss')}">。</td>
+                <td align="center" nowrap th:text="${temp.userName}">心动发</td>
+                <td align="center" nowrap th:text="${temp.serviceTitle}">观光类</td>
+                <td align="center" nowrap th:text="${temp.applyRefundMoney}">先发</td>
+                <td align="center" nowrap th:switch="${temp.orderStatus}">
+                    <span th:case="2">不同意</span>
+                    <span th:case="3" style="color: red">申请管理员介入</span>
+                    <span th:case="5">退款成功</span>
+                </td>
+                <td align="center" nowrap th:text="${#dates.format(temp.auditTime,'yyyy-MM-dd HH:mm:ss')}">未支付</td>
+                <td align="center" nowrap th:text="${temp.remarks}"></td>
+                <td align="center" nowrap><input type="submit" name="chakan" value="查看"></td><!--onClick="chakan()"-->
+            </tr>
+            </tbody>
+        </table>
+        <table id="itemlist" class="tablesorter" border=0 cellSpacing=1
+               cellPadding=6 width="100%">
+            <tr>
+                <td colspan="8">
+                    <table width="100%" border="0">
+
+                        <!--<tr>
+                <td align="center" nowrap><a
+                    th:href="@{queryre?(PageNum=${PAGE_INFO.prePage},PageSize=${PAGE_INFO.PageSize})}">
+                        <input type="button" value="上一页">
+                </a> <a th:href="@{queryre?(PageNum=${PAGE_INFO.nextPage},PageSize=${PAGE_INFO.PageSize})}">
+                        <input type="button" value="下一页">
+                </a></td>
+                </tr>-->
+                        <tr>
+                            <td colspan="8">
+                                <table width="100%" border="0">
+                                    <tr>
+                                        <td width="33%" nowrap><input id="select" value="选择所有"
+                                                                      type=button name="select" onClick="swapCheck()">
+                                            <input
+                                                    id="delete" value="删除所选" type="button" name="delete"
+                                                    onClick="deletechoose()"></td>
+                                        <td width="67%" nowrap></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </from>
+</div>
+</body>
+<script type="text/javascript" src="../../../public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+
+    //checkbox 全选/取消全选
+    var isCheckAll = false;
+
+    function swapCheck() {
+        if (isCheckAll) {
+            $("input[type='checkbox']").each(function () {
+                this.checked = false;
+            });
+            isCheckAll = false;
+        } else {
+            $("input[type='checkbox']").each(function () {
+                this.checked = true;
+            });
+            isCheckAll = true;
+        }
+    }
+
+    function deletechoose() {
+        var f = false;
+        //得到要删除的主键id
+        var arr = [];//用于存要删除的选中的id值
+        var ck = document.getElementsByName("ck");//得到一组checkbox  相当于数组
+        //循环这一组checkbox让每一个checkbox选中
+        for (var i = 0; i < ck.length; i++) {
+            if (ck[i].checked == true) {//代表选中
+                arr.push(ck[i].value);
+                f = true;
+            }
+        }
+        //alert(arr);
+        //跳到删除的servlet里去
+        if (f == true) {
+            if (confirm("您确认要删除吗？"))
+                location.href = "/lzkservice/deletere?refundid=" + arr;
+        } else {
+            alert("请至少选中一条进行批量删除");
+        }
+    }
+</script>
+</html>

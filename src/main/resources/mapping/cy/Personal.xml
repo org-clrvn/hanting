@@ -99,13 +99,26 @@
         ORDER BY applicationTime DESC
     </select>
 
-    <select id="queryRefundDetail" resultType="RefundVo">
+    <select id="queryRefundDetailByOid" resultType="RefundVo">
         SELECT * FROM refund r
         JOIN orders  o
         ON  r.`orderID`=o.`orderID`
         JOIN services s
         ON s.serviceID = o.`serviceID`
+        JOIN USER U
+        ON U.`userID` = r.`userID`
         WHERE o.orderID = #{oid}
-        ORDER BY applicationTime DESC
     </select>
+
+    <update id="applyAdmin">
+        UPDATE refund
+        SET POINT = 2,
+            adminStatus=1
+        WHERE refundID = #{rid};
+
+
+        UPDATE orders
+        SET refundstatus=3
+        WHERE orderID = #{oid}
+    </update>
 </mapper>

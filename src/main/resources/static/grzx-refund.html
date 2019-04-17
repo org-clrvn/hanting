@@ -76,7 +76,7 @@
 			<h1 class="member_left_title">个人中心</h1>
 			<ul class="member_system_ul">
 				<li>
-					<a href=""><span class="msp2 pre_c1"></span>我预订的服务</a>
+					<a href="grzx-index.html"><span class="msp2 pre_c1"></span>我预订的服务</a>
 				</li>
 				<li>
 					<a href=""><span class="msp2 pre_c2"></span>我的下载</a>
@@ -85,7 +85,7 @@
 					<a href=""><span class="msp2 community_sp csp7"></span>我的帖子</a>
 				</li>
 				<li>
-					<a href=""><span class="msp2 pre_c3"></span>我的收藏</a>
+					<a href="grzx-favs.html"><span class="msp2 pre_c3"></span>我的收藏</a>
 				</li>
 				<li>
 					<a href=""><span class="msp2 pre_c4"></span>我的金币</a>
@@ -147,7 +147,7 @@
 						</a>
 
 					</td>
-					<td><a  @click="refundDetail(temp.orderID)" class="btna_s2">查看</a></td>
+					<td><a  @click="Detail(temp.orderID)" class="btna_s2">查看</a></td>
 				</tr>
 				</tbody>
 			</table>
@@ -281,6 +281,7 @@
 						//结束时间毫秒数
 						var overTime = VmCnt.overTimes[i].getTime();
 						var second = (overTime-nowTime)/1000;//剩余总秒数
+
 						//将秒数专为天数
 						var s = second % 60; // 秒
 						var  mi = (second - s) / 60 % 60; // 分钟
@@ -292,8 +293,9 @@
 					}
 				},1000)
 			},
-			refundDetail:function (oid) {
-				alert(oid);
+			Detail:function (oid) {
+				window.sessionStorage.setItem("oid",oid);
+				location.href="grzx-refund-detail.html";
 			}
 		},
 		created:function(){

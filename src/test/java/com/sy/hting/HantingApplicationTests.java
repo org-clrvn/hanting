@@ -1,5 +1,6 @@
 package com.sy.hting;
 
+import com.sy.hting.biz.cy.BusinessBiz;
 import com.sy.hting.biz.cy.DriveBiz;
 import com.sy.hting.biz.cy.PersonalBiz;
 import com.sy.hting.vo.cy.RefundVo;
@@ -16,13 +17,12 @@ import java.util.Date;
 public class HantingApplicationTests {
 
     @Autowired
-    private PersonalBiz biz;
-
+    //private PersonalBiz biz;
+    private BusinessBiz biz;
 
     @Test
     public void contextLoads() {
-      // biz.orderPay(24,3500,"20181031162123771312");
-        biz.queryRefundDetail(24,1,3);
+        biz.disagree(10,"20181101091100492598","我勒个去");
     }
 
 }

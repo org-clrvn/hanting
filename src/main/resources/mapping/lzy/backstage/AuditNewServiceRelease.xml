@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.hting.dao.lzy.backstage.IAuditNewServicesReleaseDao">
+
+
+    <select id="loadSerUserSertypeVoList" resultType="SerUserSertypeVo">
+        SELECT * FROM services AS s
+INNER JOIN `user` AS u
+ON s.`userID` = u.`userID`
+INNER JOIN `servicetype` AS t
+ON s.`stid` = t.`stid`
+WHERE s.`userID` = #{userID}
+    </select>
+
+    <select id="querySerUserSertypeVoByServiceID" resultType="SerUserSertypeVo">
+      SELECT * FROM services AS s
+INNER JOIN `user` AS u
+ON s.`userID` = u.`userID`
+INNER JOIN `servicetype` AS t
+ON s.`stid` = t.`stid`
+WHERE s.`userID` = #{userID} AND s.`serviceID` = #{serviceID}
+    </select>
+
+    <update id="updateServicesByServiceID">
+        UPDATE `services`
+  SET
+      recommendBool = #{services.recommendBool},
+      adminOpinion = #{services.adminOpinion},
+      shelfState = #{services.shelfState},
+      auditStatus = #{services.auditStatus}
+  WHERE serviceID = #{services.serviceID}
+    </update>
+
+</mapper>

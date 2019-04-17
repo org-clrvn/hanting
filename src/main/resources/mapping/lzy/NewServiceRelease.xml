@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.hting.dao.lzy.INewServiceReleaseDao">
+
+    <insert id="saveServices">
+        INSERT INTO `yphting`.`services` (
+  `stid`,`userID`,`resourceID`,
+  `serviceTitle`,`serviceFuTitle`,`downloadTitle`,`servicePrice`,
+  `serviceCoverImg`,`serviceImgUrlOne`,`serviceImgUrlTwo`,`serviceImgUrlThree`,
+  `serviceImgUrlFour`,`serviceCostTypeID`,`serviceIntro`,`serviceCity`,
+  `country`,`serviceCostInclude`,`serviceStartDate`,`serviceEndDate`,
+  `schoolRegion`,`schoolNameByCN`,`majoyNameByCN`,`schoolNameByROK`,
+  `majoyNameByROK`,`goodAtMajoy`,`hospitalName`,`serviceHour`,
+  `uploadDataUrl`,`releaseTime`,`browseNumber`,`weight`,
+  `recommendBool`,`adminOpinion`,`shelfState`,`auditStatus`
+)
+VALUES
+  (
+    #{service.stid},#{service.userID},
+    #{service.resourceID},#{service.serviceTitle},#{service.serviceFuTitle},
+    #{service.downloadTitle},#{service.servicePrice},
+    #{service.serviceCoverImg},#{service.serviceImgUrlOne},
+    #{service.serviceImgUrlTwo},#{service.serviceImgUrlThree},
+    #{service.serviceImgUrlFour},#{service.serviceCostTypeID},
+    #{service.serviceIntro},#{service.serviceCity},#{service.country},
+    #{service.serviceCostInclude},#{service.serviceStartDate},
+    #{service.serviceEndDate},#{service.schoolRegion},
+    #{service.schoolNameByCN},#{service.majoyNameByCN},
+    #{service.schoolNameByROK},#{service.majoyNameByROK},
+    #{service.goodAtMajoy},#{service.hospitalName},#{service.serviceHour},
+    #{service.uploadDataUrl},NOW(),#{service.browseNumber},
+    #{service.weight},#{service.recommendBool},#{service.adminOpinion},1,1
+  )
+    </insert>
+
+</mapper>

@@ -4,9 +4,12 @@
 <meta charset="utf-8" />
 <title></title>
 <link rel="stylesheet" href="Public/css/common.css" />
-<script type="text/javascript" src="Public/js/jquery-1.8.3.min.js"></script>
 </head>
-
+<style>
+	.class1{
+		width: 100%;
+	}
+</style>
 <body>
 	<!--header-->
 	<div class="header" id="botop">
@@ -33,7 +36,7 @@
 				.layui-layer-btn .layui-layer-btn0 {
 					background: #4c1b98;
 				}
-				
+
 				.layui-layer-btn .layui-layer-btn0:hover {
 					background: #340d6f;
 				}
@@ -48,34 +51,33 @@
 	</div>
 	<!--header end-->
 
-	<div class="bg_c4 pt1">
+	<div class="bg_c4 pt1" id="vmCnt">
 		<div class="b_box">
 			<div class="sv_path border_c">
 				<div class="fr c_4">
 					<a href="#" class="btna_s2 f14">交易须知</a>
 				</div>
 				<a href="">个人中心</a><span class="s_sp_v">-</span><a href="">我的退款</a><span
-					class="s_sp_v">-</span>退款编号[[${refund.refundid}]]
+					class="s_sp_v">-</span>退款编号{{refund.refundID}}
 			</div>
 
 			<div class="refund_press">
 				<div class="refund_press_line">
-					<div class="refund_press_w"
-						th:style="${order.refundstatus==5?'width:100%':''}"></div>
+					<div class="refund_press_w"></div>
 					<div class="press_step pst1">
 						<span class="step had_step"></span>
 						<p class="f14">买家提交申请</p>
 						<p class="f12 c_4">服务单已申请成功，待商家处理中</p>
 					</div>
 					<div class="press_step pst2">
-						<span th:class="|step ${order.refundstatus==5?'had_step':''}|"></span>
+						<span id="second"></span>
 						<p class="f14 c_4">商家 处理退款申请</p>
-						<p th:if="${refund.auditstatus==1}" class="f12 c_4">待商家处理</p>
-						<p th:if="${refund.auditstatus==2}" class="f12 c_4">商家同意退款</p>
-						<p th:if="${refund.auditstatus==3}" class="f12 c_4">商家不同意退款</p>
+						<p v-if="refund.auditStatus==1" class="f12 c_4">待商家处理</p>
+						<p v-if="refund.auditStatus==2" class="f12 c_4">商家同意退款</p>
+						<p v-if="refund.auditStatus==3" class="f12 c_4">商家不同意退款</p>
 					</div>
 					<div class="press_step pst3">
-						<span th:class="|step ${order.refundstatus==5?'had_step':''}|"></span>
+						<span id="third"></span>
 						<p class="f14 c_4">完成</p>
 					</div>
 				</div>
@@ -85,76 +87,75 @@
 				<dd>
 					<div class="negotiation_records_d">
 						<div class="fr my_tkr">
-							<a th:if="${order.refundstatus==2}" th:href="@{/c/lhy/refund/applyadmin(orderid=${order.orderid})}" class="btna_s2 send_site_email_btna">申请管理员介入</a>
-							<span th:if="${order.refundstatus==2}">|</span>
-							<a href="" class="btna_s2 send_site_email_btna">站内信商家</a>
+							<a  href="javascript:;"  v-if="refund.refundstatus==2"  class="btna_s2 send_site_email_btna" @click="applyAdmin(refund.refundID,refund.orderID)">申请管理员介入</a>
+							<span v-if="refund.refundstatus==2">|</span>
+							<a href="javascript:;" class="btna_s2 send_site_email_btna">站内信商家</a>
 						</div>
 						协商记录
 					</div>
 					<ul class="refund_record_ul">
 						<li>
-							<div th:if="${order.refundstatus==1}" class="refund_title">状态：退款申请中</div>
-							<div th:if="${order.refundstatus==2}" class="refund_title">状态：不同意</div>
-							<div th:if="${order.refundstatus==3}" class="refund_title">状态：申请管理员介入</div>
-							<div th:if="${order.refundstatus==4}" class="refund_title">状态：管理员拒绝</div>
-							<div th:if="${order.refundstatus==5}" class="refund_title">状态：退款完成</div>
-							<div th:if="${order.refundstatus==6}" class="refund_title">状态：退款取消</div>
+							<div v-if="refund.refundstatus==1" class="refund_title">状态：退款申请中</div>
+							<div v-if="refund.refundstatus==2" class="refund_title">状态：不同意</div>
+							<div v-if="refund.refundstatus==3" class="refund_title">状态：申请管理员介入</div>
+							<div v-if="refund.refundstatus==4" class="refund_title">状态：管理员拒绝</div>
+							<div v-if="refund.refundstatus==5" class="refund_title">状态：退款完成</div>
+							<div v-if="refund.refundstatus==6" class="refund_title">状态：退款取消</div>
 						</li>
-						<li th:if="${refund.adminstatus>1}">
+						<li v-if="refund.adminStatus>1">
 							<div class="refund_title">
-								管理员协商结果<span class="ml10">[[${#dates.format(refund.admintime,'yyyy-MM-dd')}]]</span>
+								管理员协商结果<span class="ml10" v-text="refund.adminTime"></span>
 							</div>
 							<p class="refund_p">
-								退款金额：[[${refund.actualrefundmoney}]]金币<br>退款说明：[[${refund.adminremarks}]]
+								退款金额：{{refund.actualRefundMoney}}金币<br>退款说明：{{refund.adminRemarks}}
 							</p>
 						</li>
-						<li th:if="${refund.auditstatus>1}">
-							<div th:if="${refund.auditstatus==2}"
+						<li v-if="refund.auditStatus>1">
+							<div v-if="refund.auditStatus==2"
 								class="refund_title">
-								商家<a href="" class="btna_s2 mlr10"
-									th:text="${order.service.user.shopname}"></a>[[${#dates.format(refund.audittime,'yyyy-MM-dd')}]]
+								商家 <span class="ml10" v-text="refund.auditTime"></span>
 							</div>
-							<p th:if="${refund.auditstatus==2}" class="refund_p">
-								商家（[[${order.service.user.shopname}]]）同意退款部分金币<br>退款金额：[[${refund.actualrefundmoney}]]
-								金币<br>退款说明：[[${refund.businessremarks}]]
+							<p v-if="refund.auditStatus==2" class="refund_p">
+								商家 同意退款部分金币<br>退款金额：{{refund.actualRefundmoney}}
+								金币<br>退款说明：{{refund.businessRemarks}}
 							</p>
-							<div th:if="${refund.auditstatus==3}"
+							<div v-if="refund.auditStatus==3"
 								class="refund_title">
 								商家<a href="" class="btna_s2 mlr10"
-									th:text="${order.service.user.shopname}"></a>[[${#dates.format(refund.audittime,'yyyy-MM-dd')}]]
+									 v-text="refund.shopName"></a>{{refund.auditTime}}
 							</div>
-							<p th:if="${refund.auditstatus==3}" class="refund_p">
-								商家（[[${order.service.user.shopname}]]）不同意退款部分金币<br>退款金额：0金币<br>退款说明：[[${refund.businessremarks}]]
+							<p v-if="refund.auditStatus==3" class="refund_p">
+								商家不同意退款部分金币<br>退款金额：0金币<br>退款说明：{{refund.businessRemarks}}
 							</p>
 						</li>
 						<li class="last">
 							<div class="refund_title">
 								买家<a href="" class="btna_s2 mlr10"
-									th:text="${refund.user.username}"></a>[[${#dates.format(refund.applicationtime,'yyyy-MM-dd')}]]
+									v-text="refund.userName"></a>{{refund.applicationTime}}
 							</div>
 							<p class="refund_p">
-								买家（[[${refund.user.username}]]）于[[${#dates.format(refund.applicationtime,'yyyy-MM-dd')}]]创建了退款申请<br>申请金额：[[${refund.applyrefundmoney}]]
-								金币<br>退款原因：[[${refund.refundreason}]]<br>退款说明：[[${refund.refundexplain}]]
+								买家{{refund.userName}}于{{refund.applicationTime}}创建了退款申请<br>申请金额：{{refund.applyRefundMoney}}
+								金币<br>退款原因：{{refund.refundReason}}<br>退款说明：{{refund.refundExplain}}
 							</p>
-							<div class="tk_img_d" th:if="${refund.refundimg!=null}">
-								<a href=""><img th:src="${refund.refundimg}" width="150"></a>
+							<div class="tk_img_d">
+								<img :src="refund.refundImg">
 							</div>
 						</li>
 					</ul>
 				</dd>
 				<dt>
 					<div class="post_comment_img">
-						<img th:src="${order.service.servicecoverimg}">
+						<img :src="'Uploads/image/2019-3/'+refund.serviceCoverImg">
 					</div>
-					<p class="p_cment_title" th:text="${order.service.servicetitle}"></p>
-					<p class="p_cment_title" th:text="${order.service.servicefutitle}"></p>
-					<p class="num_1 f14 mt10" th:text="${order.service.serviceprice}"></p>
+					<p class="p_cment_title" v-text="refund.serviceTitle"></p>
+					<p class="p_cment_title" v-text="refund.serviceFutitle"></p>
+					<p class="num_1 f14 mt10" v-text="refund.servicePrice"></p>
 					<p class="p_cment_time">
-						<span class="c_4">预定日期</span>[[${#dates.format(order.ordertime,'yyyy-MM-dd')}]]
+						<span class="c_4">预定日期</span>{{refund.orderTime}}
 					</p>
 					<div class="p_cment_time">
 						<span class="c_4">总计</span>
-						<p class="num_1 f14 mt10" th:text="${order.smallplan}"></p>
+						<p class="num_1 f14 mt10" v-text="refund.totalPrice"></p>
 					</div>
 				</dt>
 			</dl>
@@ -221,8 +222,48 @@
 		<li><a href="" class="rn_top">Back top</a></li>
 	</ul>
 </body>
-<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-interlinkage.js"></script>
-<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="/Public/js/grzx-href.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+<script type="text/javascript" src="js/layui.all.js" ></script>
+<script type="text/javascript" src="js/vue.js" ></script>
+<script type="text/javascript">
+
+	var oid = window.sessionStorage.getItem("oid");
+
+	var VmCnt = new Vue({
+		el: "#vmCnt",
+		data: {
+			refund: {}
+		},
+		methods: {
+			queryDetailByOid:function (oid) {
+				myVue= this;
+				$.getJSON("/api/queryRefundDetailByOid/"+oid,function(data){
+
+					if(data.refundstatus>1&data.refundstatus<5){
+						$("#second").addClass("step had_step");
+					}else if(data.refundstatus==5){
+						$(".refund_press_w").addClass("class1");
+						$("#second").addClass("step had_step");
+						$("#third").addClass("step had_step");
+					}
+
+					myVue.refund=data;
+				});
+			},
+			applyAdmin:function (rid,oid) {
+				$.getJSON("/api/applyAdmin/"+rid+"/"+oid,function (data) {
+					if(data.code=="200"){
+						layer.msg("申请成功!",{ icon: 1, time: 1000 });
+					}
+				});
+				setTimeout(function(){
+					location.href="grzx-refund.html";
+				},2000);
+			}
+		},
+		created: function () {
+			this.queryDetailByOid(oid);
+		}
+	});
+</script>
 </html>

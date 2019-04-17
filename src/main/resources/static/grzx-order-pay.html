@@ -116,20 +116,20 @@
 		
 		
 		function orderPay(){
-			
-			if(userMoney>totalPrice){
-			
+			alert(uid);
+			if(parseInt(userMoney) > parseInt(totalPrice)){
+
 				$.getJSON("/api/orderPay/"+uid+"/"+totalPrice+"/"+oid,function(data){
 					if(data.code=="200"){
 						layer.msg("支付成功!",{ icon: 1, time: 1000 });
-								
+
 					}
 				});
 				setTimeout(function(){
 					location.href="grzx-index.html";
 				},2000);
 			}else{
-						layer.alert("您的余额不足，请充值");
+						layer.msg("您的余额不足，请充值!",{ icon: 1, time: 1000 });
 					}
 		
 			

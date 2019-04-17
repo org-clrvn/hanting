@@ -472,9 +472,9 @@
 					$.getJSON("/api/collect/"+uid+"/"+serviceId,function(data){
 						myVue.loading();
 						if($("#collect").html()=="收藏"){
-							layer.alert("收藏成功");
+							layer.message("收藏成功");
 						}else{
-							layer.alert("取消收藏");
+							layer.message("取消收藏");
 						}
 					});
 					
@@ -487,7 +487,7 @@
 				yd:function(id){
 					/*判断是否选中预定日期*/
 					if($("#text_date").val()==''){
-						layer.alert("请选择预定日期");
+						layer.msg("请选择预定日期!",{ icon: 1, time: 1000 });
 					}else{
 						//loading层
 						var index = layer.load(3, {

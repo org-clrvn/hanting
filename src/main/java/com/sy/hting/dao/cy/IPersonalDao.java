@@ -40,5 +40,9 @@ public interface IPersonalDao {
     List<RefundVo> queryRefundDetail(@Param("uid") Integer uid);
 
     /*根据订单号查询退款详情*/
-    RefundVo queryRefundDetailByoid(@Param("oid") String oid);
+    RefundVo queryRefundDetailByOid(@Param("oid") String oid);
+
+    /*申请管理员介入*/
+    void applyAdmin(@Param("rid") Integer rid,@Param("oid") String oid);
+
 }
