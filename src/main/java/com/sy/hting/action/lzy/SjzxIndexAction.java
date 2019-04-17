@@ -33,11 +33,11 @@ public class SjzxIndexAction {
     public String loadUserOrderList(HttpSession session, int num, int size, Model model){
         User user = (User)session.getAttribute("user");
         //user.getUserID();
-        System.out.println("user:"+indexBiz.loadUserByUserID(12));
-        model.addAttribute("user", indexBiz.loadUserByUserID(12));
+        System.out.println("user:"+indexBiz.loadUserByUserID(29));
+        model.addAttribute("user", indexBiz.loadUserByUserID(29));
 
-        System.err.println(JSON.toJSON(orderBiz.loadOrdersList(num, size, 12).getList()));
-        model.addAttribute("data", orderBiz.loadOrdersList(num, size, 12));
+        System.err.println(JSON.toJSON(orderBiz.loadOrdersList(num, size, 29).getList()));
+        model.addAttribute("data", orderBiz.loadOrdersList(num, size, 29));
 
         return "sjzx-index";
     }

@@ -63,7 +63,7 @@
     <!--提交申请商家入驻信息-->
     <update id="updateRecruitmentUser">
         UPDATE
-        `yphting`.`user`
+        `user`
         SET
         `userRealName` = #{user.userRealName},
         `country` = #{user.country},

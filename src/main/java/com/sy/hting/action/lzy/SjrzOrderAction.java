@@ -19,6 +19,8 @@ import java.lang.System;
  * @exception
  * @Time 2019/4/8 9:47
  */
+
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/lzy/c")
 public class SjrzOrderAction {
@@ -40,7 +42,7 @@ public class SjrzOrderAction {
         /*userCount.getUserID()*/
 
         //加载查询商家中心-订单列表-订单表
-        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 12);
+        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 29);
         System.out.println("action:"+data.getList());
         model.addAttribute("ordersList", data);
 
@@ -52,7 +54,7 @@ public class SjrzOrderAction {
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
 
-        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 12));
+        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 29));
 
         return "sjzx-services";
     }
@@ -61,7 +63,7 @@ public class SjrzOrderAction {
     public String loadFirBecServiceIDByUserID(HttpSession session, Model model){
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
-        User user = orderBiz.loadFirBecServiceIDByUserID(12);
+        User user = orderBiz.loadFirBecServiceIDByUserID(29);
 
         if (user != null){
             model.addAttribute("user", user);
@@ -98,7 +100,7 @@ public class SjrzOrderAction {
     public String skipSjrzShzlPage(HttpSession session){
         User user = (User)session.getAttribute("user");
         //user.getUserID()
-        return orderBiz.judgeUserAuditStatusByUserID(12)!=null ? "sjrz-yktsj":"sjrz-shzl";
+        return orderBiz.judgeUserAuditStatusByUserID(29)!=null ? "sjrz-yktsj":"sjrz-shzl";
     }
 
     @GetMapping("/skipSjzxXzjPage")

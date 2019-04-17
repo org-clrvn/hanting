@@ -27,6 +27,7 @@ import java.util.Map;
  * @exception
  * @Time 2019/4/13 14:40
  */
+@SuppressWarnings("all")
 @Controller
 @RequestMapping("/lzy/c")
 public class NewServiceReleaseAction {
@@ -68,7 +69,7 @@ public class NewServiceReleaseAction {
         service.setServiceImgUrlFour(File.separator + fileName5);
         serviceImgUrlFourTemp.transferTo(new File("E:\\myfile" + File.separator + fileName5));
 
-        service.setUserID(12);
+        service.setUserID(29);
 
         int count = newSerBiz.addServices(service);
 

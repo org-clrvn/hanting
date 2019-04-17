@@ -5,7 +5,7 @@
 <mapper namespace="com.sy.hting.dao.lzy.INewServiceReleaseDao">
 
     <insert id="saveServices">
-        INSERT INTO `yphting`.`services` (
+        INSERT INTO `services` (
   `stid`,`userID`,`resourceID`,
   `serviceTitle`,`serviceFuTitle`,`downloadTitle`,`servicePrice`,
   `serviceCoverImg`,`serviceImgUrlOne`,`serviceImgUrlTwo`,`serviceImgUrlThree`,

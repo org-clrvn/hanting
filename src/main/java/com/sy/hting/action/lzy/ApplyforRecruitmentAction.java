@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("ALL")
 @Controller
 @RequestMapping("/lzy/c")
 public class ApplyforRecruitmentAction {
@@ -58,7 +59,7 @@ public class ApplyforRecruitmentAction {
     @GetMapping("/skipRecruitmentPage")
     public String skipRecruitmentPage(HttpSession session, Model model){
         //保存登录用户的信息到HttpSession中
-        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(12));
+        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(29));
 
         //加载查询申请服务类别的所有信息
         model.addAttribute("sertypeItems", recruitmentBiz.loadServicetypeList());
@@ -94,19 +95,19 @@ public class ApplyforRecruitmentAction {
 
         String fileName1 = shopImgTemp.getOriginalFilename();
         user.setShopImg(File.separator + fileName1);
-        shopImgTemp.transferTo(new File("D:\\myfile" + File.separator + fileName1));
+        shopImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName1));
 
         String fileName2 = identityPositiveImgTemp.getOriginalFilename();
         user.setIdentityPositiveImg(File.separator + fileName2);
-        identityPositiveImgTemp.transferTo(new File("D:\\myfile" + File.separator + fileName2));
+        identityPositiveImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName2));
 
         String fileName3 = identityNegativeImgTemp.getOriginalFilename();
         user.setIdentityNegativeImg(File.separator + fileName3);
-        identityNegativeImgTemp.transferTo(new File("D:\\myfile" + File.separator + fileName3));
+        identityNegativeImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName3));
 
         String fileName4 = identityHandImgTemp.getOriginalFilename();
         user.setIdentityHandImg(File.separator + fileName4);
-        identityHandImgTemp.transferTo(new File("D:\\myfile" + File.separator + fileName4));
+        identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
 
 
         String[] split = serviceID.split(",");
@@ -126,7 +127,7 @@ public class ApplyforRecruitmentAction {
     @GetMapping("/skipSjrzShzlPage")
     public String skipSjrzShzlPage(HttpSession session) {
         User user = (User)session.getAttribute("user");
-        if (orderBiz.judgeUserAuditStatusByUserID(12) != null){
+        if (orderBiz.judgeUserAuditStatusByUserID(29) != null){
             return "redirect:/lzy/c/skipSjrzYktsjPage";
         }else {
             return "redirect:/lzy/c/SjrzShzlPage";
