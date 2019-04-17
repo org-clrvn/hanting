@@ -37,7 +37,7 @@
 			<ul class="member_nav_ul">
 				<li id="li1"><a href="">商家中心</a><span
 					class="my_nav_i"></span></li>
-				<li class="cur" id="li2"><a href="javascript.void(0);">个人中心</a><span
+				<li class="cur" id="li2"><a href="/tj/person/index">个人中心</a><span
 					class="my_nav_i"></span></li>
 				<li id="li3"><a href="javascript.void(0);">账户设置</a><span
 					class="my_nav_i"></span></li>
@@ -54,24 +54,22 @@
 		<div class="b_box">
 			<!--member left-->
 			<div class="member_left">
-				<h1 class="member_left_title">个人中心</h1>
+				<h1 class="member_left_title"><a href="/tj/person/index">个人中心</a></h1>
 				<ul class="member_system_ul">
-					<li><a href="/c/lhy/order/query/list"><span
+					<li><a href="/tj/person/index"><span
 							class="msp2 pre_c1"></span>我预订的服务</a></li>
 					<li><a href="/grzx-downloads.html"><span
 							class="msp2 pre_c2"></span>我的下载</a></li>
 					<li><a href=""><span class="msp2 community_sp csp7"></span>我的帖子</a>
 					</li>
 
-					<li><a href="/grzx-favs.html"><span class="msp2 pre_c3"></span>我的收藏</a>
+					<li><a href="/grzx-favs.html"><span class="msp2 pre_c3"></span>我的收藏</a></li>
+					<li><a href="/tj/person/moneys"><span class="msp2 pre_c4"></span>我的金币</a></li>
+					<li><a href="/tj/person/points"><span class="msp2 pre_c5"></span>我的积分</a>
 					</li>
-					<li><a href="/zsp/c/goldnotesQueryAll"><span
-							class="msp2 pre_c4"></span>我的金币</a></li>
-					<li><a href="/zsp/c/QueryAll"><span class="msp2 pre_c5"></span>我的积分</a>
+					<li><a href="comments"><span class="msp2 pre_c6"></span>我的评价</a>
 					</li>
-					<li><a href="/grzx-comments.html"><span class="msp2 pre_c6"></span>我的评价</a>
-					</li>
-					<li><a href="/grzx-refunds.html"><span class="msp2 pre_c7"></span>我的退款</a>
+					<li><a href="refunds"><span class="msp2 pre_c7"></span>我的退款</a>
 					</li>
 					<li><a href="/grzx-logistics.html"><span
 							class="msp2 pre_c8"></span>我的物流</a></li>
@@ -84,7 +82,7 @@
 			<div class="member_right site_msg_w">
 				<dl class="pre_udl">
 					<dt>
-						<!--<img th:src="${user.userimgpath}" />-->
+						<img th:src="${user.userImgPath}" />
 					</dt>
 					<dd>
 						<div class="pre_c_name">
@@ -98,32 +96,34 @@
 							class="qm_i"></span>签到送积分</a>
 					</dd>
 				</dl>
-				<!--<ul class="pre_about_info">
-					<li><a th:href="@{/c/lhy/order/query/list(status=1)}">待付款<span class="pre_asp" th:text="${orderInfo.topay}">1</span></a>
+				<ul class="pre_about_info">
+					<li><a href="order">待付款<span class="pre_asp">1</span></a>
 					</li>
-					<li><a th:href="@{/c/lhy/order/query/list(status=3)}">商家接单<span
-							class="pre_asp" th:text="${orderInfo.receipt}">0</span></a></li>
-					<li><a th:href="@{/c/lhy/order/query/list(status=4)}">待确认<span class="pre_asp" th:text="${orderInfo.tbconfirmed}">0</span></a>
+					<li><a>商家接单<span
+							class="pre_asp">0</span></a></li>
+					<li><a>待确认<span class="pre_asp">0</span></a>
 					</li>
-					<li class="last"><a th:href="@{/c/lhy/order/query/list(status=5,commentstatus=1)}">待评价<span
-							class="pre_asp" th:text="${orderInfo.tbevaluated}">0</span></a></li>
-				</ul>-->
+					<li class="last"><a>待评价<span
+							class="pre_asp">0</span></a></li>
+				</ul>
 				<h2 class="pre_h2_title">最新预订了</h2>
-				<!--<ul class="you_yd_news">
-					<li th:each="temp:${list}">
+				<ul class="you_yd_news">
+
+					<li th:each="oas : ${oasList}">
 						<div class="you_yd_img">
-							<img th:src="${temp.service.servicecoverimg}" width="135" height="90"/>
+							<img width="135" height="90"/>
 						</div>
-						<a th:href="@{/c/lhy/order/query/detail(orderid=${temp.orderid})}" class="btn_a_yyd">查看详细</a>
+						<a class="btn_a_yyd">查看详细</a>
 						<div class="you_yd_text">
-							<div class="yd_xm_title" th:text="${temp.service.servicetitle}"></div>
-							<p th:text="${temp.service.servicefutitle}"></p>
+							<div class="yd_xm_title" th:text="${oas.serviceTitle}"></div>
+							<p th:text="${oas.serviceFuTitle}"></p>
 							<p>
-								<span class="num_1" th:text="${temp.service.serviceprice}"></span>
+								<span class="num_1" th:text="${oas.servicePrice}"></span>
 							</p>
+							[[${oas.population}]]人
 						</div>
 					</li>
-				</ul>-->
+				</ul>
 
 			</div>
 			<!--member right end-->
@@ -200,5 +200,4 @@
 <script type="text/javascript" src="../static/public/js/sessionHeader.js"></script>
 <script type="text/javascript" src="../static/public/js/grzx-interlinkage.js"></script>
 <script type="text/javascript" src="../static/public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="../static/public/js/grzx-href.js"></script>
 </html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.hting.dao.tj.IOrdersDao">
+    <!--个人中心查询登陆者信息-->
+    <select id="queryOas" resultType="OrdersAndServices">
+        SELECT `services`.`serviceTitle`, `services`.`serviceFuTitle`, `services`.`servicePrice`, `orders`.`population`
+        FROM `orders`
+        JOIN `services` ON `orders`.`serviceID` = `services`.`serviceID`
+        WHERE `orders`.`userID` = 24
+        ORDER BY `orders`.`orderTime` DESC
+    </select>
+    <!--查询待付款订单-->
+    <select id="queryOrderDfk" resultType="OrdersAndServices">
+        SELECT `services`.`serviceID`,
+               `services`.`stid`,
+               `services`.`userID`,
+               `services`.`resourceID`,
+               `services`.`serviceTitle`,
+               `services`.`serviceFuTitle`,
+               `services`.`downloadTitle`,
+               `services`.`servicePrice`,
+               `services`.`serviceCoverImg`,
+               `services`.`serviceImgUrlOne`,
+               `services`.`serviceImgUrlTwo`,
+               `services`.`serviceImgUrlThree`,
+               `services`.`serviceImgUrlFour`,
+               `services`.`serviceCostTypeID`,
+               `services`.`serviceIntro`,
+               `services`.`serviceCity`,
+               `services`.`country`,
+               `services`.`serviceCostInclude`,
+               `services`.`serviceStartDate`,
+               `services`.`serviceEndDate`,
+               `services`.`schoolRegion`,
+               `services`.`schoolNameByCN`,
+               `services`.`majoyNameByCN`,
+               `services`.`schoolNameByROK`,
+               `services`.`majoyNameByROK`,
+               `services`.`goodAtMajoy`,
+               `services`.`hospitalName`,
+               `services`.`serviceHour`,
+               `services`.`uploadDataUrl`,
+               `services`.`releaseTime`,
+               `services`.`browseNumber`,
+               `services`.`weight`,
+               `services`.`recommendBool`,
+               `services`.`adminOpinion`,
+               `services`.`shelfState`,
+               `services`.`auditStatus`,
+               `orders`.`orderID`,
+               `orders`.`userID`,
+               `orders`.`serviceID`,
+               `orders`.`resouroeID`,
+               `orders`.`orderType`,
+               `orders`.`orderTime`,
+               `orders`.`paymentTime`,
+               `orders`.`receiptTime`,
+               `orders`.`provideServicesTime`,
+               `orders`.`completeTime`,
+               `orders`.`remarks`,
+               `orders`.`scheduledStartTime`,
+               `orders`.`scheduledEndTime`,
+               `orders`.`population`,
+               `orders`.`number`,
+               `orders`.`smallPlan`,
+               `orders`.`totalPrice`,
+               `orders`.`uploadPath`,
+               `orders`.`weight`,
+               `orders`.`integral`,
+               `orders`.`collectGoods`,
+               `orders`.`AddressID`,
+               `orders`.`orderStatus`,
+               `orders`.`commentstatus`,
+               `orders`.`refundstatus`,
+               `orders`.`filesatus`,
+               `orders`.`documentpath`
+        FROM `orders`
+        JOIN `services` ON `orders`.`serviceID` = `services`.`serviceID`
+        WHERE `orders`.`userID` = #{0}
+        AND `orders`.`orderStatus` = 1
+        ORDER BY `orders`.`orderTime` DESC
+    </select>
+</mapper>
