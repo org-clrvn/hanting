@@ -13,7 +13,7 @@ INNER JOIN `services` AS  s
 ON o.`serviceID` = s.`serviceID`
 INNER JOIN `refund` AS r
 ON o.`orderID` = r.`orderID`
-WHERE o.refundstatus = 3 AND r.point = 2
+WHERE o.refundstatus >= 3 AND r.point = 2
     </select>
 
 
@@ -25,7 +25,7 @@ INNER JOIN `services` AS  s
 ON o.`serviceID` = s.`serviceID`
 INNER JOIN `refund` AS r
 ON o.`orderID` = r.`orderID`
-WHERE o.refundstatus = 3 AND r.point = 2 AND r.refundID = #{refundID}
+WHERE o.refundstatus >= 3 AND r.point = 2 AND r.refundID = #{refundID}
     </select>
 
     <update id="updateRefund">

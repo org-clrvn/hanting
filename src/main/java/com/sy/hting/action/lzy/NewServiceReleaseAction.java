@@ -69,12 +69,12 @@ public class NewServiceReleaseAction {
         service.setServiceImgUrlFour(File.separator + fileName5);
         serviceImgUrlFourTemp.transferTo(new File("E:\\myfile" + File.separator + fileName5));
 
-        service.setUserID(12);
+        service.setUserID(13);
 
         int count = newSerBiz.addServices(service);
 
         if (count > 0){
-            return "redirect:/lzy/c/loadUserOrderList?num=1&size=2";
+            return "redirect:/lzy/c/getServicesListByUserID?num=1&size=3";
         }else {
             return "redirect:/lzy/c/skipSjzxZjyfbfwPage";
         }

@@ -42,7 +42,7 @@ public class AuditRefundAction {
 
     @GetMapping("/findUOSRByRefundID")
     public String findUOSRByRefundID(int refundID, Model model){
-        System.out.println(refundBiz.findUOSRByRefundID(refundID).getAuditTimeOrder());
+        System.out.println(refundBiz.findUOSRByRefundID(refundID).getRefundstatus());
         model.addAttribute("data", refundBiz.findUOSRByRefundID(refundID));
 
         return "backstage/Refund";

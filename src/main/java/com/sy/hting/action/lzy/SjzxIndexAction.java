@@ -1,8 +1,10 @@
 package com.sy.hting.action.lzy;
 
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import com.sy.hting.biz.lzy.SjrzOrderBiz;
 import com.sy.hting.biz.lzy.SjzxIndexBiz;
+import com.sy.hting.pojo.Orders;
 import com.sy.hting.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,12 +36,13 @@ public class SjzxIndexAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        if (orderBiz.judgeAuditStatusByUserID(12) == 2){
-            System.out.println("user:"+indexBiz.loadUserByUserID(12));
-            model.addAttribute("user", indexBiz.loadUserByUserID(12));
+        if (orderBiz.judgeAuditStatusByUserID(13) == 2){
+            //System.out.println("user:"+indexBiz.loadUserByUserID(12));
+            model.addAttribute("user", indexBiz.loadUserByUserID(13));
 
-            System.err.println(JSON.toJSON(orderBiz.loadOrdersList(num, size, 12).getList()));
-            model.addAttribute("data", orderBiz.loadOrdersList(num, size, 12));
+            PageInfo<Orders> pageInfo = orderBiz.loadOrdersList(num, size, 13);
+            System.err.println(JSON.toJSON(pageInfo.getList()));
+            model.addAttribute("data", pageInfo);
 
             return "sjzx-index";
         }else {

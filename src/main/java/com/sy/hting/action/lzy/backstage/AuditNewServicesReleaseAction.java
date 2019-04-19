@@ -38,8 +38,8 @@ public class AuditNewServicesReleaseAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,12).getList());;
-        model.addAttribute("serList", newSerBiz.loadSerUserSertypeVoList(num, size, 12));
+        System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,13).getList());;
+        model.addAttribute("serList", newSerBiz.loadSerUserSertypeVoList(num, size, 13));
 
         return "backstage/Refund_Management";
     }
@@ -57,7 +57,7 @@ public class AuditNewServicesReleaseAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        model.addAttribute("serData", newSerBiz.findSerUserSertypeVoByServiceID(12, serviceID));
+        model.addAttribute("serData", newSerBiz.findSerUserSertypeVoByServiceID(13, serviceID));
 
         return "backstage/Update_audit";
     }

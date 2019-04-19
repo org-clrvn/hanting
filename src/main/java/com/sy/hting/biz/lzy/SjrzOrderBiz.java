@@ -35,7 +35,6 @@ public class SjrzOrderBiz {
     public PageInfo<Services> loadServicesList(int pageNum, int pageSize, int userID){
         PageHelper.startPage(pageNum, pageSize);
 
-        System.err.println("biz:"+JSON.toJSON(orderDao.loadServicesList(userID).get(0)));
         PageInfo<Services> pageInfo = new PageInfo<Services>(orderDao.loadServicesList(userID));
 
         return pageInfo;
@@ -51,10 +50,14 @@ public class SjrzOrderBiz {
      */
     public PageInfo<Orders> loadOrdersList(int userID, int pageNum, int pageSize){
         PageHelper.startPage(pageNum, pageSize);
-        System.out.println("biz:"+ orderDao.loadOrdersList(userID).toString());
+        //System.out.println("biz:"+ JSON.toJSON(orderDao.loadOrdersList(userID).get(0)));
         PageInfo<Orders> pageInfo = new PageInfo<Orders>(orderDao.loadOrdersList(userID));
 
         return pageInfo;
+    }
+
+    public int judgeServices(int userID){
+        return orderDao.judgeServices(userID);
     }
 
     /**

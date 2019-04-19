@@ -42,21 +42,30 @@ public class SjrzOrderAction {
         /*userCount.getUserID()*/
 
         //加载查询商家中心-订单列表-订单表
-        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 12);
+        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 13);
         System.out.println("action:"+data.getList());
         model.addAttribute("ordersList", data);
 
         return "sjzx-order";
     }
-
+    /**
+     *@描述
+     *@参数  [num, size, session, model]
+     *@返回值  java.lang.String
+     *@创建人  lizeyun
+     *@创建时间  2019/4/19
+     *@修改人和其它信息
+     */
     @GetMapping("/getServicesListByUserID")
     public String getServicesListByUserID(int num, int size, HttpSession session, Model model){
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
 
+        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 13));
 
+        /*if (orderBiz.judgeServices(12) > 0){
 
-        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 12));
+        }*/
 
         return "sjzx-services";
     }
@@ -65,7 +74,7 @@ public class SjrzOrderAction {
     public String loadFirBecServiceIDByUserID(HttpSession session, Model model){
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
-        User user = orderBiz.loadFirBecServiceIDByUserID(12);
+        User user = orderBiz.loadFirBecServiceIDByUserID(13);
 
         if (user != null){
             model.addAttribute("user", user);
@@ -103,7 +112,7 @@ public class SjrzOrderAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID()
 
-        return orderBiz.judgeAuditStatusByUserID(12) == 2 ? "sjrz-yktsj":"sjrz-shzl";
+        return orderBiz.judgeAuditStatusByUserID(13) == 2 ? "sjrz-yktsj":"sjrz-shzl";
     }
 
     @GetMapping("/skipSjzxXzjPage")

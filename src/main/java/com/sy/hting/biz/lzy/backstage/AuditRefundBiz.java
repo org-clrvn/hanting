@@ -32,6 +32,7 @@ public class AuditRefundBiz {
      */
     public PageInfo<UserOrderServicesRefundVo> loadUserOrderServicesRefundVo(int pageNum, int pageSize){
         PageHelper.startPage(pageNum, pageSize);
+        System.err.println(refundDao.loadUserOrderServicesRefundVo().get(0).getRefundstatus());
         PageInfo<UserOrderServicesRefundVo> pageInfo = new PageInfo<UserOrderServicesRefundVo>(refundDao.loadUserOrderServicesRefundVo());
 
         return pageInfo;

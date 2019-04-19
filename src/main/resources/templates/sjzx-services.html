@@ -72,7 +72,7 @@
         <div class="member_right sj_right_box">
 			<div class="member_system_r_top top_nor">
 				<div class="search_right_box">
-					<div class="search_sec"><form method="post" action="/zg/c/getServicesByTitle?pageNum=1&pageSize=2"><input type="text" name="serviceTitle" placeholder="输入服务名称" class="s_sec_input" /><input type="submit" value="" class="s_sec_btn" /><input type="hidden" name="__hash__" value="aecafd74baafde5cba034372c675d0de_99b2b45687447cdb2188e7372f3fbe73" /></form></div>
+					<div class="search_sec"><form method="post" action=""><input type="text" name="serviceTitle" placeholder="输入服务名称" class="s_sec_input" /><input type="submit" value="" class="s_sec_btn" /><input type="hidden" name="__hash__" value="aecafd74baafde5cba034372c675d0de_99b2b45687447cdb2188e7372f3fbe73" /></form></div>
 				</div>
 				<span class="fl">我发布的服务&nbsp;&nbsp;<a href="/lzy/c/loadFirBecServiceIDByUserID" class="btn_jy_a btn_jy_a3" >发布新服务</a></span>
 							</div>
@@ -129,30 +129,7 @@
 				
 			</tr>
             </tbody> 
-				<tfoot>
-				<!--<tr>
-						<td colspan="7" align="center">
-							
-								<a    th:href="@{getServices(pageNum=1,pageSize=${PAGE_INFO.pageSize})}" >首页</a>
-								&nbsp;&nbsp;
-								
-								<span th:if="${PAGE_INFO.isHasPreviousPage()}" >
-								<a   th:href="@{getServices(pageNum=${PAGE_INFO.prePage},pageSize=${PAGE_INFO.pageSize})}">上一页</a>
-								</span>
-									&nbsp;&nbsp;
-								<span th:if="${PAGE_INFO.isHasNextPage()}" >
-								
-									<a th:href="@{getServices(pageNum=${PAGE_INFO.nextPage},pageSize=${PAGE_INFO.pageSize})}">下一页</a>
-								</span>
-								&nbsp;&nbsp; <a th:href="@{getServices(pageNum=${PAGE_INFO.lastPage},pageSize=${PAGE_INFO.pageSize})}">末页</a>							
-								&nbsp;&nbsp; &nbsp;&nbsp;第[[${PAGE_INFO.pageNum}]]页/共[[${PAGE_INFO.lastPage}]]页&nbsp;&nbsp;共[[${PAGE_INFO.total}]]条记录
-							
-						</td>
-					
-					</tr>-->
-				
-				
-				</tfoot>
+
 			</table>
          
 		</div>

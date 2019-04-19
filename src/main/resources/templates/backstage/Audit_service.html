@@ -259,10 +259,11 @@
                 <td align="center" nowrap th:text="${temp.userName}">心动发</td>
                 <td align="center" nowrap th:text="${temp.serviceTitle}">观光类</td>
                 <td align="center" nowrap th:text="${temp.applyRefundMoney}">先发</td>
-                <td align="center" nowrap th:switch="${temp.orderStatus}">
-                    <span th:case="2">不同意</span>
+                <td align="center" nowrap th:switch="${temp.refundstatus}">
                     <span th:case="3" style="color: red">申请管理员介入</span>
+                    <span th:case="4">拒绝退款</span>
                     <span th:case="5">退款成功</span>
+                    <span th:case="2">不同意</span>
                 </td>
                 <td align="center" nowrap th:text="${#dates.format(temp.auditTimeOrder,'yyyy-MM-dd HH:mm:ss')}">未支付</td>
                 <td align="center" nowrap th:text="${temp.remarks}"></td>
