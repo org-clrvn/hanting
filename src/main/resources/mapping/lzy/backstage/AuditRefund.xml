@@ -6,25 +6,47 @@
 <mapper namespace="com.sy.hting.dao.lzy.backstage.IAuditRefundDao">
 
     <select id="loadUserOrderServicesRefundVo" resultType="UserOrderServicesRefundVo">
-        SELECT * FROM  `user` AS u
-        INNER JOIN `orders` AS o
-        ON u.`userID` = o.`userID`
-        INNER JOIN `services` AS  s
-        ON o.`serviceID` = s.`serviceID`
-        INNER JOIN `refund` AS r
-        ON o.`orderID` = r.`orderID`
+        SELECT *,r.auditTime AS auditTimeOrder FROM  `user` AS u
+INNER JOIN `orders` AS o
+ON u.`userID` = o.`userID`
+INNER JOIN `services` AS  s
+ON o.`serviceID` = s.`serviceID`
+INNER JOIN `refund` AS r
+ON o.`orderID` = r.`orderID`
+WHERE o.refundstatus = 3 AND r.point = 2
     </select>
 
 
     <select id="queryUOSRByRefundID" resultType="UserOrderServicesRefundVo">
-        SELECT * FROM  `user` AS u
-        INNER JOIN `orders` AS o
-        ON u.`userID` = o.`userID`
-        INNER JOIN `services` AS  s
-        ON o.`serviceID` = s.`serviceID`
-        INNER JOIN `refund` AS r
-        ON o.`orderID` = r.`orderID`
-        where r.refundID = #{refundID}
+        SELECT *,r.auditTime AS auditTimeOrder FROM  `user` AS u
+INNER JOIN `orders` AS o
+ON u.`userID` = o.`userID`
+INNER JOIN `services` AS  s
+ON o.`serviceID` = s.`serviceID`
+INNER JOIN `refund` AS r
+ON o.`orderID` = r.`orderID`
+WHERE o.refundstatus = 3 AND r.point = 2 AND r.refundID = #{refundID}
     </select>
+
+    <update id="updateRefund">
+        update `refund`
+        set
+        actualRefundMoney = #{refundVo.actualRefundMoney},
+        adminRemarks = #{refundVo.adminRemarks},
+        adminTime = now(),
+        adminStatus = #{refundVo.adminStatus}
+        where refundID = #{refundVo.refundID};
+
+        UPDATE `orders`
+        SET
+        <if test="refundVo.adminStatus == 2">
+            refundstatus = 5
+        </if>
+        <if test="refundVo.adminStatus == 3">
+            orderStatus = 8,
+            refundstatus = 4
+        </if>
+        WHERE `orderID` = #{refundVo.orderID}
+    </update>
 
 </mapper>

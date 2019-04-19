@@ -170,7 +170,7 @@ copy
     <H3>退款处理</H3>
   </DIV>
   <DIV id="mainContent"><BR>
-    <form action="/record/updateRefund" method="POST" >
+    <form action="/bt/lzy/c/modifyRefund" method="POST" >
       <TABLE border=0 cellSpacing=1 cellPadding=6 width="100%" class="table">
         <TBODY>
         	<tr>
@@ -217,14 +217,14 @@ copy
           </TR>
           <TR>
             <TD align=right>商家处理时间：</TD>
-            <TD colspan="3" th:text="${#dates.format(data.auditTime,'yyyy-MM-dd HH:mm:ss')}">1～2年</TD>
+            <TD colspan="3" th:text="${#dates.format(data.auditTimeOrder,'yyyy-MM-dd HH:mm:ss')}">1～2年</TD>
           </TR>
           <tbody th:if="${data.refundstatus}==3">
           <tr>
           <td align=right>实际退款金额：<input type="hidden" name="money" th:value="${data.actualRefundMoney}"></td>
           <td colspan="3" th:text="${data.actualRefundMoney}">adsd</td>
           </tr>
-          <tr>
+          <!--<tr>
           <td align=right>操作：</td>
           <td th:switch="${data.adminStatus}" colspan="3">
          	<span th:case="1">
@@ -234,20 +234,24 @@ copy
          	<span th:case="2">退款成功 <input type="hidden" name="adminStatus" value="2"></span>
          	<span th:case="3">拒绝  <input type="hidden" name="adminStatus" value="3"></span>
           </td>
-          </tr>
+          </tr>-->
           <tr>
           <td align=right>退款金额：</td>
-          <td colspan="3"><input type="text" name="actualRefundMoney" th:value="${data.ActualRefundMoney}"> </td>
+          <td colspan="3"><input type="text" name="actualRefundMoney" th:value="${data.actualRefundMoney}"> </td>
           </tr>
           <tr>
           <td align=right>管理员处理：</td>
-          <td colspan="3"><textarea rows="5" name="adminRemarks" cols="70">[[${data.adminRemarks}]]</textarea> </td>
+          <td colspan="3">
+            <input type="hidden" name="refundID" th:value="${data.refundID}" />
+            <textarea rows="5" name="adminRemarks" cols="70">[[${data.adminRemarks}]]</textarea>
+          </td>
           </tr>
           </tbody>
           <TR>
             <TD align=right>&nbsp;</TD>
             <TD colspan="3" >
-            <input type="submit" class='ys' value="设置状态 " />
+                <input type="submit" class='ys' name="sign" value="同意退款" />
+                <input type="submit" class='ys' name="sign" value="拒绝退款" />
             <input type="button" class='ys' value="返回 " onClick="history.go(-1)"/>
 			</TD>
           </TR>

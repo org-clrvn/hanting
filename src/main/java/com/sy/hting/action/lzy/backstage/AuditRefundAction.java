@@ -1,9 +1,12 @@
 package com.sy.hting.action.lzy.backstage;
 
 import com.sy.hting.biz.lzy.backstage.AuditRefundBiz;
+import com.sy.hting.pojo.Refund;
+import com.sy.hting.vo.lzy.UserOrderServicesRefundVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -15,7 +18,7 @@ import javax.annotation.Resource;
  * @exception
  * @Time 2019/4/16 0:02
  */
-@Controller()
+@Controller
 @RequestMapping("/bt/lzy/c")
 public class AuditRefundAction {
 
@@ -39,9 +42,27 @@ public class AuditRefundAction {
 
     @GetMapping("/findUOSRByRefundID")
     public String findUOSRByRefundID(int refundID, Model model){
+        System.out.println(refundBiz.findUOSRByRefundID(refundID).getAuditTimeOrder());
         model.addAttribute("data", refundBiz.findUOSRByRefundID(refundID));
 
         return "backstage/Refund";
+    }
+
+
+    @PostMapping("/modifyRefund")
+    public String modifyRefund(UserOrderServicesRefundVo refundVo, String sign[]){
+        for (int i=0;i<sign.length;i++){
+            if (sign[i] != null){
+                if ("同意退款".equals(sign[i])){
+                    refundVo.setAdminStatus(2);
+                }else if ("拒绝退款".equals(sign[i])){
+                    refundVo.setAdminStatus(3);
+                }
+                continue;
+            }
+        }
+        System.out.println(refundVo.getAdminStatus());
+        return refundBiz.modifyRefund(refundVo)>0 ? "redirect:/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2":"redirect:/bt/lzy/c/findUOSRByRefundID?refundID=10";
     }
 
 }

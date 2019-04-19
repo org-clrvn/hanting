@@ -42,7 +42,7 @@ public class SjrzOrderAction {
         /*userCount.getUserID()*/
 
         //加载查询商家中心-订单列表-订单表
-        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 29);
+        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 12);
         System.out.println("action:"+data.getList());
         model.addAttribute("ordersList", data);
 
@@ -54,7 +54,9 @@ public class SjrzOrderAction {
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
 
-        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 29));
+
+
+        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 12));
 
         return "sjzx-services";
     }
@@ -63,7 +65,7 @@ public class SjrzOrderAction {
     public String loadFirBecServiceIDByUserID(HttpSession session, Model model){
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
-        User user = orderBiz.loadFirBecServiceIDByUserID(29);
+        User user = orderBiz.loadFirBecServiceIDByUserID(12);
 
         if (user != null){
             model.addAttribute("user", user);
@@ -78,7 +80,7 @@ public class SjrzOrderAction {
         if (user == null){
             return ""; //跳登录页面
         }else {//user.getUserID()
-            if (orderBiz.judgeUserAuditStatusByUserID(user.getUserID()) != null){
+            if (orderBiz.judgeAuditStatusByUserID(user.getUserID()) == 2){
                 return "sjrz-yktsj"; //商家中心中转页面
             }else {
                 return "sjrz-xz"; //商家入驻(下一步)页面
@@ -89,7 +91,7 @@ public class SjrzOrderAction {
     @GetMapping("/clickSjzxSucceed")
     public String clickSjzxSucceed(HttpSession session){
         User user = (User)session.getAttribute("user");
-        if (user != null && orderBiz.judgeUserAuditStatusByUserID(user.getUserID()) != null){
+        if (user != null && orderBiz.judgeAuditStatusByUserID(user.getUserID()) == 2){
             return "redirect:/lzy/c/loadUserOrderList?num=1&size=2";
         }else {
             return "redirect:/lzy/c/clickSjzx";
@@ -100,7 +102,8 @@ public class SjrzOrderAction {
     public String skipSjrzShzlPage(HttpSession session){
         User user = (User)session.getAttribute("user");
         //user.getUserID()
-        return orderBiz.judgeUserAuditStatusByUserID(29)!=null ? "sjrz-yktsj":"sjrz-shzl";
+
+        return orderBiz.judgeAuditStatusByUserID(12) == 2 ? "sjrz-yktsj":"sjrz-shzl";
     }
 
     @GetMapping("/skipSjzxXzjPage")

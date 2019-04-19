@@ -5,9 +5,14 @@
 
 <mapper namespace="com.sy.hting.dao.lzy.backstage.IAuditApplyforRecruitmentDao">
 
+    <sql id="descendingOrder">
+        order by merchantRegistrationTime desc
+    </sql>
+
     <!--后台加载查询商家申请入驻的信息-->
     <select id="loadUserList" resultType="User">
-        select * from `user`where auditStatus != 0
+        select * from `user` where auditStatus != 0
+        <include refid="descendingOrder"></include>
     </select>
 
     <!--后台,根据多条件查询申请商家入驻的用户信息-->
@@ -15,7 +20,7 @@
         select * from `user`
         <where>
             <if test="userName != ''">
-                and userName = #{userName}
+                and userName like '%${userName}%'
             </if>
             <if test=" merchantType != 0">
                 and merchantType = #{merchantType}
@@ -25,6 +30,7 @@
             </if>
             and auditStatus != 0
         </where>
+        <include refid="descendingOrder"></include>
     </select>
     
     <!--后台,根据用户编号查询用户信息-->

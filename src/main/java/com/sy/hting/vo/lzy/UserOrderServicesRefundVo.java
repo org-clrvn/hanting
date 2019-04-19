@@ -29,7 +29,7 @@ public class UserOrderServicesRefundVo {
 
     private int orderStatus;
 
-    private Date auditTime;
+    private Date auditTimeOrder;
 
     private String remarks;
 
@@ -48,6 +48,14 @@ public class UserOrderServicesRefundVo {
     private int adminStatus;
 
     private String adminRemarks;
+
+    public Date getAuditTimeOrder() {
+        return auditTimeOrder;
+    }
+
+    public void setAuditTimeOrder(Date auditTimeOrder) {
+        this.auditTimeOrder = auditTimeOrder;
+    }
 
     public int getUserID() {
         return userID;
@@ -119,14 +127,6 @@ public class UserOrderServicesRefundVo {
 
     public void setOrderStatus(int orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public Date getAuditTime() {
-        return auditTime;
-    }
-
-    public void setAuditTime(Date auditTime) {
-        this.auditTime = auditTime;
     }
 
     public String getRemarks() {
@@ -201,7 +201,7 @@ public class UserOrderServicesRefundVo {
         this.adminRemarks = adminRemarks;
     }
 
-    public UserOrderServicesRefundVo(int userID, String userName, String orderID, int serviceID, int refundID, Date applicationTime, String serviceTitle, float applyRefundMoney, int orderStatus, Date auditTime, String remarks, float totalPrice, String refundReason, String refundImg, int refundstatus, String businessRemarks, float actualRefundMoney, int adminStatus, String adminRemarks) {
+    public UserOrderServicesRefundVo(int userID, String userName, String orderID, int serviceID, int refundID, Date applicationTime, String serviceTitle, float applyRefundMoney, int orderStatus, Date auditTimeOrder, String remarks, float totalPrice, String refundReason, String refundImg, int refundstatus, String businessRemarks, float actualRefundMoney, int adminStatus, String adminRemarks) {
         this.userID = userID;
         this.userName = userName;
         this.orderID = orderID;
@@ -211,7 +211,7 @@ public class UserOrderServicesRefundVo {
         this.serviceTitle = serviceTitle;
         this.applyRefundMoney = applyRefundMoney;
         this.orderStatus = orderStatus;
-        this.auditTime = auditTime;
+        this.auditTimeOrder = auditTimeOrder;
         this.remarks = remarks;
         this.totalPrice = totalPrice;
         this.refundReason = refundReason;
@@ -239,7 +239,7 @@ public class UserOrderServicesRefundVo {
                 ", serviceTitle='" + serviceTitle + '\'' +
                 ", applyRefundMoney=" + applyRefundMoney +
                 ", orderStatus=" + orderStatus +
-                ", auditTime=" + auditTime +
+                ", auditTimeOrder=" + auditTimeOrder +
                 ", remarks='" + remarks + '\'' +
                 ", totalPrice=" + totalPrice +
                 ", refundReason='" + refundReason + '\'' +

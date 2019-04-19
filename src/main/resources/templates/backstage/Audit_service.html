@@ -232,7 +232,7 @@
     </form>
 </div>
 <div id="two-floor">
-    <from method="get" name="form" action="/bt/lzy/c/findUOSRByRefundID">
+    <from method="get" action="/bt/lzy/c/findUOSRByRefundID">
         <table id="posts" border=0 class="tablesorter" cellSpacing=1
                cellPadding=6 width="100%">
             <thead>
@@ -264,9 +264,11 @@
                     <span th:case="3" style="color: red">申请管理员介入</span>
                     <span th:case="5">退款成功</span>
                 </td>
-                <td align="center" nowrap th:text="${#dates.format(temp.auditTime,'yyyy-MM-dd HH:mm:ss')}">未支付</td>
+                <td align="center" nowrap th:text="${#dates.format(temp.auditTimeOrder,'yyyy-MM-dd HH:mm:ss')}">未支付</td>
                 <td align="center" nowrap th:text="${temp.remarks}"></td>
-                <td align="center" nowrap><input type="submit" name="chakan" value="查看"></td><!--onClick="chakan()"-->
+                <td align="center" nowrap><!--<input type="submit" name="chakan" value="查看">-->
+                    <a th:href="@{/bt/lzy/c/findUOSRByRefundID(refundID=${temp.refundID})}">查看</a>
+                </td><!--onClick="chakan()"-->
             </tr>
             </tbody>
         </table>

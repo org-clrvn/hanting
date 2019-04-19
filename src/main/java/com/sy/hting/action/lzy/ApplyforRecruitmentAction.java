@@ -42,7 +42,7 @@ public class ApplyforRecruitmentAction {
         if (user == null){
             return "";
         }else {//user.getUserID()
-            if (orderBiz.judgeUserAuditStatusByUserID(user.getUserID()) != null){
+            if (orderBiz.judgeAuditStatusByUserID(user.getUserID()) == 2){
                 return "sjrz-yktsj";
             }else {
                 return "sjrz-xz";
@@ -59,7 +59,7 @@ public class ApplyforRecruitmentAction {
     @GetMapping("/skipRecruitmentPage")
     public String skipRecruitmentPage(HttpSession session, Model model){
         //保存登录用户的信息到HttpSession中
-        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(29));
+        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(12));
 
         //加载查询申请服务类别的所有信息
         model.addAttribute("sertypeItems", recruitmentBiz.loadServicetypeList());
@@ -109,6 +109,7 @@ public class ApplyforRecruitmentAction {
         user.setIdentityHandImg(File.separator + fileName4);
         identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
 
+        user.setUserID(12);
 
         String[] split = serviceID.split(",");
         user.setFirstServiceID(Integer.parseInt(split[0]));
@@ -127,7 +128,7 @@ public class ApplyforRecruitmentAction {
     @GetMapping("/skipSjrzShzlPage")
     public String skipSjrzShzlPage(HttpSession session) {
         User user = (User)session.getAttribute("user");
-        if (orderBiz.judgeUserAuditStatusByUserID(29) != null){
+        if (orderBiz.judgeAuditStatusByUserID(12) == 2){
             return "redirect:/lzy/c/skipSjrzYktsjPage";
         }else {
             return "redirect:/lzy/c/SjrzShzlPage";

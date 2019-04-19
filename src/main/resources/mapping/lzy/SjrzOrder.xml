@@ -37,8 +37,8 @@
         WHERE `userID` = #{userID}
     </select>
 
-    <select id="judgeUserAuditStatusByUserID" resultType="User">
-        SELECT * FROM `user` WHERE auditStatus = (SELECT auditStatus FROM `user` WHERE userID = #{userID}) AND userID = #{userID}
+    <select id="judgeAuditStatusByUserID" resultType="java.lang.Integer">
+        SELECT auditStatus FROM `user` WHERE userID = #{userID}
     </select>
 
 </mapper>

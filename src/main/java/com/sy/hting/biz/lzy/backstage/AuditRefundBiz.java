@@ -3,6 +3,7 @@ package com.sy.hting.biz.lzy.backstage;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sy.hting.dao.lzy.backstage.IAuditRefundDao;
+import com.sy.hting.pojo.Refund;
 import com.sy.hting.vo.lzy.UserOrderServicesRefundVo;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,11 @@ public class AuditRefundBiz {
 
     public UserOrderServicesRefundVo findUOSRByRefundID(int refundID){
         return refundDao.queryUOSRByRefundID(refundID);
+    }
+
+
+    public int modifyRefund(UserOrderServicesRefundVo refundVo){
+        return refundDao.updateRefund(refundVo);
     }
 
 }

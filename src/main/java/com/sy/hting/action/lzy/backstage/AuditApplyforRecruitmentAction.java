@@ -62,14 +62,22 @@ public class AuditApplyforRecruitmentAction {
      * @return
      */
     @PostMapping("/modifyUser")
-    public String modifyUser(User user){
-        int count = auditBiz.modifyUser(user);
-        if (count > 0){
-            return "redirect:/bt/lzy/c/skipMerchantsMoveIn";
-        }else {
-            return "redirect:/bt/lzy/c/findUserByUserID?userID=7";
+    public String modifyUser(User user, String sign[]){
+
+        for (int i=0;i<sign.length;i++){
+            if (sign[i] != null){
+                if ("待审核".equals(sign[i])){
+                    user.setAuditStatus(1);
+                }else if ("审核通过".equals(sign[i])){
+                    user.setAuditStatus(2);
+                }else if ("拒绝".equals(sign[i])){
+                    user.setAuditStatus(3);
+                }
+                continue;
+            }
         }
 
+        return auditBiz.modifyUser(user)>0 ? "redirect:/bt/lzy/c/skipMerchantsMoveIn":"redirect:/bt/lzy/c/findUserByUserID?userID=7";
     }
 
 }

@@ -38,6 +38,6 @@ public interface ISjrzOrderDao {
      * @param userID
      * @return
      */
-    public User judgeUserAuditStatusByUserID(@Param("userID") int userID);
+    public int judgeAuditStatusByUserID(@Param("userID") int userID);
 
 }

@@ -69,7 +69,7 @@ public class NewServiceReleaseAction {
         service.setServiceImgUrlFour(File.separator + fileName5);
         serviceImgUrlFourTemp.transferTo(new File("E:\\myfile" + File.separator + fileName5));
 
-        service.setUserID(29);
+        service.setUserID(12);
 
         int count = newSerBiz.addServices(service);
 

@@ -233,7 +233,7 @@ copy
 								th:if="${temp.merchantType==2}">海外商家用户</span></td>
                         <td align="center" nowrap><span th:if="${temp.auditStatus==1}">待审核</span>
 								<span th:if="${temp.auditStatus==2}" style="color:green">已通过</span> <span
-								th:if="${temp.auditStatus==3}" style="color:red">未通过</span></td>
+								th:if="${temp.auditStatus==3}" style="color:red">已拒绝</span></td>
                         <td align="center" nowrap th:text="${#dates.format(temp.merchantRegistrationTime,'yyyy-MM-dd HH:mm')}">1970-01-01 08:33</td>
                         <td nowrap align="center">
                         <a th:href="@{/bt/lzy/c/findUserByUserID(userID=${temp.userID})}">查看</a>　

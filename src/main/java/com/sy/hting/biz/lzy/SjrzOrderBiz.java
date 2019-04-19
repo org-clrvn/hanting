@@ -74,9 +74,9 @@ public class SjrzOrderBiz {
      *@创建时间  2019/4/15
      *@修改人和其它信息
      */
-    public User judgeUserAuditStatusByUserID(int userID){
-        System.out.println("判断登录用户是否为商家");
-        return orderDao.judgeUserAuditStatusByUserID(userID);
+    public int judgeAuditStatusByUserID(int userID){
+        System.out.println("判断登录用户是否为商家:"+orderDao.judgeAuditStatusByUserID(userID));
+        return orderDao.judgeAuditStatusByUserID(userID);
     }
 
 }

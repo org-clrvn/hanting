@@ -309,12 +309,12 @@ copy
             </td>
           </tr>
 		<TR>
-            <TD align="right">操作:</TD>
+            <!--<TD align="right">操作:</TD>
             <TD colspan="3" >
 			<label><input type="radio" name="auditStatus" value="1" id="dai"/>待审核　</label>
 			<label><input type="radio" name="auditStatus" value="2"  id="guo"/>审核通过　</label>
 			<label><input type="radio" name="auditStatus" value="3"  id="nguo"/>拒绝　</label>
-			</TD>
+			</TD>-->
           </tr>
           <TR>
             <TD align="right">管理员处理:</TD>
@@ -326,7 +326,10 @@ copy
 			
             </TD>
             <TD colspan="3" >
-            <INPUT class="ys" id="notebt" value=" 保存 " type="submit" name="notebt">
+              <input type="submit" name="sign" value="待审核" id="dai" class="ys" />
+              <input type="submit" name="sign" value="审核通过" id="guo" class="ys" />
+              <input type="submit" name="sign" value="拒绝" id="nguo" class="ys" />
+           <!-- <INPUT class="ys" id="notebt" value=" 保存 " type="submit" name="notebt">-->
             <INPUT class="ys" id="add" value=" 返回 " type=button name="add" onClick="history.back(-1)">
               </TD>
           </tr>

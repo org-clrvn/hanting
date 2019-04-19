@@ -1,5 +1,6 @@
 package com.sy.hting.dao.lzy.backstage;
 
+import com.sy.hting.pojo.Refund;
 import com.sy.hting.vo.lzy.UserOrderServicesRefundVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,5 +23,8 @@ public interface IAuditRefundDao {
 
 
     public UserOrderServicesRefundVo queryUOSRByRefundID(@Param("refundID") int refundID);
+
+
+    public int updateRefund(@Param("refundVo")UserOrderServicesRefundVo refundVo);
 
 }
