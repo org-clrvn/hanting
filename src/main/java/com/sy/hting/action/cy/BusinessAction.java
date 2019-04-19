@@ -2,6 +2,7 @@ package com.sy.hting.action.cy;
 
 import com.github.pagehelper.PageInfo;
 import com.sy.hting.biz.cy.BusinessBiz;
+import com.sy.hting.vo.cy.OrderDetail;
 import com.sy.hting.vo.cy.RefundVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,6 +50,11 @@ public class BusinessAction {
             e.printStackTrace();
         }
         return map;
+    }
+
+    @GetMapping(value = {"queryBusinessOrder/{oid}/{status}/{uid}/{pageNum}/{pageSize}","queryBusinessOrder/{status}/{uid}/{pageNum}/{pageSize}","queryBusinessOrder/{uid}/{pageNum}/{pageSize}"})
+    public PageInfo<OrderDetail> queryBusinessOrder(@PathVariable(required = false) String oid,@PathVariable(required = false) Integer status,@PathVariable Integer uid,@PathVariable Integer pageNum,@PathVariable Integer pageSize){
+        return biz.queryBusinessOrder(oid,status,uid,pageNum,pageSize);
     }
 
 }

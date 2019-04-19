@@ -2,17 +2,13 @@ package com.sy.hting.cfg;
 
 import java.util.Properties;
 
-
+import com.github.pagehelper.PageHelper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.github.pagehelper.PageHelper;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
-
 @Configuration
-@MapperScan(basePackages = { "com.sy.hting.dao.*" })
+@MapperScan(basePackages = { "com.sy.hting.dao" })
 public class BeansConfig {
 
 	/**

@@ -17,12 +17,11 @@ import java.util.Date;
 public class HantingApplicationTests {
 
     @Autowired
-    //private PersonalBiz biz;
     private BusinessBiz biz;
 
     @Test
     public void contextLoads() {
-        biz.disagree(10,"20181101091100492598","我勒个去");
+        biz.queryBusinessOrder("20190417101238087799",2,24,1,8);
     }
 
 }

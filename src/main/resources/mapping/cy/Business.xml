@@ -47,4 +47,21 @@
         SET refundstatus = 2
         WHERE orderID =#{oid}
     </update>
+
+    <select id="queryBusinessOrder" resultType="OrderDetail">
+        SELECT * FROM orders o
+        JOIN services  s
+        ON o.`serviceID`=s.`serviceID`
+
+        WHERE s.userId =#{uid}
+
+            <if test="oid !=null">
+                and o.orderID = #{oid}
+            </if>
+            <if test="status!=null">
+                and o.orderStatus = #{status}
+            </if>
+
+        ORDER BY o.orderTime DESC
+    </select>
 </mapper>

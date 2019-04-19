@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title></title>
+</head>
+<BODY class=oneColLiqCtrHdr>
+	
+	<DIV id=container>
+		<DIV id=header>
+			<H1>
+				会员管理<BR>
+			</H1>
+			<form method="get" name="searchform" th:action="@{/gsh/getList}">
+				<TABLE border=0 class="tablesorter" cellSpacing=1 cellPadding=6
+					width="100%">
+					<TBODY>
+						<TR>
+							<TD>用户昵称: <input name="userNickName" type="text"
+								style="width: 120px;" size="15" maxlength="10" /> <input
+								type="hidden" name="t" value="1" />
+								<input
+								type="hidden" name="p" value="1" />
+								<input
+								type="hidden" name="s" value="1" /> <input type="submit"
+								name="button" id="button" value="搜索"> <input
+								type="submit" name="export" id="button" value=" 导出 ">
+
+							</TD>
+							<TD>&nbsp;</TD>
+						</TR>
+					</TBODY>
+				</TABLE>
+			</form>
+		</DIV>
+		<DIV id="mainContent">
+			<BR>
+			<FORM method=post name=form2 action="" id="listform">
+				<TABLE id="itemlist" class="tablesorter" cellSpacing=1
+					cellPadding=6 width="100%">
+					<THEAD>
+						<TR>
+							<!--
+                    <th width="50">&nbsp;</th>
+					-->
+							<th width="50" bgcolor="#ffffff">序号</th>
+							<TH width="8%" scope=col align=center>用户昵称</TH>
+							<TH width="8%" scope=col align=center>会员组</TH>
+							<TH width="8%" scope=col align=center>邮箱</TH>
+							<TH width="8%" scope=col align=center>积分</TH>
+							<TH width="8%" scope=col align=center>金币</TH>
+							<TH width="8%" align=center>邮箱验证</TH>
+							<TH width="8%" align=center>审核</TH>
+							<TH width="8%" align=center>鉴定</TH>						
+							<TH width="8%" align=center scope=col>电话</TH>
+							<TH scope=col>操作</TH>
+						</TR>
+					</THEAD>
+					<tbody
+						th:remove="${PAGE_INFO.list.size()==0?'none':'all-but-first'}">
+						<!-- 动态样式操作 -->
+						<tr
+							th:style="${iterState.even?'background:#EFEFEF':'background:white'}"
+							th:each="temp,iterState:${PAGE_INFO.list}">
+							<td align="center" th:text="${temp.userid}"></td>
+							<td align="center" th:text="${temp.usernickname}"></td>
+							<td align="center"><span th:if="${temp.merchanttype==1}">普通用户</span> <span
+								th:if="${temp.merchanttype==2}">大陆商家用户</span>
+								<span
+								th:if="${temp.merchanttype==3}">海外商家用户</span></td>
+							<td align="center" th:text="${temp.useremail}"></td>
+							<td align="center" th:text="${temp.userintegral}"></td>
+							<td th:text="${temp.usermoney}"></td>
+							
+							<td align="center"><span th:if="${temp.logintype==1}">已验证</span> <span
+								th:if="${temp.logintype!=1}">未验证</span></td>
+								
+							<td align="center"><span th:if="${temp.auditstatus==1}">待审核</span> <span
+								th:if="${temp.auditstatus==2}">已通过</span> <span
+								th:if="${temp.auditstatus==3}">拒绝</span></td>
+								
+								<td align="center" th:text="${temp.authentication}"></td>
+							<td align="center" th:text="${temp.userphone}"></td>
+<!-- 							<th th:text="${temp.usernickname}"></th>
+							<th th:text="${temp.usernickname}"></th>
+							<th th:text="${temp.usernickname}"></th>
+							<th th:text="${temp.usernickname}"></th>
+							<th th:text="${temp.usernickname}"></th> -->
+			
+							<!-- 动态事件绑定 -->
+							<th nowrap><a
+								href="/index.php/Admincp/User/edit/id/318/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">修改</a>
+								<a href="/index.php/Admincp/Order/index/userid/318.html">积分记录</a>
+								<a
+								href="/index.php/Admincp/User/comment/userid/318/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">评论</a>
+							</th>
+						</tr>
+					<tfoot>
+						<tr>
+							<th colspan="12"><a
+								th:href="@{/gsh/getList(p=1,s=${PAGE_INFO.pageSize},userNickName=${userNickName})}">首页</a>
+								&nbsp;&nbsp; <a th:if="${PAGE_INFO.isHasPreviousPage()}"
+								th:href="@{/gsh/getList(p=${PAGE_INFO.prePage},s=${PAGE_INFO.pageSize},userNickName=${userNickName})}">上一页</a>
+								&nbsp;&nbsp; <a th:if="${PAGE_INFO.isHasNextPage()}"
+								th:href="@{/gsh/getList(p=${PAGE_INFO.nextPage},s=${PAGE_INFO.pageSize},userNickName=${userNickName})}">下一页</a>
+								&nbsp;&nbsp; <a
+								th:href="@{/gsh/getList(p=${PAGE_INFO.lastPage},s=${PAGE_INFO.pageSize},userNickName=${userNickName})}">末页</a>
+							</th>
+						</tr>
+					</tfoot>
+					</tbody>
+					<!-- <tbody>
+						<tr>
+							
+                        <td align="center"><input  value="318" type="checkbox" name="userid[]"></td>
+						
+							<td align="center" bgcolor="#ffffff">1</td>
+							<td align="center" nowrap>yuno4214</td>
+							<td align="center" nowrap>普通会员</td>
+							<td align="center" nowrap></td>
+							<td align="center" nowrap>0</td>
+							<td align="center" nowrap>4500.00</td>
+							<td align="center" nowrap>未验证</td>
+							<td align="center" nowrap>已审核</td>
+							<td align="center" nowrap></td>
+							<td align="center" nowrap><span>开启</span></td>
+							<td align="center" nowrap>15548796654</td>
+							<td align="center" nowrap>2018-10-07 18:10</td>
+							<td align="center" nowrap>0</td>
+							<td nowrap><a
+								href="/index.php/Admincp/User/edit/id/318/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">修改</a>
+								<a href="/index.php/Admincp/Order/index/userid/318.html">积分记录</a>
+								<a
+								href="/index.php/Admincp/User/comment/userid/318/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">评论</a>
+							</td>
+						</tr>
+						<tr>
+							
+                        <td align="center"><input  value="316" type="checkbox" name="userid[]"></td>
+						
+							<td align="center" bgcolor="#ffffff">2</td>
+							<td align="center" nowrap>小明不是商家</td>
+							<td align="center" nowrap>普通会员</td>
+							<td align="center" nowrap>jx2402836701@163.com</td>
+							<td align="center" nowrap>0</td>
+							<td align="center" nowrap>5000.00</td>
+							<td align="center" nowrap>未验证</td>
+							<td align="center" nowrap>已审核</td>
+							<td align="center" nowrap></td>
+							<td align="center" nowrap><span>开启</span></td>
+							<td align="center" nowrap></td>
+							<td align="center" nowrap>-</td>
+							<td align="center" nowrap>0</td>
+							<td nowrap><a
+								href="/index.php/Admincp/User/edit/id/316/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">修改</a>
+								<a href="/index.php/Admincp/Order/index/userid/316.html">积分记录</a>
+								<a
+								href="/index.php/Admincp/User/comment/userid/316/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">评论</a>
+							</td>
+						</tr>
+						<tr>
+							
+                        <td align="center"><input  value="308" type="checkbox" name="userid[]"></td>
+						
+							<td align="center" bgcolor="#ffffff">3</td>
+							<td align="center" nowrap>chinanjq</td>
+							<td align="center" nowrap>普通会员</td>
+							<td align="center" nowrap>chinanjq@163.com</td>
+							<td align="center" nowrap>0</td>
+							<td align="center" nowrap>5000.00</td>
+							<td align="center" nowrap>未验证</td>
+							<td align="center" nowrap>已审核</td>
+							<td align="center" nowrap></td>
+							<td align="center" nowrap><span>开启</span></td>
+							<td align="center" nowrap></td>
+							<td align="center" nowrap>-</td>
+							<td align="center" nowrap>0</td>
+							<td nowrap><a
+								href="/index.php/Admincp/User/edit/id/308/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">修改</a>
+								<a href="/index.php/Admincp/Order/index/userid/308.html">积分记录</a>
+								<a
+								href="/index.php/Admincp/User/comment/userid/308/continue/aHR0cDovL3lwaHRpbmcuemdseGtqLmNvbS9pbmRleC5waHAvQWRtaW5jcC91c2VyL2luZGV4L3QvMS5odG1s.html">评论</a>
+							</td>
+						</tr>
+
+					</tbody>
+				</TABLE>
+				<TABLE id="itemlist" class="tablesorter" border=0 cellSpacing=1
+					cellPadding=6 width="100%">
+					<TR>
+						<TD colspan="8"><div class="digg">金币：623,597.00个，积分：1,198个</div></td>
+					</TR>
+					<TR>
+						<TD colspan="8"><div class="digg">
+								<div>
+									<span class="current">1</span><a class="num"
+										href="/index.php/Admincp/User/index/t/1/p/2.html">2</a><a
+										class="num" href="/index.php/Admincp/User/index/t/1/p/3.html">3</a><a
+										class="num" href="/index.php/Admincp/User/index/t/1/p/4.html">4</a><a
+										class="num" href="/index.php/Admincp/User/index/t/1/p/5.html">5</a><a
+										class="num" href="/index.php/Admincp/User/index/t/1/p/6.html">6</a><a
+										class="num" href="/index.php/Admincp/User/index/t/1/p/7.html">7</a>
+									<a class="next"
+										href="/index.php/Admincp/User/index/t/1/p/2.html">下一页</a>
+								</div>
+							</div></td>
+					</TR> -->
+					<TR>
+						<TD colspan="10" style="display: none;">
+							<table width="100%" border="0">
+								<tr>
+									<td width="33%" nowrap><INPUT id="select" value="选择所有"
+										type=button name="select"> <INPUT id="delete"
+										value="删除所选" type="submit" name="delete"
+										onClick="return confirm('是否删除选择的会员?');"> <!--
+									<INPUT id="blacklist" value="设置资料需要审核" type="submit" name="needcheck" onClick="return confirm('是否对选择的会员设置资料需要审核?');">
+									<INPUT id="blacklist" value="设置资料不需要审核" type="submit" name="noneedcheck" onClick="return confirm('是否对选择的会员设置资料需要审核?');">                                    
+                                    <INPUT id="blacklistno" value="取消黑名单" type="submit" name="blacklistno" onClick="return confirm('是否对选择的会员取消黑名单?');">
+                                    --></td>
+									<td width="67%" nowrap></td>
+								</tr>
+							</table>
+						</td>
+					</TR>
+
+				</TABLE>
+			</FORM>
+			<H4>&nbsp;</H4>
+			<!-- end #mainContent -->
+		</DIV>
+		<DIV id=footer>
+			<P>&nbsp;</P>
+			<!-- end #footer -->
+		</DIV>
+		<!-- end #container -->
+	</DIV>
+</BODY>
+</html>

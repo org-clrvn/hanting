@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>会员中心_韩汀社区</title>
+
+	<link href="/Public/css/common.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/layui.css" />
+</head>
+
+
+<body>
+<!--header-->
+<div class="header" id="botop">
+	<div class="h_top">
+		<div class="b_box">
+			<div class="top_nav">
+				<a href="fw-sy.html">首页</a><span class="ht_line"></span> <a
+					href="/c/lsm/merchantEnterUrl">商家入驻</a><span class="ht_line"></span>
+				<a href="javascript.void(0);">帮助中心</a><span class="ht_line"></span>
+				<a href="javascript.void(0);">关于韩汀</a><span class="ht_line"></span>
+				<a href="javascript.void(0);">联系我们</a>
+			</div>
+
+			<div class="top_right">
+				<a href="javascript.void(0);">郑石平</a> <span class="ht_line"></span>
+				<a href="javascript.void(0);">退出</a> <span class="ht_line"></span>
+				<a href="javascript.void(0);"><img src="Public/images/e_i.png"
+												   alt="" /></a>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="b_box nav_header community_header">
+		<a class="logo my_logo" href="javascript.void(0);">御品韩汀</a>
+		<ul class="member_nav_ul">
+			<li class="cur" id="li1"><a href="">商家中心</a><span
+					class="my_nav_i"></span></li>
+			<li  id="li2"><a href="javascript.void(0);">个人中心</a><span
+					class="my_nav_i"></span></li>
+			<li id="li3"><a href="javascript.void(0);">账户设置</a><span
+					class="my_nav_i"></span></li>
+			<li id="li4"><a href="/xx-xtxx.html">消息</a><span
+					class="my_nav_i"></span></li>
+		</ul>
+	</div>
+</div>
+<!--header end-->
+
+<a href="javascript.void(0);" class="zy_box">预定流程指引</a>
+
+<div class="bg_c4 pt1" id="vmCnt">
+	<div class="b_box">
+		<!--member left-->
+		<div class="member_left">
+			<h1 class="member_left_title seller_title">商家中心</h1>
+			<ul class="member_system_ul sj_left_ul">
+				<li class="cur"><a href="#"><span class="msp2 pre_c1"></span>我收到的预定</a></li>
+				<li><a href="#"><span class="msp2 pre_c2"></span>我发布的服务</a></li>
+				<li><a href="#"><span class="msp2 pre_c3"></span>我提交的鉴定</a></li>
+				<li><a href="#"><span class="msp2 pre_c4"></span>我收到的评价</a></li>
+				<li><a href="#"><span class="msp2 pre_c5"></span>我发出的物流</a></li>
+				<li><a href="#"><span class="msp2 pre_c6"></span>我收到的退款<span
+						class="sp_acon_1"></span></a></li>
+				<li><a href="#"><span class="msp2 pre_c3"></span>我的服务类别</a></li>
+				<li><a href="#"><span class="msp2 pre_c3"></span>我提交的托管</a></li>
+			</ul>
+		</div>
+		<!--member left end-->
+		<!--member right-->
+		<div class="member_right site_msg_w">
+			<div class="member_system_r_top">
+				<div class="search_right_box">
+					<div class="search_sec">
+						<form action="javascript:void(0);" method="get">
+							<input type="text" name="orderID" placeholder="输入订单号进行搜索" class="s_sec_input"  style="font-size: 14px" />
+							<input type="submit" value="" name="tijiao" class="s_sec_btn" />
+						</form>
+					</div>
+				</div>
+				我收到的预定
+			</div>
+			<ul class="pre_about_info">
+				<li><a @click="queryAll()">全部<span
+						class="pre_asp" id="tip">0</span></a></li>
+				<li><a @click="queryByStatus(this.user.userID,1,1)">待付款<span class="pre_asp" id="tip1">1</span></a>
+				</li>
+				<li><a @click="queryByStatus(this.user.userID,1,2)">待接单<span
+						class="pre_asp" id="tip2">0</span></a></li>
+				<li><a @click="queryByStatus(this.user.userID,1,4)">待确认<span class="pre_asp" id="tip3">0</span></a>
+				</li>
+				<li><a @click="queryByStatus(this.user.userID,1,6)">已完成<span class="pre_asp" id="tip4">1</span></a>
+				</li>
+			</ul>
+			<h2 class="pre_h2_title">最新预订了</h2>
+			<ul class="you_yd_news">
+				<li v-for="(temp,index) in pageInfo.list">
+					<div class="you_yd_img">
+						<img :src="'Uploads/image/2019-3/'+temp.serviceCoverImg" width="135" height="90"  @click="querysd(temp.serviceID)"/>
+					</div>
+					<a class="btn_a_yyd" @click="queryDetail(temp.orderID)">查看详细</a>
+					<div class="you_yd_text">
+						<div class="yd_xm_title" v-text="temp.serviceTitle"></div>
+						<p v-text="temp.serviceFuTitle"></p>
+						<p>
+							<span class="num_1" v-text="temp.totalPrice"></span>
+						</p>
+					</div>
+
+				</li>
+				<div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-9" >
+					<a href="javascript:;" class="layui-laypage-prev" data-page="0" @click="queryOrderByUidAndStatusId(pageInfo.list[0].orderStatus,pageInfo.prePage)">上一页</a>
+					<a href="javascript:;" class="layui-laypage-next" data-page="2" @click="queryOrderByUidAndStatusId(pageInfo.list[0].orderStatus,pageInfo.nextPage)">下一页</a>
+				</div>
+			</ul>
+
+
+		</div>
+		<!--member right end-->
+		<div class="clear"></div>
+		<!--ad-->
+		<div class="ad_box2">
+			<a href=""><img src="Public/images/ad/4.jpg" alt="底部广告 说吧" /></a>
+		</div>
+		<!--ad end-->
+	</div>
+</div>
+
+<div class="b_box">
+	<a href="javascript.void(0);" class="footer_text">
+		<h2 class="index_h2_title c_0">
+			加入我们<span class="c_1">&#8226;</span>招募韩国商家、华人
+		</h2>
+		<div class="bg_ic_1">招募韩国商家、海外留学生、华人兼司机、导游</div>
+		<div class="bt_btn_d">
+			<span class="btn_a_more bs_bt_a">商家入驻</span>
+		</div>
+	</a>
+</div>
+
+<!--footer-->
+<div class="footer community_footer_dl">
+	<dl class="footer_dl">
+		<dt>
+			<div class="footer_ewm_box">
+				<img src="Public/images/footer_ewm.png" alt="" />
+			</div>
+			<span class="ft_ewm_name">御品韩汀</span>
+		</dt>
+		<dd>
+			<p class="flink">
+				<a href="javascript.void(0);">商家入驻</a>| <a
+					href="javascript.void(0);">帮助中心</a>| <a href="javascript.void(0);">人才招聘</a>|
+				<a href="javascript.void(0);">联系我们</a>| <a
+					href="javascript.void(0);">网站地图</a>| <a href="javascript.void(0);">使用条款</a>
+			</p>
+			<p>湘ICP备16017200号-2 | 地址：湖南省株洲市天元区丽景滨江二栋2502号 |网站负责人：夏先生 |
+				邮编：412000</p>
+
+			<p>官方QQ：3119683838 | 微信公众号：御品韩汀 | 官网邮箱：3119683838@qq.com |
+				官方热线电话：0731-2286-7673</p>
+
+			<p>Copyright © 2017 - 2018 yphting.com 版权所有</p>
+		</dd>
+	</dl>
+</div>
+<!--footer end-->
+
+<!--right nav-->
+<ul class="right_nav">
+	<li><a href="javascript:void(0);" class="rn_tel">客服电话</a>
+		<div class="over_show kf_tel">0731-2286-7673</div></li>
+	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a>
+		<div class="over_show">
+			<img src="Public/images/r_ewm.jpg" alt="" class="gw_ewm" />
+		</div></li>
+	<li><a
+			href="tencent://Message/?Uin=3119683838&websiteName=http://yphting.zglxkj.com=&Menu=yes"
+			class="rn_kf">在线客服</a></li>
+	<li><a href="#" class="rn_top">Back top</a></li>
+</ul>
+<!--right nav end-->
+
+<!--签到 弹框-->
+<div class="qdao_pop">
+	签到成功！<br />您已获得10积分
+</div>
+<!--签到 弹框 end-->
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js" ></script>
+<script type="text/javascript" src="js/layui.all.js" ></script>
+<script type="text/javascript" src="js/vue.js" ></script>
+<script type="text/javascript">
+
+
+	/*获得登录Id*/
+	window.sessionStorage.setItem("uid",26);
+	var uid = window.sessionStorage.getItem("uid");
+
+
+	var VmCnt = new Vue({
+		el:"#vmCnt",
+		data:{
+			user:{},
+			pageInfo:{}
+		},
+		methods:{
+			queryUser:function(){
+				myVue = this;
+
+				$.getJSON("/api/queryUserById/"+uid,function(data){
+					myVue.user=data;
+				});
+
+			},
+			/*查询所有订单*/
+			queryAll:function (uid,pageNum) {
+
+				myVue = this;
+				$.getJSON("/business/queryBusinessOrder/"+uid+"/"+pageNum+"/2",function (data) {
+					myVue.pageInfo = data;
+				});
+			},
+			/*根据订单状态查询所有订单*/
+			queryByStatus:function(uid,pageNum,status){
+				myVue = this;
+				$.getJSON("/business/queryBusinessOrder/"+status+"/"+uid+"/"+pageNum+"/2",function (data) {
+
+					if(status==1){
+						$("pre_h2_title").html("待付款");
+
+					}else  if(status==2){
+						$("pre_h2_title").html("待接单");
+					}else  if(status==4){
+						$("pre_h2_title").html("待确认");
+					}else  if(status==6){
+						$("pre_h2_title").html("已完成");
+					}
+					myVue.pageInfo = data;
+				});
+			}
+
+		},
+		created:function(){
+
+			/*(1待付款2待接单3待提供服务4已提供服务6服务完成6服务取消7未接单8已退款)*/
+			this.queryByStatus(uid,1,1);
+			this.queryByStatus(uid,1,2);
+			this.queryByStatus(uid,1,4);
+			this.queryByStatus(uid,1,6);
+			this.queryAll(uid,1);
+		}
+
+	})
+</script>
+</html>

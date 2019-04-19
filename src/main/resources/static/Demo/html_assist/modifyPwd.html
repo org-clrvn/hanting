@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/Demo/layui/css/layui.css" />
+<title></title>
+<style type="text/css">
+body {
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<fieldset class="layui-elem-field layui-field-title">
+		<legend>修改密码</legend>
+		<div class="layui-field-box">
+			<div class="site-text">
+				<form class="layui-form layui-form-pane" action="" method="GET">
+					<div class="layui-form-item">
+						<label class="layui-form-label">登录ID</label>
+						<div class="layui-input-inline">
+							<div style="color: black; margin-left: 75px; font-size: 18px;"
+								class="layui-form-mid layui-word-aux" id=user>辅助文字</div>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">当前密码</label>
+						<div class="layui-input-inline">
+							<input type="password" id=apwd required lay-verify="required"
+								placeholder="请输入密码" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">新密码</label>
+						<div class="layui-input-inline">
+							<input type="password" id=pwd name="password" required
+								lay-verify="required" placeholder="请输入密码" autocomplete="off"
+								class="layui-input">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn" lay-submit lay-filter="formDemoPane">立即提交</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</fieldset>
+</body>
+<script type="text/javascript" src="/Demo/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="/Demo/layui/layui.js"></script>
+<script type="text/javascript">
+	layui.use('form', function() {
+		var form = layui.form;
+		var txt = window.sessionStorage.getItem("user");
+		var txt2 = window.sessionStorage.getItem("userid");
+		var pwd = window.sessionStorage.getItem("pwd");
+		var userid = $('#user').text(txt);
+		$("#apwd").blur(function() {
+			if ($("#apwd").val() != pwd && $("#apwd").val() != "") {
+				layer.msg('输入的当前密码不一致', {
+					icon : 2,
+					time : 1500
+				});
+				return false;
+			}
+		});
+		$("#pwd").blur(function() {
+			if ($("#pwd").val() == pwd) {
+				layer.msg('不能与近期密码相似', {
+					icon : 2,
+					time : 1500
+				});
+				return false;
+			}
+		});
+		//监听提交
+		form.on('submit(formDemoPane)', function(data) {
+			$.get("/jwl/moAdmin", {
+				password : $('[name=password]').val(),
+				adminid : txt2
+			}, function(vo) {
+				if (vo.code == 200) {
+					layer.closeAll(); 
+					layer.msg('登录过时，请重新登录', {
+						  icon: 6,
+						  time: 1500 //2秒关闭（如果不配置，默认是3秒）
+						}, function(){
+							var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+							parent.layer.close(index);
+							parent.location.href = '/demo/login/login.html';
+						});
+					return true;
+				} else {
+					layer.msg(vo.msg, {
+						icon : 6
+					});
+					return false;
+				}
+			}, "JSON");
+			return false;
+		});
+	});
+</script>
+</html>

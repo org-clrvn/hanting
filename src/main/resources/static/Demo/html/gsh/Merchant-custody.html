@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<BODY class=oneColLiqCtrHdr>
+<DIV id=container >
+    <DIV id=header >
+        <H1>商家托管<BR></H1>
+        <form method="post" name="searchform" action="">
+            <TABLE border=0 class="tablesorter" cellSpacing=1 cellPadding=6 width="100%">
+                <TBODY>
+                <TR>
+                    <TD >
+                      用户昵称:
+                      <input name="username" type="text" style="width:120px;" value="" size="15" maxlength="10" />
+					  店铺名称:
+                      <input name="shopname" type="text" style="width:120px;"  value="" size="15" maxlength="10" />
+                  会员组:
+                  <label for="group_id"></label>
+                  <select name="group_id" id="group_id">
+                    <option value="0">所有</option>
+                    <option value="2">大陆商家用户</option><option value="3">海外商家用户</option>                  </select>                 托管状态:
+                <label for="group_id"></label>
+                <select name="status" id="status">
+                    <option value="">所有</option>
+                    <option value="0"  >未审核</option>
+                    <option value="1">托管中</option>
+                </select>
+                  <input type="submit" name="button" id="button" value="搜索">
+				  </TD>
+                    <TD >&nbsp;</TD
+                </TR>
+                </TBODY>
+            </TABLE>
+        </form>
+    </DIV>
+    <DIV id="mainContent"><BR>
+        <TABLE id="itemlist" class="tablesorter" border=0 cellSpacing=1 cellPadding=6 width="100%">
+            <THEAD>
+            <TR>
+                <!--
+                <th width="50">&nbsp;</th>
+                -->
+                <th width="5%" bgcolor="#ffffff">序号</th>
+                <TH width="10%" scope=col align=center>用户昵称</TH>
+                <TH width="10%" scope=col align=center>商铺名称</TH>
+                <TH width="10%" scope=col align=center>托管提交时间</TH>
+                <TH width="10%" scope=col align=center>托管通过时间</TH>
+                <TH width="10%" scope=col align=center>托管开始时间</TH>
+                <TH width="10%" scope=col align=center>托管到期时间</TH>
+                <TH width="5%" scope=col align=center>托管状态</TH>
+                <TH width="5%" scope=col align=center>月数</TH>
+                <TH width="10%" scope=col align=center>托管费用(金币)</TH>
+                <TH width="10%" align=center scope=col>会员组</TH>
+                <TH width="10%" align=center>店铺状态</TH>
+               <TH  width="10%" scope=col>操作</TH>
+            </TR>
+            </THEAD>
+                <tbody>
+            <tr>
+                    <td align="center" bgcolor="#ffffff">
+                        1                    </td>
+                    <td align="center" nowrap>　</td>
+                    <td align="center" nowrap>梦的N次方</td>
+                    <td align="center" nowrap>2018-09-20 09</td>
+                    <td align="center" nowrap></td>
+
+                    <td align="center" nowrap>2018-09-20</td>
+                    <td align="center" nowrap>2018-10-20</td>
+                    <td align="center" nowrap>
+                        <span style="color:red;">未审核</span>                    </td>
+                    <td align="center" nowrap>1</td>
+                    <td align="center" nowrap>0</td>
+                    <td align="center" nowrap>大陆商家用户</td>
+                    <td align="center" nowrap>
+                        <span>开启</span>                    </td>
+                    <td nowrap >
+                    <a href="/index.php/Admincp/User/trustsvedit/ts_id/27/userid/304.html">修改</a>　
+                                        </td>
+                </tr><tr>
+                    <td align="center" bgcolor="#ffffff">
+                        2                    </td>
+                    <td align="center" nowrap>彭小家</td>
+                    <td align="center" nowrap>韩汀</td>
+                    <td align="center" nowrap>2018-09-08 12</td>
+                    <td align="center" nowrap></td>
+
+                    <td align="center" nowrap>2018-09-12</td>
+                    <td align="center" nowrap>2018-12-12</td>
+                    <td align="center" nowrap>
+                        <span style="color:red;">未审核</span>                    </td>
+                    <td align="center" nowrap>3</td>
+                    <td align="center" nowrap>200</td>
+                    <td align="center" nowrap>大陆商家用户</td>
+                    <td align="center" nowrap>
+                        <span>开启</span>                    </td>
+                    <td nowrap >
+                    <a href="/index.php/Admincp/User/trustsvedit/ts_id/25/userid/302.html">修改</a>　
+                                        </td>
+                </tr><tr>
+                    <td align="center" bgcolor="#ffffff">
+                        3                    </td>
+                    <td align="center" nowrap>楚大爷</td>
+                    <td align="center" nowrap>商家测试</td>
+                    <td align="center" nowrap>2018-09-08 11</td>
+                    <td align="center" nowrap>2018-09-08 11:08</td>
+
+                    <td align="center" nowrap>2018-09-30</td>
+                    <td align="center" nowrap>2018-11-30</td>
+                    <td align="center" nowrap>
+                        <span style="color:red;">未审核</span>                    </td>
+                    <td align="center" nowrap>2</td>
+                    <td align="center" nowrap>100</td>
+                    <td align="center" nowrap>大陆商家用户</td>
+                    <td align="center" nowrap>
+                        <span>开启</span>                    </td>
+                    <td nowrap >
+                    <a href="/index.php/Admincp/User/trustsvedit/ts_id/22/userid/292.html">修改</a>　
+                                        </td>
+                </tr>               </tbody>
+            </TABLE>
+        <TABLE class="tablesorter" border=0 cellSpacing=1 cellPadding=6 width="100%">
+          <TR>
+                <TD colspan="8"><div class="digg"><div>  <span class="current">1</span><a class="num" href="/index.php/Admincp/User/trustservice/p/2.html">2</a> <a class="next" href="/index.php/Admincp/User/trustservice/p/2.html">下一页</a> </div></div></td>
+
+      </TABLE>
+    <H4>&nbsp;</H4><!-- end #mainContent --></DIV>
+    <DIV id=footer>
+    <P>&nbsp;</P><!-- end #footer --></DIV><!-- end #container --></DIV></BODY>
+</html>

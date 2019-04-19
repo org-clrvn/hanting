@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.hting.dao.lsy.IRecordDao">
+
+    <select id="queryAll" resultType="RecordVo">
+        SELECT u.userID,g.`recordID`,u.`userName`,g.`acquisitionMode`,g.`recordDate`,
+        g.`recordDescribe`,g.`recordInAndOut`,g.`auditStatus` FROM Goldnotes AS g
+        JOIN `user` AS u ON g.`userID`=u.`userID`
+        <where>
+            <if test="userName!=null">
+                u.userName like '%${userName}%'
+            </if>
+        </where>
+    </select>
+
+    <select id="queryIntegral" resultType="IntegralVo">
+        SELECT i.`IRID`,u.`userName`,i.`IRDate`,i.`IRDescribe`,i.`recordInAndOut` FROM `integralrecord` AS i
+        JOIN `user` AS u ON i.`userID`=u.`userID`
+        <where>
+            <if test="userName!=null">
+                u.`userName` like '%${userName}%'
+            </if>
+        </where>
+    </select>
+
+    <select id="querytixian" resultType="PutforwardrecordVo">
+        SELECT p.`pfID`,u.userID,u.`userName`,p.`submitTime`,p.`money`,p.`bankAccount`,b.`bankName`,p.`openBankName`,pr.`submitTime`,
+          u.`userRealName`,p.`auditStatus`,pr.`adminOpinion` FROM goldnotes AS g
+          JOIN Putforward AS p ON g.`recordDate`=p.`submitTime`
+          JOIN `user` AS u ON g.`userID`=u.`userID`
+          JOIN PutforwardRecord AS pr ON pr.`pfrID`=p.`pfID`
+          JOIN banktype AS b ON p.`bankID`=b.`bankID`
+    </select>
+
+    <select id="queryRecharge" resultType="RecordVo">
+        SELECT u.userID,g.`recordID`,u.`userName`,g.`acquisitionMode`,g.`recordDate`,
+        g.`recordDescribe`,g.`recordInAndOut`,g.`auditStatus` FROM Goldnotes AS g
+        JOIN `user` AS u ON g.`userID`=u.`userID`
+        <where>
+            <if test="userName!=null">
+                u.userName like '%${userName}%' and
+            </if>
+            g.`acquisitionMode`=6 or g.`acquisitionMode`=5
+        </where>
+    </select>
+
+
+
+</mapper>

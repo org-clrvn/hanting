@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.hting.dao.lsy.IAssessDao">
+
+    <select id="queryAllAssess" resultType="PingVo">
+        SELECT c.`pcID`,u.`userName`,p.`title`,c.`content`,c.`reviewTime` FROM post AS p
+        JOIN postcomment AS c ON p.`postID`=c.`postID`
+        JOIN `user` AS u ON p.`userID`=u.`userID`
+        <where>
+            <if test="userName!=null">
+                u.userName like '%${userName}%'
+            </if>
+            <if test="title!=null">
+                p.title like '%${title}%'
+            </if>
+        </where>
+    </select>
+</mapper>

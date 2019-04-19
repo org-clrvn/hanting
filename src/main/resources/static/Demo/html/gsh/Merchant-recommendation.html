@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<BODY class=oneColLiqCtrHdr>
+<DIV id=container >
+    <DIV id=header >
+        <H1>商家推荐<BR></H1>
+        <form method="post" name="searchform" action="">
+            <TABLE border=0 class="tablesorter" cellSpacing=1 cellPadding=6 width="100%">
+                <TBODY>
+                <TR>
+                    <TD >
+                      用户昵称:
+                      <input name="username" type="text" style="width:120px;" size="15" maxlength="10" />
+					  店铺名称:
+                      <input name="shopname" type="text" style="width:120px;" size="15" maxlength="10" />
+                  会员组:
+                  <label for="group_id"></label>
+                  <select name="group_id" id="group_id">
+                    <option value="0">所有</option>
+                    <option value="2">大陆商家用户</option><option value="3">海外商家用户</option>                  </select>                 是否推荐:
+                <label for="group_id"></label>
+                <select name="is_recommend" id="is_recommend">
+                    <option value="">所有</option>
+                    <option value="0">推荐</option>
+                    <option value="0">不推荐</option>
+                </select>
+				  <input type="hidden" name="t" value="0" />
+				  
+				  </TD>
+                    <TD >&nbsp;</TD>
+                </TR>
+                </TBODY>
+            </TABLE>
+        </form>
+    </DIV>
+    <DIV id="mainContent"><BR>
+        <FORM method=post name=form2 action="" id="listform">
+            <TABLE id="itemlist" class="tablesorter" border=0 cellSpacing=1 cellPadding=6 width="100%">
+                <THEAD>
+                <TR>
+					<!--
+                    <th width="50">&nbsp;</th>
+					-->
+                    <th width="5%" bgcolor="#ffffff">序号</th>
+                    <TH width="10%" scope=col align=center>用户昵称</TH>
+					<TH width="10%" scope=col align=center>商铺名称</TH>                    <TH width="10%" align=center scope=col>服务类别</TH>
+                    <TH width="10%" scope=col align=center>会员组</TH>
+                    <TH width="10%" align=center scope=col>电话</TH>
+                    <TH width="10%" align=center>店铺状态</TH>
+                    <TH width="10%" align=center>是否推荐</TH>
+                  <TH  width="1%">操作</TH>
+                </TR>
+                </THEAD>
+                    <tbody>
+                <tr>
+                        <td align="center" bgcolor="#ffffff">
+                            1                        </td>
+                        <td align="center" nowrap>我来也</td>
+						<td align="center" nowrap>海外留学订制</td>
+                        <td align="center" nowrap>留学中介</td>
+                        <td align="center" nowrap>大陆商家用户</td>
+
+                        <td align="center" nowrap>18825775992</td>
+                        <td align="center" nowrap>
+                            <span>开启</span>                        </td>
+                        <td align="center" nowrap>
+                            <span style="color:red;">是</span>                        </td>
+                        <td nowrap >
+                        <a href="/index.php/Admincp/User/recommendedit/catid/5/userid/186.html">修改</a>　
+                        </td>
+                    </tr><tr>
+                        <td align="center" bgcolor="#ffffff">
+                            2                        </td>
+                        <td align="center" nowrap>静静想我</td>
+						<td align="center" nowrap>神之翻译</td>
+                        <td align="center" nowrap>学习资源</td>
+                        <td align="center" nowrap>大陆商家用户</td>
+
+                        <td align="center" nowrap>22202222</td>
+                        <td align="center" nowrap>
+                            <span>开启</span>                        </td>
+                        <td align="center" nowrap>
+                            <span style="color:red;">是</span>                        </td>
+                        <td nowrap >
+                        <a href="/index.php/Admincp/User/recommendedit/catid/7/userid/169.html">修改</a>　
+                        </td>
+                    </tr><tr>
+                        <td align="center" bgcolor="#ffffff">
+                            3                        </td>
+                        <td align="center" nowrap>静静想我</td>
+						<td align="center" nowrap>神之翻译</td>
+                        <td align="center" nowrap>韩语翻译</td>
+                        <td align="center" nowrap>大陆商家用户</td>
+
+                        <td align="center" nowrap>22202222</td>
+                        <td align="center" nowrap>
+                            <span>开启</span>                        </td>
+                        <td align="center" nowrap>
+                            <span style="color:red;">是</span>                        </td>
+                        <td nowrap >
+                        <a href="/index.php/Admincp/User/recommendedit/catid/6/userid/169.html">修改</a>　
+                        </td>
+                    </tr>                   </tbody>
+                </TABLE>
+            <TABLE id="itemlist" class="tablesorter" border=0 cellSpacing=1 cellPadding=6 width="100%">
+<TR>
+                    <TD colspan="8"><div class="digg"><div>  <span class="current">1</span><a class="num" href="/index.php/Admincp/User/recommend/p/2.html">2</a> <a class="next" href="/index.php/Admincp/User/recommend/p/2.html">下一页</a> </div></div></td>
+
+          </TABLE>
+</FORM>
+        <H4>&nbsp;</H4><!-- end #mainContent --></DIV>
+        <DIV id=footer>
+        <P>&nbsp;</P><!-- end #footer --></DIV><!-- end #container --></DIV></BODY>
+</html>
