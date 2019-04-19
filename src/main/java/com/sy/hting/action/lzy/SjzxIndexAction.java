@@ -36,11 +36,11 @@ public class SjzxIndexAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        if (orderBiz.judgeAuditStatusByUserID(13) == 2){
+        if (orderBiz.judgeAuditStatusByUserID(29) == 2){
             //System.out.println("user:"+indexBiz.loadUserByUserID(12));
-            model.addAttribute("user", indexBiz.loadUserByUserID(13));
+            model.addAttribute("user", indexBiz.loadUserByUserID(29));
 
-            PageInfo<Orders> pageInfo = orderBiz.loadOrdersList(num, size, 13);
+            PageInfo<Orders> pageInfo = orderBiz.loadOrdersList(num, size, 29);
             System.err.println(JSON.toJSON(pageInfo.getList()));
             model.addAttribute("data", pageInfo);
 

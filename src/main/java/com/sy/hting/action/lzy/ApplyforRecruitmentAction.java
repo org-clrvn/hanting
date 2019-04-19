@@ -59,7 +59,7 @@ public class ApplyforRecruitmentAction {
     @GetMapping("/skipRecruitmentPage")
     public String skipRecruitmentPage(HttpSession session, Model model){
         //保存登录用户的信息到HttpSession中
-        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(13));
+        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(29));
 
         //加载查询申请服务类别的所有信息
         model.addAttribute("sertypeItems", recruitmentBiz.loadServicetypeList());
@@ -109,7 +109,7 @@ public class ApplyforRecruitmentAction {
         user.setIdentityHandImg(File.separator + fileName4);
         identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
 
-        user.setUserID(13);
+        user.setUserID(29);
 
         String[] split = serviceID.split(",");
         user.setFirstServiceID(Integer.parseInt(split[0]));
@@ -128,7 +128,7 @@ public class ApplyforRecruitmentAction {
     @GetMapping("/skipSjrzShzlPage")
     public String skipSjrzShzlPage(HttpSession session) {
         User user = (User)session.getAttribute("user");
-        if (orderBiz.judgeAuditStatusByUserID(13) == 2){
+        if (orderBiz.judgeAuditStatusByUserID(29) == 2){
             return "redirect:/lzy/c/skipSjrzYktsjPage";
         }else {
             return "redirect:/lzy/c/SjrzShzlPage";

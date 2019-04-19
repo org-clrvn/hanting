@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="|${gjz}_韩汀社区|"></title>
+    <link rel="stylesheet" href="/Public/css/common.css">
+    <link href="/Public/images/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="/layDate-v5.0.9/laydate/theme/default/laydate.css">
+    <style type="text/css">
+        .tubiao img {
+            height: 18px;
+            width: 18px;
+            margin-right: 19px;
+        }
+        .community_dl{
+            border-bottom: 1px solid #d9d9d9;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<iframe name="topost" id="topost" style="display:none;"></iframe>
+<!--header-->
+<div class="header" id="botop">
+    <div class="h_top">
+        <div class="b_box">
+            <div class="top_nav">
+                <a href="#">首页</a><span class="ht_line"></span>
+                <a href="/c/wcc/merchantEnterUrlCheck">商家入驻</a><span class="ht_line"></span>
+                <a href="javascript:;">帮助中心</a><span class="ht_line"></span>
+                <a href="javascript:;">关于韩汀</a><span class="ht_line"></span>
+                <a href="javascript:;">联系我们</a>
+            </div>
+            <div class="top_right login_right">
+
+            </div>
+        </div>
+    </div>
+    <div class="b_box nav_header community_header">
+        <a href="/c/wcc/homeUrl" class="logo logo_community">御品韩汀.社区</a>
+        <ul class="nav_ul">
+            <li><a href="/services/tours"><span class="community_sp csp1"></span><br>自驾游</a>
+            </li>
+            <li><a href="/services/tofacelift"><span class="community_sp csp2"></span><br>微整形</a>
+            </li>
+            <li><a href="/services/toeducationagents"><span
+                    class="community_sp csp3"></span><br>留学中介</a></li>
+            <li><a href="/services/tokoreanTranslator"><span
+                    class="community_sp csp4"></span><br>韩语翻译</a></li>
+            <li><a href="/services/tolearningResource"><span
+                    class="community_sp csp5"></span><br>学习资源</a></li>
+            <li><a href="#"><span class="community_sp csp6"></span><br>韩汀物流</a></li>
+            <li><a href="/c/sxy/column?pid=1&page=1&orderId=1&essence=0"><span class="community_sp csp7"></span><br>韩汀·论坛
+                中文</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--banner-->
+<div class="b_box ad_box">
+    <div class="fl ad_left">
+        <a th:href="${homeTopAdvertingList[0].apcurl}" target="_blank"><img th:src="${homeTopAdvertingList[0].aimgpath}" th:alt="${homeTopAdvertingList[0].atitle}"  th:style="|width:${homeTopAdvertingList[0].whObj.width}px; height:${homeTopAdvertingList[0].whObj.height}px;|"> </a>
+    </div>
+    <div class="fr ad_right">
+        <a th:href="${homeTopAdvertingList[1].apcurl}" target="_blank"><img th:src="${homeTopAdvertingList[1].aimgpath}" th:alt="${homeTopAdvertingList[1].atitle}"  th:style="|width:${homeTopAdvertingList[1].whObj.width}px; height:${homeTopAdvertingList[1].whObj.height}px;|"> </a>
+    </div>
+</div>
+<!--banner end-->
+
+<a href="/index.php/Home/About/help.html" target="_blank" class="zy_box">预定流程指引</a>
+
+<div class="bg_c2 pt1" id="vmCnt">
+    <div class="b_box">
+        <dl class="community_dl">
+            <dt th:text="|全部>${gjz}|"></dt>
+            <dd>
+                <div class="search_sec">
+                    <form method="post" action="/index.php/Home/Service/learning.html">
+                        <input type="text" name="findkey"  placeholder="搜索" class="s_sec_input">
+                        <input type="button" class="s_sec_btn">
+                        <input type="hidden" name="__hash__" value="d2d1b9e1875b57e5099abeb8716d7882_a89ff3f6a76adff42855327dbb39b670">
+                    </form>
+                </div>
+            </dd>
+        </dl>
+        <div class="rank_box">
+            <ul class="rank_list_ul">
+                <li th:each="temp,index :${serviceList.list}">
+                    <a class="rank_one_a">
+                        <div class="star_img">
+                            <img style="z-index:3;position: absolute;" src="/Public/images/tj.png" width="50" height="50">
+                            <img width="380" height="254" th:src="${temp.serviceCoverImg}" th:onclick="|querydetails(${temp.serviceID})|">
+                        </div>
+                        <dl class="rank_text_dl">
+                            <dt th:text="${temp.serviceTitle}"></dt>
+                            <dd>
+                                <div class="i_3" th:text="${temp.servicePrice}"></div>
+                                <div class="star_pl"><span class="star_pl_sp" style="width:60%;"></span></div>
+                            </dd>
+                        </dl>
+                    </a>
+                    <a href="javascript:void(0);" class="rank_sec_a">
+                        <dl class="star_user_dl">
+                            <dt>
+                                <img class="star_user_photo" th:src="${temp.shopImg}">
+                                <img src="/Public/images/hg_i.png" alt="" class="hg_i l_hi">
+                            </dt>
+                            <dd>
+                                <div class="star_user_name_s">
+                                    <h3 class="star_user_name" th:text="${temp.shopName}"></h3>
+                                </div>
+                                <p class="star_user_text"></p>
+                            </dd>
+                        </dl>
+                    </a>
+                </li>
+            </ul>
+
+            <!--page-->
+            <div class="page_w">
+                <div class="page">
+                    <div class="nav">
+                        <a class="page_prev prevdisabled" href="|/c/wcc/goToService/${serviceList.prePage}/${serviceList.pageSize}/${gjz}|">上一页</a>
+                        <span class="cur"><span th:text="${serviceList.pageNum}" class="cur"></span>/<span th:text="${serviceList.pages}" class="cur"></span></span>
+                        <a class="page_next" href="|/c/wcc/goToService/${serviceList.nextPage}/${serviceList.pageSize}/${gjz}|">下一页</a>
+                    </div>
+                </div>
+            </div>
+            <!--page end-->
+        </div>
+
+        <!--ad-->
+        <div class="ad_box2">
+            <a th:href="${homeBottomAdvertingList[0].apcurl}" target="_blank"><img th:src="${homeBottomAdvertingList[0].aimgpath}" th:alt="${homeBottomAdvertingList[0].atitle}"  th:style="|width:${homeBottomAdvertingList[0].whObj.width}px; height:${homeBottomAdvertingList[0].whObj.height}px;|"</a>
+        </div>
+        <!--ad end-->
+    </div>
+</div>
+
+<div class="b_box">
+    <!--ad end-->
+    <h2 class="index_h2_title c_0">加入我们<span class="c_1">•</span>招募韩国商家、华人</h2>
+    <div class="bg_ic_1">招募韩国商家、海外留学生、华人兼司机、导游</div>
+    <div class="bt_btn_d"><a href="/c/wcc/merchantEnterUrlCheck" class="footer_text"><span class="btn_a_more bs_bt_a">商家入驻</span></a></div>
+</div>
+
+<!--footer-->
+<div class="footer community_footer_dl">
+    <dl class="footer_dl">
+        <dt>
+            <div class="footer_ewm_box"><img src="/Public/images/footer_ewm.png" alt=""></div>
+            <span class="ft_ewm_name">御品韩汀</span>
+        </dt>
+        <dd>
+            <p class="flink"><a href="/index.php/Home/Member/seller.html">商家入驻</a>|<a
+                    href="/index.php/Home/About/help.html">帮助中心</a>|<a href="/index.php/Home/About/index/key/jobs.html">人才招聘</a>|<a
+                    href="/index.php/Home/About/contact.html">联系我们</a>|<a
+                    href="/index.php/Home/About/sitemap.html">网站地图</a>|<a
+                    href="/index.php/Home/About/terms.html">使用条款</a></p>
+            <p>湘ICP备16017200号-2 | 地址：湖南省株洲市天元区丽景滨江二栋2502号 |网站负责人：夏先生 | 邮编：412000</p>
+
+            <p>官方QQ：3119683838 | 微信公众号：御品韩汀 | 官网邮箱：3119683838@qq.com | 官方热线电话：0731-2286-7673</p>
+
+            <p>Copyright © 2017 - 2018 yphting.com 版权所有</p></dd>
+    </dl>
+</div>
+<!--footer end-->
+
+<!--right nav-->
+<ul class="right_nav">
+    <li><a href="javascript:void(0);" class="rn_tel">客服电话</a>
+        <div class="over_show kf_tel">0731-2286-7673</div>
+    </li>
+    <li><a href="javascript:void(0);" class="rn_wx">官方微信</a>
+        <div class="over_show"><img src="/Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
+    </li>
+    <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2901788417&site=qq&menu=yes" class="rn_kf">在线客服</a></li>
+    <li><a href="#" class="rn_top" style="display: none;">Back top</a></li>
+</ul>
+
+</body>
+
+<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/layDate-v5.0.9/laydate/laydate.js"></script>
+<script type="text/javascript" src="/Public/js/vue.js"></script>
+<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+
+<script>
+    function querydetails(servicesid) {
+        location.href = "/services/roadshow?serviceid=" + servicesid;
+    }
+</script>
+</html>

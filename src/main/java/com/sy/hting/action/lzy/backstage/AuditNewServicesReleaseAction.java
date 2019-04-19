@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  * @author lizeyun
  * @return
  * @exception
- * @Time 2019/4/13 15:08
+ * @Time 2019/4/29 15:08
  */
 @Controller
 @RequestMapping("/bt/lzy/c")
@@ -38,8 +38,8 @@ public class AuditNewServicesReleaseAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,13).getList());;
-        model.addAttribute("serList", newSerBiz.loadSerUserSertypeVoList(num, size, 13));
+        System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,29).getList());;
+        model.addAttribute("serList", newSerBiz.loadSerUserSertypeVoList(num, size, 29));
 
         return "backstage/Refund_Management";
     }
@@ -57,7 +57,7 @@ public class AuditNewServicesReleaseAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        model.addAttribute("serData", newSerBiz.findSerUserSertypeVoByServiceID(13, serviceID));
+        model.addAttribute("serData", newSerBiz.findSerUserSertypeVoByServiceID(29, serviceID));
 
         return "backstage/Update_audit";
     }

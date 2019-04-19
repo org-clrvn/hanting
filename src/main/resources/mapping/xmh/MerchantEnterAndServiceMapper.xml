@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sy.hting.dao.xmh.IMerchantEnterAndServiceDao">
+    <!-- 自定义：查询所有 -->
+    <sql id="selectAll">
+		select * from
+	</sql>
+
+    <!-- 查询服务类别（如自驾游、微整形） -->
+    <select id="queryServiceType" resultType="Servicetype">
+        <include refid="selectAll"/>
+        `servicetype`
+        <where>
+            <if test="stpid==null and selectNum==null">
+                `stPid` IS NULL
+            </if>
+            <if test="stpid!=null and selectNum==1">
+                `stPid` = #{stpid}
+            </if>
+            <if test="stpid!=null and selectNum==2">
+                `stPid` = (SELECT `stPid` FROM `servicetype` WHERE `stid` = #{stpid})
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询服务语言 -->
+    <select id="queryLanguagetype" resultType="Languagetype">
+        <include refid="selectAll"/>
+        `languagetype`
+    </select>
+
+    <!-- 查询专业 -->
+    <select id="queryMajortype" resultType="Majortype">
+        <include refid="selectAll"/>
+        `majortype`
+    </select>
+
+    <!-- 查询中韩行政地区 -->
+    <select id="querySharea" resultType="Sharea">
+        <include refid="selectAll"/>
+        `sharea`
+        <where>
+            <if test="pid==null and flag==false">
+                `level` = 0
+            </if>
+            <if test="pid!=null and flag==false">
+                `pid` = #{pid}
+            </if>
+            <if test="pid!=2 and flag==true">
+                `pid` IN (SELECT `areaID` FROM `sharea` WHERE `pid` = #{pid})
+            </if>
+            <if test="pid==2 and flag==true">
+                `pid` = 2
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询商家入驻时缴纳保证金额 -->
+    <select id="queryBond" resultType="Float">
+		SELECT bond FROM `system`
+	</select>
+
+    <!-- 商家入驻 -->
+    <update id="merchantMove">
+        UPDATE `user`
+        <set>
+            <if test="obj.merchanttype!=null and obj.merchanttype!=''">
+                `merchanttype` = #{obj.merchanttype},
+            </if>
+            <if test="obj.firstserviceid!=null and obj.firstserviceid!=''">
+                `firstserviceid` = #{obj.firstserviceid},`firstServiceMoney` = 0,
+            </if>
+            <if test="obj.secondserviceid!=null and obj.secondserviceid!=''">
+                `secondserviceid` = #{obj.secondserviceid},`secondServiceMoney` = 0,
+            </if>
+            <if test="obj.hospitalname!=null and obj.hospitalname!=''">
+                `hospitalname` = #{obj.hospitalname},
+            </if>
+            <if test="obj.shopname!=null and obj.shopname!=''">
+                `shopName` = #{obj.shopname},
+            </if>
+            <if test="obj.userrealname!=null and obj.userrealname!=''">
+                `userrealname` = #{obj.userrealname},
+            </if>
+            <if test="obj.signature!=null and obj.signature!=''">
+                `signature` = #{obj.signature},
+            </if>
+            <if test="obj.shopimg!=null and obj.shopimg!=''">
+                `shopimg` = #{obj.shopimg},
+            </if>
+            <if test="obj.identitytype!=null and obj.identitytype!=''">
+                `identitytype` = #{obj.identitytype},
+            </if>
+            <if test="obj.identitynumder!=null and obj.identitynumder!=''">
+                `identitynumder` = #{obj.identitynumder},
+            </if>
+            <if test="obj.identityrealname!=null and obj.identityrealname!=''">
+                `identityrealname` = #{obj.identityrealname},
+            </if>
+            <if test="obj.country!=null and obj.country!=''">
+                `country` = #{obj.country},
+            </if>
+            <if test="obj.provincialid!=null and obj.provincialid!=''">
+                `provincialid` = #{obj.provincialid},
+            </if>
+            <if test="obj.cityid!=null and obj.cityid!=''">
+                `cityid` = #{obj.cityid},
+            </if>
+            <if test="obj.countyid!=null and obj.countyid!=''">
+                `countyid` = #{obj.countyid},
+            </if>
+            <if test="obj.addetail!=null and obj.addetail!=''">
+                `addetail` = #{obj.addetail},
+            </if>
+            <if test="obj.identitypositiveimg!=null and obj.identitypositiveimg!=''">
+                `identitypositiveimg` = #{obj.identitypositiveimg},
+            </if>
+            <if test="obj.identitynegativeimg!=null and obj.identitynegativeimg!=''">
+                `identitynegativeimg` = #{obj.identitynegativeimg},
+            </if>
+            <if test="obj.identityhandimg!=null and obj.identityhandimg!=''">
+                `identityhandimg` = #{obj.identityhandimg},
+            </if>
+            <if test="obj.languagenametext!=null and obj.languagenametext!=''">
+                `languagenametext` = #{obj.languagenametext},
+            </if>
+            <if test="obj.majornametext!=null and obj.majornametext!=''">
+                `majornametext` = #{obj.majornametext},
+            </if>
+            <if test="obj.livecityid!=null and obj.livecityid!=''">
+                `livecityid` = #{obj.livecityid},
+            </if>
+            <if test="obj.merchantemail!=null and obj.merchantemail!=''">
+                `merchantemail` = #{obj.merchantemail},
+            </if>
+            <if test="obj.merchantphone!=null and obj.merchantphone!=''">
+                `merchantphone` = #{obj.merchantphone},
+            </if>
+            <if test="obj.qq!=null and obj.qq!=''">
+                `qq` = #{obj.qq},
+            </if>
+            <if test="obj.wechat!=null and obj.wechat!=''">
+                `wechat` = #{obj.wechat},
+            </if>
+            <if test="obj.profession!=null and obj.profession!=''">
+                `profession` = #{obj.profession},
+            </if>
+            <if test="obj.height!=null and obj.height!=''">
+                `height` = #{obj.height},
+            </if>
+            <if test="obj.constellation!=null and obj.constellation!=''">
+                `constellation` = #{obj.constellation},
+            </if>
+            <if test="obj.age!=null and obj.age!=''">
+                `age` = #{obj.age},
+            </if>
+            <if test="obj.selfintroduction!=null and obj.selfintroduction!=''">
+                `selfintroduction` = #{obj.selfintroduction},
+            </if>
+            `userMoney` = `userMoney` - #{bond},`guaranteeMoney` = #{bond},`auditStatus` = 1,`merchantLevel` = 0,
+        </set>
+        <where>
+            `userID` = #{obj.userid}
+        </where>
+    </update>
+
+    <!-- 添加金币流向记录 -->
+    <insert id="saveGoldNotes">
+		INSERT INTO `goldnotes`(`userID`,`acquisitionMode`,`recordDate`,`recordDescribe`,`recordInAndOut`,`auditStatus`)
+		VALUES(#{userID},#{acquisitionMode},NOW(),#{recordDescribe},#{recordInAndOut},#{auditStatus})
+	</insert>
+    <!-- 查询首页社区服务最新帖子 -->
+    <select id="queryHomePostVO" resultType="com.sy.hting.vo.xmh.HomePostVO">
+		SELECT p.`postID`,p.`title`,u.`userID`,u.`userName`,u.`userImgPath`,f.`fmName`,IF(TIMESTAMPDIFF(HOUR,p.`releaseTime`,NOW())>=24,CONCAT(TIMESTAMPDIFF(DAY,p.`releaseTime`,NOW()),'天'), CONCAT(CONCAT(FLOOR(TIMESTAMPDIFF(MINUTE,p.`releaseTime`,NOW())/60),'小时'),CONCAT(FLOOR(SUBSTRING_INDEX(TIMESTAMPDIFF(MINUTE,p.`releaseTime`,NOW())/60,'.',-1)/10000*60),'分钟'))) AS 'releaseTime',
+		(SELECT u.`userID` FROM `postcomment` AS pc INNER JOIN `user` AS u ON u.`userID` = pc.`commentator` WHERE `postID` = p.`postID` AND pid = 0 AND `operatingState` = 1 ORDER BY `reviewTime` DESC LIMIT 1) AS `replyUserID`,
+		(SELECT u.`userName` FROM `postcomment` AS pc INNER JOIN `user` AS u ON u.`userID` = pc.`commentator` WHERE `postID` = p.`postID` AND pid = 0 AND `operatingState` = 1 ORDER BY `reviewTime` DESC LIMIT 1) AS `replyUserName`,
+		(SELECT IF(TIMESTAMPDIFF(HOUR,pc.`reviewTime`,NOW())>=24,CONCAT(TIMESTAMPDIFF(DAY,pc.`reviewTime`,NOW()),'天'), CONCAT(CONCAT(FLOOR(TIMESTAMPDIFF(MINUTE,pc.`reviewTime`,NOW())/60),'小时'),CONCAT(FLOOR(SUBSTRING_INDEX(TIMESTAMPDIFF(MINUTE,pc.`reviewTime`,NOW())/60,'.',-1)/10000*60),'分钟'))) FROM `postcomment` AS pc INNER JOIN `user` AS u ON u.`userID` = pc.`commentator` WHERE `postID` = p.`postID` AND pid = 0 AND `operatingState` = 1 ORDER BY `reviewTime` DESC LIMIT 1) AS `replyUserTime`
+		FROM `post` AS p
+		INNER JOIN `user` AS u
+		ON u.`userID` = p.`userID`
+		INNER JOIN `forummanagement` AS f
+		ON f.`fmID` = p.`fmID`
+        WHERE f.`fmID` NOT IN(29)
+		ORDER BY p.`releaseTime` DESC
+		LIMIT 18
+	</select>
+    <!-- 查询首页社区服务美妆天地板块帖子 -->
+    <select id="queryHomePostByMakeup" resultType="Post">
+		SELECT *
+		FROM `post`
+		WHERE `fmID` = 29
+		ORDER BY `releaseTime` DESC
+		LIMIT 9
+	</select>
+    <!-- 查询排版编号 -->
+    <select id="queryGraphyid" resultType="Integer">
+        SELECT `graphyid` FROM `advertisement` WHERE `atid` IN(#{str}) GROUP BY `graphyid`
+    </select>
+    <!-- 根据广告版块类别编号查询图片宽高 -->
+    <select id="queryImgWidthAndHeightVO" resultType="com.sy.hting.vo.xmh.ImageWidthAndHeightVO">
+		SELECT SUBSTRING_INDEX(`atpx`,'*',1) AS `width`,SUBSTRING_INDEX(`atpx`,'*',-1) AS `height`
+		FROM `advertisementtype`
+		WHERE `atid` = #{0}
+	</select>
+    <!-- Map：查询首页广告位 -->
+    <resultMap type="com.sy.hting.vo.xmh.AdvertisementVO" id="AdvertisementVOMap">
+        <id column="aid" property="aid"/>
+        <result column="atid" property="atid"/>
+        <result column="atitle" property="atitle"/>
+        <result column="aorder" property="aorder"/>
+        <result column="aimgPath" property="aimgpath"/>
+        <result column="apcUrl" property="apcurl"/>
+        <result column="aappUrl" property="aappurl"/>
+        <result column="state" property="state"/>
+        <result column="startTime" property="starttime"/>
+        <result column="rentaMonth" property="rentamonth"/>
+        <result column="price" property="price"/>
+        <result column="adescribe" property="adescribe"/>
+        <association property="whObj" column="atid" select="queryImgWidthAndHeightVO"/>
+    </resultMap>
+    <!-- 首页社区服务广告位查询 -->
+    <select id="queryHomeAdvertising" resultMap="AdvertisementVOMap">
+        <include refid="selectAll"/>
+        `advertisement`
+        <where>
+            <if test="flag==1">
+                `atid` = 1
+            </if>
+            <if test="flag==2">
+                <if test="graphyid==1"> `atid` IN(4,5,6,7) ORDER BY FIELD(`atid`,4,5,6,7)</if>
+                <if test="graphyid==2"> `atid` IN(5,6,4,7) ORDER BY FIELD(`atid`,5,6,4,7)</if>
+                <if test="graphyid==3"> `atid` IN(7,4,5,6) ORDER BY FIELD(`atid`,7,4,5,6)</if>
+            </if>
+            <if test="flag==3">
+                `atid` = 2
+            </if>
+            <if test="flag==4">
+                `atid` = 3
+            </if>
+        </where>
+        <if test="flag==1">
+            ORDER BY `aorder`
+        </if>
+    </select>
+    <!-- 首页社区服务星级服务商家推荐 -->
+    <select id="querySerRecommendVO" resultType="com.sy.hting.vo.xmh.SerRecommendVO">
+		SELECT U.`userID`,`userName`,`userImgPath`,`shopImg`,`selfIntroduction`,`merchantLevel`
+        FROM `user` U,`advertisementrecommended` R
+        WHERE U.`userID`=R.`userID` AND `serviceID`=#{stid} AND flag=1
+        ORDER BY `place`
+        LIMIT 9
+	</select>
+    <!-- 根据服务列表条件查询服务 -->
+    <select id="queryServices" resultType="com.sy.hting.vo.xmh.ServicesVO">
+       SELECT `user`.`shopName` AS shopName,`user`.`shopImg` AS shopImg,services.`serviceCoverImg` as serviceCoverImg,services.`servicePrice` as servicePrice,services.`serviceTitle` as serviceTitle,servicetype.`stName` as stName,
+	    servicelevel.`serlevelName` as serlevelName,sharea.`name` as name,`services`.`serviceID` AS serviceID
+        FROM services
+        INNER JOIN `user` ON `user`.`userID`=services.`userID`
+        INNER JOIN serviceType ON servicetype.`stid`=services.`stid`
+        INNER JOIN servicelevel ON servicelevel.`serlevelID`=services.`servicelevel`
+        INNER JOIN sharea ON sharea.`areaID`=services.`country`
+    </select>
+</mapper>

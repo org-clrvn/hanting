@@ -42,7 +42,7 @@ public class SjrzOrderAction {
         /*userCount.getUserID()*/
 
         //加载查询商家中心-订单列表-订单表
-        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 13);
+        PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 29);
         System.out.println("action:"+data.getList());
         model.addAttribute("ordersList", data);
 
@@ -61,7 +61,7 @@ public class SjrzOrderAction {
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
 
-        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 13));
+        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, 29));
 
         /*if (orderBiz.judgeServices(12) > 0){
 
@@ -74,7 +74,7 @@ public class SjrzOrderAction {
     public String loadFirBecServiceIDByUserID(HttpSession session, Model model){
         User userCount = (User) session.getAttribute("user");
         /*userCount.getUserID()*/
-        User user = orderBiz.loadFirBecServiceIDByUserID(13);
+        User user = orderBiz.loadFirBecServiceIDByUserID(29);
 
         if (user != null){
             model.addAttribute("user", user);
@@ -112,7 +112,7 @@ public class SjrzOrderAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID()
 
-        return orderBiz.judgeAuditStatusByUserID(13) == 2 ? "sjrz-yktsj":"sjrz-shzl";
+        return orderBiz.judgeAuditStatusByUserID(29) == 2 ? "sjrz-yktsj":"sjrz-shzl";
     }
 
     @GetMapping("/skipSjzxXzjPage")

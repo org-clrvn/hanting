@@ -25,7 +25,7 @@ import java.util.Map;
  * @author lizeyun
  * @return
  * @exception
- * @Time 2019/4/13 14:40
+ * @Time 2019/4/29 14:40
  */
 @SuppressWarnings("all")
 @Controller
@@ -69,7 +69,7 @@ public class NewServiceReleaseAction {
         service.setServiceImgUrlFour(File.separator + fileName5);
         serviceImgUrlFourTemp.transferTo(new File("E:\\myfile" + File.separator + fileName5));
 
-        service.setUserID(13);
+        service.setUserID(29);
 
         int count = newSerBiz.addServices(service);
 

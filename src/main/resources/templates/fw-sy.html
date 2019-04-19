@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>首页_韩汀社区</title>
+		<link rel="stylesheet" href="/Public/css/common.css" />
+		<link rel="stylesheet" href="/Public/css/owl.carousel.css" />
+        <link rel="stylesheet" href="/Public/css/ssk.css" />
+		<link href="/Public/images/favicon.ico" rel="shortcut icon">
+	</head>
+
+	<body>
+		<!--header-->
+		<div class="header" id="botop">
+			<div class="h_top">
+				<div class="b_box">
+					<div class="top_nav">
+						<a href="#">首页</a><span class="ht_line"></span>
+						<a href="/c/wcc/merchantEnterUrlCheck">商家入驻</a><span class="ht_line"></span>
+						<a href="javascript:;">帮助中心</a><span class="ht_line"></span>
+						<a href="javascript:;">关于韩汀</a><span class="ht_line"></span>
+						<a href="javascript:;">联系我们</a>
+					</div>
+					<div class="top_right">
+					</div>
+				</div>
+			</div>
+			<div class="b_box nav_header community_header">
+				<a href="/c/wcc/homeUrl" class="logo logo_community">御品韩汀.社区</a>
+				<ul class="nav_ul">
+					<li>
+						<a href="/services/tours"><span class="community_sp csp1"></span><br>自驾游</a>
+					</li>
+					<li>
+						<a href="/services/tofacelift"><span class="community_sp csp2"></span><br>微整形</a>
+					</li>
+					<li>
+						<a href="/services/toeducationagents"><span class="community_sp csp3"></span><br>留学中介</a>
+					</li>
+					<li>
+						<a href="/services/tokoreanTranslator"><span class="community_sp csp4"></span><br>韩语翻译</a>
+					</li>
+					<li>
+						<a href="/services/tolearningResource"><span class="community_sp csp5"></span><br>学习资源</a>
+					</li>
+					<li>
+						<a href="#"><span class="community_sp csp6"></span><br>韩汀物流</a>
+					</li>
+					<li>
+						<a href="#"><span class="community_sp csp7"></span><br>韩汀·论坛 中文</a>
+					</li>
+				</ul>
+			</div>
+            <div class="top">
+                <input type="text" id="txt" placeholder="请输入关键字"/>
+                <input type="button" value="搜索" id="search"/>
+                <ul id="keywords"></ul>
+            </div>
+		</div>
+		<!--header end-->
+
+		<!--轮播图start-->
+		<div id="index_banner" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+			<div class="owl-wrapper-outer">
+				<div class="owl-wrapper" style=" left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
+					<div class="owl-item" th:each="temp,iter : ${homeSlideshowList}" th:style="|width:1583px; height:346px;|">
+						<div class="item">
+							<a th:href="${temp.apcurl}"><img th:src="${temp.aimgpath}" th:alt="${temp.atitle}" class="w100"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="owl-controls clickable">
+				<div class="owl-pagination" >
+					<div class="owl-page" th:each="temp,iter : ${homeSlideshowList}"><span class=""></span></div>
+				</div>
+				<div class="owl-buttons" style="display:none;">
+					<div class="owl-prev">prev</div>
+					<div class="owl-next">next</div>
+				</div>
+			</div>
+		</div>
+		<!--轮播图 end-->
+
+		<div class="b_box">
+			<!--服务社区 start-->
+			<h2 class="index_h2_title">社区服务 开启您韩国生活的第一步 中文</h2>
+			<div class="community_service_box">
+				<ul class="community_service_ul">
+					<li th:each="temp,iter : ${homeMidAdvertingList}" th:style="|width:${temp.whObj.width}px; height:${temp.whObj.height}px;|">
+						<a th:href="${temp.apcurl}">
+							<img th:src="${temp.aimgpath}" th:alt="${temp.atitle}">
+							<div class="sv_over_show">
+								<h3 class="sv_h3" th:text="${temp.atitle}"></h3>
+								<p class="sv_text" th:text="${temp.adescribe}"></p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!--服务社区 end-->
+
+			<!--商家推荐 start-->
+			<h2 class="index_h2_title">星级服务商家推荐</h2>
+			<div class="star_recommend_tab">
+				<a href="javascript:void(0);" class="cur">自驾游</a>
+				<a href="javascript:void(0);">微整形</a>
+				<a href="javascript:void(0);">留学中介</a>
+				<a href="javascript:void(0);">韩语翻译</a>
+				<a href="javascript:void(0);">学习资源</a>
+			</div>
+			<div class="star_recommend_show" style="display:block;">
+				<div id="star_recommend_part_0" class="owl-carousel star_recommend_part owl-theme" style="opacity: 1; display: block;">
+					<div class="owl-wrapper-outer">
+						<div class="owl-wrapper" th:style="|width: ${recommendStidByOneList.size()*400*2}px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(0px, 0px, 0px);|">
+							<div class="owl-item" style="width: 400px;" th:each="temp,iter : ${recommendStidByOneList}">
+								<div class="item">
+									<a href="javascript:void(0);">
+										<div class="star_img"><img th:src="${temp.shopImg}" th:alt="${temp.userName}"></div>
+										<dl class="star_user_dl">
+											<dt><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" class="star_user_photo">
+											</dt>
+											<dd>
+												<div class="star_user_name_s">
+													<h3 class="star_user_name" th:text="${temp.userName}"></h3>
+													<div class="star_pl"><span class="star_pl_sp" th:style="|width:${temp.merchantLevel*20}%;|"></span></div>
+												</div>
+												<p class="star_user_text" th:utext="${temp.selfIntroduction}"></p>
+											</dd>
+										</dl>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="owl-controls clickable">
+                        <div class="owl-pagination" th:if="${recommendStidByOneList.size()>0}">
+                            <div class="owl-page active" th:if="${recommendStidByOneList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByOneList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByOneList.size()>6}"><span class=""></span></div>
+                        </div>
+                    </div>
+				</div>
+				<a target="_blank" href="/c/lsm/serviceUrl?htmlUrl=fw-zjyTAB&stid=1" class="btn_a_more">查看更多<span class="sp_i_1"></span></a>
+			</div>
+            <div class="star_recommend_show" style="display:none;">
+                <div id="star_recommend_part_1" class=" owl-carousel star_recommend_part owl-theme" style="opacity: 0; display: block;">
+                    <div class="owl-wrapper-outer">
+                        <div class="owl-wrapper" th:style="|width: ${recommendStidByTwoList.size()*400*2}px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(0px, 0px, 0px);|">
+                            <div class="owl-item" style="width: 400px;" th:each="temp,iter : ${recommendStidByTwoList}">
+                                <div class="item">
+                                    <a href="javascript:void(0);">
+                                        <div class="star_img"><img th:src="${temp.shopImg}" th:alt="${temp.userName}"></div>
+                                        <dl class="star_user_dl">
+                                            <dt><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" class="star_user_photo">
+                                            </dt>
+                                            <dd>
+                                                <div class="star_user_name_s">
+                                                    <h3 class="star_user_name" th:text="${temp.userName}"></h3>
+                                                    <div class="star_pl"><span class="star_pl_sp" th:style="|width:${temp.merchantLevel*20}%;|"></span></div>
+                                                </div>
+                                                <p class="star_user_text" th:utext="${temp.selfIntroduction}"></p>
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-controls clickable">
+                        <div class="owl-pagination" th:if="${recommendStidByTwoList.size()>0}">
+                            <div class="owl-page active" th:if="${recommendStidByTwoList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByTwoList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByTwoList.size()>6}"><span class=""></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a target="_blank" href="/c/lsm/serviceUrl?htmlUrl=fw-wzxTAB&stid=2" class="btn_a_more">查看更多<span class="sp_i_1"></span></a>
+            </div>
+            <div class="star_recommend_show" style="display:none;">
+                <div id="star_recommend_part_2" class="owl-carousel star_recommend_part owl-theme" style="opacity: 0; display: block;">
+                    <div class="owl-wrapper-outer">
+                        <div class="owl-wrapper" th:style="|width: ${recommendStidByThreeList.size()*400*2}px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(0px, 0px, 0px);|">
+                            <div class="owl-item" style="width: 400px;" th:each="temp,iter : ${recommendStidByThreeList}">
+                                <div class="item">
+                                    <a href="javascript:void(0);">
+                                        <div class="star_img"><img th:src="${temp.shopImg}" th:alt="${temp.userName}"></div>
+                                        <dl class="star_user_dl">
+                                            <dt><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" class="star_user_photo">
+                                            </dt>
+                                            <dd>
+                                                <div class="star_user_name_s">
+                                                    <h3 class="star_user_name" th:text="${temp.userName}"></h3>
+                                                    <div class="star_pl"><span class="star_pl_sp" th:style="|width:${temp.merchantLevel*20}%;|"></span></div>
+                                                </div>
+                                                <p class="star_user_text" th:utext="${temp.selfIntroduction}"></p>
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-controls clickable">
+                        <div class="owl-pagination" th:if="${recommendStidByThreeList.size()>0}">
+                            <div class="owl-page active" th:if="${recommendStidByThreeList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByThreeList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByThreeList.size()>6}"><span class=""></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a target="_blank" href="/c/lsm/serviceUrl?htmlUrl=fw-lxzjTAB&stid=3" class="btn_a_more">查看更多<span class="sp_i_1"></span></a>
+            </div>
+            <div class="star_recommend_show" style="display:none;">
+                <div id="star_recommend_part_3" class="owl-carousel star_recommend_part owl-theme" style="opacity: 0; display: block;">
+                    <div class="owl-wrapper-outer">
+                        <div class="owl-wrapper" th:style="|width: ${recommendStidByFourList.size()*400*2}px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(0px, 0px, 0px);|">
+                            <div class="owl-item" style="width: 400px;" th:each="temp,iter : ${recommendStidByFourList}">
+                                <div class="item">
+                                    <a href="javascript:void(0);">
+                                        <div class="star_img"><img th:src="${temp.shopImg}" th:alt="${temp.userName}"></div>
+                                        <dl class="star_user_dl">
+                                            <dt><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" class="star_user_photo">
+                                            </dt>
+                                            <dd>
+                                                <div class="star_user_name_s">
+                                                    <h3 class="star_user_name" th:text="${temp.userName}"></h3>
+                                                    <div class="star_pl"><span class="star_pl_sp" th:style="|width:${temp.merchantLevel*20}%;|"></span></div>
+                                                </div>
+                                                <p class="star_user_text" th:utext="${temp.selfIntroduction}"></p>
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-controls clickable">
+                        <div class="owl-pagination" th:if="${recommendStidByFourList.size()>0}">
+                            <div class="owl-page active" th:if="${recommendStidByFourList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByFourList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByFourList.size()>6}"><span class=""></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a target="_blank" href="/c/lsm/serviceUrl?htmlUrl=fw-hyfyTAB&stid=4" class="btn_a_more">查看更多<span class="sp_i_1"></span></a>
+            </div>
+            <div class="star_recommend_show" style="display:none;">
+                <div id="star_recommend_part_4" class="owl-carousel star_recommend_part owl-theme" style="opacity: 0; display: block;">
+                    <div class="owl-wrapper-outer">
+                        <div class="owl-wrapper" th:style="|width: ${recommendStidByFiveList.size()*400*2}px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(0px, 0px, 0px);|">
+                            <div class="owl-item" style="width: 400px;" th:each="temp,iter : ${recommendStidByFiveList}">
+                                <div class="item">
+                                    <a href="javascript:void(0);">
+                                        <div class="star_img"><img th:src="${temp.shopImg}" th:alt="${temp.userName}"></div>
+                                        <dl class="star_user_dl">
+                                            <dt><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" class="star_user_photo">
+                                            </dt>
+                                            <dd>
+                                                <div class="star_user_name_s">
+                                                    <h3 class="star_user_name" th:text="${temp.userName}"></h3>
+                                                    <div class="star_pl"><span class="star_pl_sp" th:style="|width:${temp.merchantLevel*20}%;|"></span></div>
+                                                </div>
+                                                <p class="star_user_text" th:utext="${temp.selfIntroduction}"></p>
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-controls clickable">
+                        <div class="owl-pagination" th:if="${recommendStidByFiveList.size()>0}">
+                            <div class="owl-page active" th:if="${recommendStidByFiveList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByFiveList.size()>3}"><span class=""></span></div>
+                            <div class="owl-page" th:if="${recommendStidByFiveList.size()>6}"><span class=""></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a target="_blank" href="/c/lsm/serviceUrl?htmlUrl=fw-xxzyTAB&stid=5" class="btn_a_more">查看更多<span class="sp_i_1"></span></a>
+            </div>
+            <!--商家推荐 end-->
+			<!--广告 start-->
+			<div class="ad_box">
+				<div class="fl ad_left">
+					<a th:href="${homeTopAdvertingList[0].apcurl}" target="_blank"><img th:src="${homeTopAdvertingList[0].aimgpath}" th:alt="${homeTopAdvertingList[0].atitle}"  th:style="|width:${homeTopAdvertingList[0].whObj.width}px; height:${homeTopAdvertingList[0].whObj.height}px;|"> </a>
+				</div>
+				<div class="fr ad_right">
+					<a th:href="${homeTopAdvertingList[1].apcurl}" target="_blank"><img th:src="${homeTopAdvertingList[1].aimgpath}" th:alt="${homeTopAdvertingList[1].atitle}"  th:style="|width:${homeTopAdvertingList[1].whObj.width}px; height:${homeTopAdvertingList[1].whObj.height}px;|"> </a>
+				</div>
+			</div>
+			<!--广告 end-->
+		</div>
+
+		<!--论坛 start-->
+		<div class="bg_c1">
+			<div class="b_box">
+				<h2 class="index_h2_title c_0"><a href=""></a><a href="/index.php/Home/Bbs/hotlist.html">韩汀社区 学习 交流 互助不亦乐乎</a></h2>
+				<div class="study_box">
+					<div id="study_box" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+						<!--item-->
+						<div class="owl-wrapper-outer">
+                            <div class="owl-wrapper" style="width: 7200px; left: 0px; display: block; transition: all 400ms ease 0s; transform: translate3d(0px, 0px, 0px);">
+                                <div class="owl-item" style="width: 1200px;" th:if="${homePostVOList.size()>0}">
+                                    <div class="item">
+										<div class="study_part">
+											<ul class="study_part_ul">
+												<li th:each="temp,iter : ${homePostVOList}" th:if="${iter.count<=3}">
+													<a href="javascript:;" class="study_style" th:text="${temp.fmName}"></a>
+													<h4 class="study_h4"><a href="javascript:void(0);" th:text="${temp.title}"></a></h4>
+													<dl class="study_dl">
+														<dt><a href="javascript:void(0);"><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" height="50" class="star_user_photo"></a></dt>
+														<dd>
+															<p class="study_p1">
+																<a href="javascript:void(0);" th:text="${temp.userName}"></a> •
+																<a href="#" th:text="${temp.fmName}"></a>
+																• <span th:text="${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}"></span>
+																<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
+																<span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
+																<a href="#" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}"></a>
+															</p>
+															<p class="date_sp" th:text="${temp.releaseTime+'前'}"></p>
+														</dd>
+													</dl>
+												</li>
+											</ul>
+											<ul class="study_part_ul">
+												<li th:each="temp,iter : ${homePostVOList}" th:if="${iter.count>=4&&iter.count<=6}">
+													<a href="javascript:;" class="study_style" th:text="${temp.fmName}"></a>
+													<h4 class="study_h4"><a href="javascript:void(0);" th:text="${temp.title}"></a></h4>
+													<dl class="study_dl">
+														<dt><a href="javascript:void(0);"><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" height="50" class="star_user_photo"></a></dt>
+														<dd>
+															<p class="study_p1">
+																<a href="javascript:void(0);" th:text="${temp.userName}"></a> •
+																<a href="#" th:text="${temp.fmName}"></a>
+																• <span th:text="${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}"></span>
+																<span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
+																<span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
+																<a href="#" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}"></a>
+															</p>
+															<p class="date_sp" th:text="${temp.releaseTime+'前'}"></p>
+														</dd>
+													</dl>
+												</li>
+											</ul>
+											<div class="study_right">
+												<a href="#" class="study_style">美妆天地</a>
+												<ul class="study_video_ul">
+													<li class="last" th:each="temp,iter : ${homePostMakeUpList}" th:if="${iter.count<=3}">
+														<div class="study_video_img">
+															<a href="javascript:void(0);"><img th:src="${temp.coverpath}" th:alt="${temp.title}" width="170" height="100"><span class="video_tiem" th:text="${temp.time}"></span></a>
+														</div>
+														<p class="study_video_text">
+															<a href="javascript:void(0);" th:text="${temp.title}"></a>
+														</p>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+                                </div>
+                                <div class="owl-item" style="width: 1200px;" th:if="${homePostVOList.size()>6}">
+                                    <div class="item">
+                                            <div class="study_part">
+                                                <ul class="study_part_ul">
+                                                    <li th:each="temp,iter : ${homePostVOList}" th:if="${iter.count>=7&&iter.count<=9}">
+                                                        <a href="javascript:;" class="study_style" th:text="${temp.fmName}"></a>
+                                                        <h4 class="study_h4"><a href="javascript:void(0);" th:text="${temp.title}"></a></h4>
+                                                        <dl class="study_dl">
+                                                            <dt><a href="javascript:void(0);"><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" height="50" class="star_user_photo"></a></dt>
+                                                            <dd>
+                                                                <p class="study_p1">
+                                                                    <a href="javascript:void(0);" th:text="${temp.userName}"></a> •
+                                                                    <a href="#" th:text="${temp.fmName}"></a>
+                                                                    • <span th:text="${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}"></span>
+                                                                    <span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
+                                                                    <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
+                                                                    <a href="#" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}"></a>
+                                                                </p>
+                                                                <p class="date_sp" th:text="${temp.releaseTime+'前'}"></p>
+                                                            </dd>
+                                                        </dl>
+                                                    </li>
+                                                </ul>
+                                                <ul class="study_part_ul">
+                                                    <li th:each="temp,iter : ${homePostVOList}" th:if="${iter.count>=10&&iter.count<=12}">
+                                                        <a href="javascript:;" class="study_style" th:text="${temp.fmName}"></a>
+                                                        <h4 class="study_h4"><a href="javascript:void(0);" th:text="${temp.title}"></a></h4>
+                                                        <dl class="study_dl">
+                                                            <dt><a href="javascript:void(0);"><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" height="50" class="star_user_photo"></a></dt>
+                                                            <dd>
+                                                                <p class="study_p1">
+                                                                    <a href="javascript:void(0);" th:text="${temp.userName}"></a> •
+                                                                    <a href="#" th:text="${temp.fmName}"></a>
+                                                                    • <span th:text="${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}"></span>
+                                                                    <span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
+                                                                    <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
+                                                                    <a href="#" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}"></a>
+                                                                </p>
+                                                                <p class="date_sp" th:text="${temp.releaseTime+'前'}"></p>
+                                                            </dd>
+                                                        </dl>
+                                                    </li>
+                                                </ul>
+                                                <div class="study_right">
+                                                    <a href="/index.php/Home/Bbs/lists/cid/9.html" class="study_style">美妆天地</a>
+                                                    <ul class="study_video_ul">
+                                                        <li class="last" th:each="temp,iter : ${homePostMakeUpList}" th:if="${iter.count>=4&&iter.count<=6}">
+                                                            <div class="study_video_img">
+                                                                <a href="javascript:void(0);"><img th:src="${temp.coverpath}" th:alt="${temp.title}" width="170" height="100"><span class="video_tiem" th:text="${temp.time}"></span></a>
+                                                            </div>
+                                                            <p class="study_video_text">
+                                                                <a href="javascript:void(0);" th:text="${temp.title}"></a>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="owl-item" style="width: 1200px;" th:if="${homePostVOList.size()>12}">
+                                    <div class="item">
+                                            <div class="study_part">
+                                                <ul class="study_part_ul">
+                                                    <li th:each="temp,iter : ${homePostVOList}" th:if="${iter.count>=13&&iter.count<=15}">
+                                                        <a href="javascript:;" class="study_style" th:text="${temp.fmName}"></a>
+                                                        <h4 class="study_h4"><a href="javascript:void(0);" th:text="${temp.title}"></a></h4>
+                                                        <dl class="study_dl">
+                                                            <dt><a href="javascript:void(0);"><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" height="50" class="star_user_photo"></a></dt>
+                                                            <dd>
+                                                                <p class="study_p1">
+                                                                    <a href="javascript:void(0);" th:text="${temp.userName}"></a> •
+                                                                    <a href="#" th:text="${temp.fmName}"></a>
+                                                                    • <span th:text="${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}"></span>
+                                                                    <span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
+                                                                    <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
+                                                                    <a href="#" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}"></a>
+                                                                </p>
+                                                                <p class="date_sp" th:text="${temp.releaseTime+'前'}"></p>
+                                                            </dd>
+                                                        </dl>
+                                                    </li>
+                                                </ul>
+                                                <ul class="study_part_ul">
+                                                    <li th:each="temp,iter : ${homePostVOList}" th:if="${iter.count>=16&&iter.count<=18}">
+                                                        <a href="javascript:;" class="study_style" th:text="${temp.fmName}"></a>
+                                                        <h4 class="study_h4"><a href="javascript:void(0);" th:text="${temp.title}"></a></h4>
+                                                        <dl class="study_dl">
+                                                            <dt><a href="javascript:void(0);"><img th:src="${temp.userImgPath}" th:alt="${temp.userName}" height="50" class="star_user_photo"></a></dt>
+                                                            <dd>
+                                                                <p class="study_p1">
+                                                                    <a href="javascript:void(0);" th:text="${temp.userName}"></a> •
+                                                                    <a href="#" th:text="${temp.fmName}"></a>
+                                                                    • <span th:text="${temp.replyUserTime!=null&&temp.replyUserTime!=''?temp.replyUserTime+'前':''}"></span>
+                                                                    <span class="bbs_dot" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">·</span>
+                                                                    <span th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}">最后回复</span>
+                                                                    <a href="#" class="lst_nem" th:text="${temp.replyUserName}" th:if="${temp.replyUserTime!=null&&temp.replyUserTime!=''}"></a>
+                                                                </p>
+                                                                <p class="date_sp" th:text="${temp.releaseTime+'前'}"></p>
+                                                            </dd>
+                                                        </dl>
+                                                    </li>
+                                                </ul>
+                                                <div class="study_right">
+                                                    <a href="#" class="study_style">美妆天地</a>
+                                                    <ul class="study_video_ul">
+                                                        <li class="last" th:each="temp,iter : ${homePostMakeUpList}" th:if="${iter.count>=7&&iter.count<=9}">
+                                                            <div class="study_video_img">
+                                                                <a href="javascript:void(0);"><img th:src="${temp.coverpath}" th:alt="${temp.title}" width="170" height="100"><span class="video_tiem" th:text="${temp.time}"></span></a>
+                                                            </div>
+                                                            <p class="study_video_text">
+                                                                <a href="javascript:void(0);" th:text="${temp.title}"></a>
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-controls clickable">
+						    <div class="owl-pagination" th:if="${homePostVOList.size()>0}">
+							    <div class="owl-page active" th:if="${homePostVOList.size()>6}"><span class=""></span></div>
+							    <div class="owl-page" th:if="${homePostVOList.size()>6}"><span class=""></span></div>
+							    <div class="owl-page" th:if="${homePostVOList.size()>12}"><span class=""></span></div>
+						    </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="bt_btn_d">
+					<a href="#" class="btn_a_more btn_s2">查看更多<span class="sp_i_1"></span></a>
+				</div>
+            </div>
+        </div>
+		<!--论坛 end-->
+		<!--商家入驻 start-->
+		<div class="b_box">
+			<!--ad-->
+			<div class="ad_box2">
+				<a th:href="${homeBottomAdvertingList[0].apcurl}" target="_blank"><img th:src="${homeBottomAdvertingList[0].aimgpath}" th:alt="${homeBottomAdvertingList[0].atitle}"  th:style="|width:${homeBottomAdvertingList[0].whObj.width}px; height:${homeBottomAdvertingList[0].whObj.height}px;|"</a>
+			</div>
+			<!--ad end-->
+			<h2 class="index_h2_title c_0">加入我们<span class="c_1">•</span>招募韩国商家、华人</h2>
+			<div class="bg_ic_1">招募韩国商家、海外留学生、华人兼司机、导游</div>
+			<div class="bt_btn_d"><a href="/c/wcc/merchantEnterUrlCheck" class="footer_text"><span class="btn_a_more bs_bt_a">商家入驻</span></a></div>
+		</div>
+		<!--商家入驻 end-->
+
+		<!--footer-->
+		<div class="footer community_footer_dl">
+			<dl class="footer_dl">
+				<dt>
+					<div class="footer_ewm_box"><img src="/Public/images/footer_ewm.png" alt=""></div>
+					<span class="ft_ewm_name">御品韩汀</span>
+				</dt>
+				<dd>
+					<p class="flink">
+						<a href="/index.php/Home/Member/seller.html">商家入驻</a>|
+						<a href="/index.php/Home/About/help.html">帮助中心</a>|
+						<a href="/index.php/Home/About/index/key/jobs.html">人才招聘</a>|
+						<a href="/index.php/Home/About/contact.html">联系我们</a>|
+						<a href="/index.php/Home/About/sitemap.html">网站地图</a>|
+						<a href="/index.php/Home/About/terms.html">使用条款</a>
+					</p>
+					<p>湘ICP备16017200号-2 | 地址：湖南省株洲市天元区丽景滨江二栋2502号 |网站负责人：夏先生 | 邮编：412000</p>
+
+					<p>官方QQ：3119683838 | 微信公众号：御品韩汀 | 官网邮箱：3119683838@qq.com | 官方热线电话：0731-2286-7673</p>
+
+					<p>Copyright © 2017 - 2018 yphting.com 版权所有</p>
+				</dd>
+			</dl>
+		</div>
+		<!--footer end-->
+
+		<!--right nav-->
+		<ul class="right_nav">
+			<li>
+				<a href="javascript:void(0);" class="rn_tel">客服电话</a>
+				<div class="over_show kf_tel">0731-2286-7673</div>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="rn_wx">官方微信</a>
+				<div class="over_show"><img src="/Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
+			</li>
+			<li>
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2901788417&site=qq&menu=yes" class="rn_kf">在线客服</a>
+			</li>
+			<li>
+				<a href="#" class="rn_top">Back top</a>
+			</li>
+		</ul>
+		<!--right nav end-->
+
+	</body>
+	<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
+	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
+    <script type="text/javascript" src="/Public/js/ssk.js"></script>
+	<script type="text/javascript">
+        var t=4000;
+        var slideshowSize = [[${homeSlideshowList.size()}]];	//轮播图图片集合长度
+        //初始化轮播图宽度
+        $("#index_banner .owl-wrapper").css("width",slideshowSize*jQuery("#index_banner .owl-wrapper .owl-item").css("width").replace("px","")*2);
+        //保存轮播图切换位移3d值
+        var transX = parseInt($("#index_banner .owl-wrapper").css("transform").replace(/[^0-9\-,]/g,'').split(',')[4]);
+        //下一页
+        function go(){
+            var divWidth = parseInt($("#index_banner .owl-wrapper .owl-item").css("width").replace("px",""));
+            var size = ($("#index_banner .owl-wrapper .owl-item").length-1)*divWidth;
+            if(transX==-size){
+                transX = 0;
+                $("#index_banner .owl-wrapper").css("transition","all 1000ms ease 0s");
+                $("#index_banner .owl-wrapper").css("transform","translate3d("+transX+"px, 0px, 0px)");
+                $(".owl-pagination .owl-page").eq(0-transX/divWidth).attr("class","owl-page active").siblings().attr("class","owl-page");
+            }else{
+                transX-=divWidth;
+                $("#index_banner .owl-wrapper").css("transition","all 300ms ease 0s");
+                $("#index_banner .owl-wrapper").css("transform","translate3d("+transX+"px, 0px, 0px)");
+                $(".owl-pagination .owl-page").eq(0-transX/divWidth).attr("class","owl-page active").siblings().attr("class","owl-page");
+            }
+        }
+        //开始播放
+        function star(){
+            dsq=setInterval(go,t);
+        }
+        //关闭播放
+        function stopp(){
+            clearInterval(dsq);
+        }
+        //鼠标悬浮轮播图
+        $("#index_banner").hover(function(){
+            stopp();
+            $("#index_banner .owl-controls .owl-buttons").show();
+        },function(){
+            star();
+            $("#index_banner .owl-controls .owl-buttons").hide();
+        });
+        star();
+        //轮播图左右切换
+        $(".owl-prev,.owl-next").click(function(){
+            var divWidth = parseInt($("#index_banner .owl-wrapper .owl-item").css("width").replace("px",""));
+            var size = ($("#index_banner .owl-wrapper .owl-item").length-1)*divWidth;
+            if($(this).attr("class")=='owl-prev'){
+                if(transX==0){
+                    transX = -size;
+                    $("#index_banner .owl-wrapper").css("transition","all 1000ms ease 0s");
+                    $("#index_banner .owl-wrapper").css("transform","translate3d("+transX+"px, 0px, 0px)");
+                    $(".owl-pagination .owl-page").eq(0-transX/divWidth).attr("class","owl-page active").siblings().attr("class","owl-page");
+                }else{
+                    transX+=divWidth;
+                    $("#index_banner .owl-wrapper").css("transition","all 300ms ease 0s");
+                    $("#index_banner .owl-wrapper").css("transform","translate3d("+transX+"px, 0px, 0px)");
+                    $(".owl-pagination .owl-page").eq(0-transX/divWidth).attr("class","owl-page active").siblings().attr("class","owl-page");
+                }
+            }else{
+                if(transX==-size){
+                    transX = 0;
+                    $("#index_banner .owl-wrapper").css("transition","all 1000ms ease 0s");
+                    $("#index_banner .owl-wrapper").css("transform","translate3d("+transX+"px, 0px, 0px)");
+                    $(".owl-pagination .owl-page").eq(0-transX/divWidth).attr("class","owl-page active").siblings().attr("class","owl-page");
+                }else{
+                    transX-=divWidth;
+                    $("#index_banner .owl-wrapper").css("transition","all 300ms ease 0s");
+                    $("#index_banner .owl-wrapper").css("transform","translate3d("+transX+"px, 0px, 0px)");
+                    $(".owl-pagination .owl-page").eq(0-transX/divWidth).attr("class","owl-page active").siblings().attr("class","owl-page");
+                }
+            }
+        });
+        //轮播图圆点切换
+        $("#index_banner .owl-pagination .owl-page").live("click",function(){
+            var index = $(this).index();
+            var divWidth = parseInt($("#index_banner .owl-wrapper .owl-item").css("width").replace("px",""));
+            $(this).attr("class","owl-page active").siblings().attr("class","owl-page");
+            $("#index_banner .owl-wrapper").css("transition","all 400ms ease 0s");
+            $("#index_banner .owl-wrapper").css("transform","translate3d("+(-index*divWidth)+"px, 0px, 0px)");
+        });
+        //星级服务商家推荐点击类别切换
+        $(".star_recommend_tab a").live("click",function(){
+            var index = jQuery(this).index();
+            $(this).attr("class","cur").siblings().removeAttr("class");
+            $(".star_recommend_show").eq(index).show().siblings(".star_recommend_show").hide();
+            $(".star_recommend_show").eq(index).find(".star_recommend_part").css("opacity",1);
+        });
+        //星级服务商家和贴吧切换轮播
+        $(".star_recommend_show .owl-pagination .owl-page, #study_box .owl-pagination .owl-page").live("click",function(){
+            var index = jQuery(this).index();
+            $(this).attr("class","owl-page active").siblings().attr("class","owl-page");
+            $(this).parent().parent().prev(".owl-wrapper-outer").find(".owl-wrapper").css("transform","translate3d("+(-index*1200)+"px, 0px, 0px)");
+        });
+        //右下角固定导航栏
+        $(".right_nav li a.rn_tel, a.rn_wx").hover(function(){
+            $(this).next().show(300);
+        },function(){
+            $(this).next().hide();
+        });
+        //如果滚动条距离页面顶部大于等于500px显示回到顶部按钮
+        $(window).scroll(function() {
+            if($(window).scrollTop() >= 500) {
+                $(".rn_top").fadeIn(300);
+            } else {
+                $(".rn_top").fadeOut(300);
+            }
+        });
+        //点击回到顶部
+        $(".rn_top").click(function() {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 500);
+        });
+        $(".owl-pagination>div:first").addClass("active");
+	</script>
+</html>
