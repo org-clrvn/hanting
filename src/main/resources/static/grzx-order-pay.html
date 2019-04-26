@@ -46,8 +46,8 @@
 				</div>
 				<div class="fa_xz">
 					<div class="fa_zf_r">
-						<a  class="btn_jy_a f22" id="payment_btn" onclick="orderPay()">支付金币</a>
-						<a  href="/zsp/c/getLogisticsById" class="btn_jy_a f22" id="payment_btn">充值</a>
+						<a  class="btn_jy_a f22" class="payment_btn" onclick="orderPay()">支付金币</a>
+						<a  href="/jinb-index.html" class="btn_jy_a f22" class="payment_btn">充值</a>
 					</div>
 				</div>
 			</div>
@@ -116,7 +116,6 @@
 		
 		
 		function orderPay(){
-			alert(uid);
 			if(parseInt(userMoney) > parseInt(totalPrice)){
 
 				$.getJSON("/api/orderPay/"+uid+"/"+totalPrice+"/"+oid,function(data){

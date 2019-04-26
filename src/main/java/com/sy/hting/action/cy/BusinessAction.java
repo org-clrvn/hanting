@@ -52,7 +52,7 @@ public class BusinessAction {
         return map;
     }
 
-    @GetMapping(value = {"queryBusinessOrder/{oid}/{status}/{uid}/{pageNum}/{pageSize}","queryBusinessOrder/{status}/{uid}/{pageNum}/{pageSize}","queryBusinessOrder/{uid}/{pageNum}/{pageSize}"})
+    @GetMapping(value = {"queryBusinessOrderByOid/{oid}/{uid}/{pageNum}/{pageSize}","queryBusinessOrder/{status}/{uid}/{pageNum}/{pageSize}","queryBusinessOrder/{uid}/{pageNum}/{pageSize}"})
     public PageInfo<OrderDetail> queryBusinessOrder(@PathVariable(required = false) String oid,@PathVariable(required = false) Integer status,@PathVariable Integer uid,@PathVariable Integer pageNum,@PathVariable Integer pageSize){
         return biz.queryBusinessOrder(oid,status,uid,pageNum,pageSize);
     }
