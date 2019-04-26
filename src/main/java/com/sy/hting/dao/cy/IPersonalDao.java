@@ -45,4 +45,6 @@ public interface IPersonalDao {
     /*申请管理员介入*/
     void applyAdmin(@Param("rid") Integer rid,@Param("oid") String oid);
 
+    /*充值金币*/
+    void investMoney(@Param("uid")Integer uid,@Param("money") Integer money,@Param("Integral") Integer Integral);
 }

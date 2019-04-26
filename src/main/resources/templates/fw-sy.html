@@ -17,7 +17,7 @@
 				<div class="b_box">
 					<div class="top_nav">
 						<a href="#">首页</a><span class="ht_line"></span>
-						<a href="/c/wcc/merchantEnterUrlCheck">商家入驻</a><span class="ht_line"></span>
+						<a href="/lzy/c/skipSjzxXzjPage">商家入驻</a><span class="ht_line"></span>
 						<a href="javascript:;">帮助中心</a><span class="ht_line"></span>
 						<a href="javascript:;">关于韩汀</a><span class="ht_line"></span>
 						<a href="javascript:;">联系我们</a>
@@ -30,7 +30,7 @@
 				<a href="/c/wcc/homeUrl" class="logo logo_community">御品韩汀.社区</a>
 				<ul class="nav_ul">
 					<li>
-						<a href="/services/tours"><span class="community_sp csp1"></span><br>自驾游</a>
+						<a href="/fw-zjyTAB.html"><span class="community_sp csp1"></span><br>自驾游</a>
 					</li>
 					<li>
 						<a href="/services/tofacelift"><span class="community_sp csp2"></span><br>微整形</a>
@@ -52,7 +52,7 @@
 					</li>
 				</ul>
 			</div>
-            <div class="top">
+            <div class="top" style="display: none">
                 <input type="text" id="txt" placeholder="请输入关键字"/>
                 <input type="button" value="搜索" id="search"/>
                 <ul id="keywords"></ul>
@@ -509,7 +509,7 @@
 			<!--ad end-->
 			<h2 class="index_h2_title c_0">加入我们<span class="c_1">•</span>招募韩国商家、华人</h2>
 			<div class="bg_ic_1">招募韩国商家、海外留学生、华人兼司机、导游</div>
-			<div class="bt_btn_d"><a href="/c/wcc/merchantEnterUrlCheck" class="footer_text"><span class="btn_a_more bs_bt_a">商家入驻</span></a></div>
+			<div class="bt_btn_d"><a href="/lzy/c/skipSjzxXzjPage" class="footer_text"><span class="btn_a_more bs_bt_a">商家入驻</span></a></div>
 		</div>
 		<!--商家入驻 end-->
 
@@ -522,7 +522,7 @@
 				</dt>
 				<dd>
 					<p class="flink">
-						<a href="/index.php/Home/Member/seller.html">商家入驻</a>|
+						<a href="/lzy/c/skipSjzxXzjPage">商家入驻</a>|
 						<a href="/index.php/Home/About/help.html">帮助中心</a>|
 						<a href="/index.php/Home/About/index/key/jobs.html">人才招聘</a>|
 						<a href="/index.php/Home/About/contact.html">联系我们</a>|
@@ -560,9 +560,6 @@
 
 	</body>
 	<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="/Public/js/sessionHeader.js"></script>
-	<script type="text/javascript" src="/Public/js/headLeftNav.js"></script>
-    <script type="text/javascript" src="/Public/js/ssk.js"></script>
 	<script type="text/javascript">
         var t=4000;
         var slideshowSize = [[${homeSlideshowList.size()}]];	//轮播图图片集合长度
@@ -675,5 +672,11 @@
             }, 500);
         });
         $(".owl-pagination>div:first").addClass("active");
+
+        /*获取登录用户*/
+        $.getJSON("/c/xmh/user/queryAUser",function(data){
+                window.sessionStorage.setItem("uid",data.userID);
+        });
+
 	</script>
 </html>

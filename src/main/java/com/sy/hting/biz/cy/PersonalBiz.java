@@ -9,6 +9,7 @@ import com.sy.hting.pojo.User;
 import com.sy.hting.vo.cy.CollectVo;
 import com.sy.hting.vo.cy.OrderDetail;
 import com.sy.hting.vo.cy.RefundVo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -68,4 +69,10 @@ public class PersonalBiz {
     public void applyAdmin(Integer rid,String oid){
          dao.applyAdmin(rid,oid);
     }
+
+    public  void investMoney(Integer uid,  Integer money){
+        Integer Integral = (int)(money*0.1);
+        dao.investMoney(uid,money,Integral);
+    }
+
 }

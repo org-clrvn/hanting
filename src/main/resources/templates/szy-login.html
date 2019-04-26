@@ -30,8 +30,8 @@
 	<div class="h_top">
 		<div class="b_box">
 			<div class="top_nav">
-				<a href="/c/wcc/homeUrl">首页</a><span class="ht_line"></span>
-				<a href="/c/wcc/merchantEnterUrlCheck">商家入驻</a><span class="ht_line"></span>
+				<a href="/c/xmh/homeUrl">首页</a><span class="ht_line"></span>
+				<a href="/c/xmh/merchantEnterUrlCheck">商家入驻</a><span class="ht_line"></span>
 				<a href="/fw-bzzx.html">帮助中心</a><span class="ht_line"></span>
 				<a href="/fw-gyht.html">关于韩汀</a><span class="ht_line"></span>
 				<a href="/fw-lxwm.html">联系我们</a>
@@ -154,9 +154,9 @@
 			} 
 			var email=$("[name=email]").val();
 			var password=$("[name=password]").val();
-			$.post("/c/wcc/user/loginEmail",{"email":email,"password":password},function(data){
+			$.post("/c/xmh/user/loginEmail",{"email":email,"password":password},function(data){
 			    if(data.code=="200"){
-                    location.href="/c/wcc/homeUrl";
+                    location.href="/c/xmh/homeUrl";
 				}else if(data.code=="500"){
                     layer.msg("登陆失败！账户或密码错误");
                     $("[name=code]").val("");
