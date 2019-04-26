@@ -60,6 +60,11 @@
         </where>
     </select>
 
+    <!--判断用户是否注册-->
+    <select id="queryUserNameByUserID" resultType="java.lang.String">
+        SELECT userName FROM `user` WHERE userID = #{userID}
+    </select>
+
     <!--提交申请商家入驻信息-->
     <update id="updateRecruitmentUser">
         UPDATE

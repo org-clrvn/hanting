@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -36,15 +35,15 @@ public class SjzxIndexAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        if (orderBiz.judgeAuditStatusByUserID(29) == 2){
+        if (orderBiz.judgeAuditStatusByUserID(26) == 2){
             //System.out.println("user:"+indexBiz.loadUserByUserID(12));
-            model.addAttribute("user", indexBiz.loadUserByUserID(29));
+            model.addAttribute("user", indexBiz.loadUserByUserID(26));
 
-            PageInfo<Orders> pageInfo = orderBiz.loadOrdersList(num, size, 29);
+            PageInfo<Orders> pageInfo = orderBiz.loadOrdersList(num, size, 26);
             System.err.println(JSON.toJSON(pageInfo.getList()));
             model.addAttribute("data", pageInfo);
 
-            return "sjzx-index";
+            return "lzyQianstage/sjzx-index";
         }else {
             return "redirect:/lzy/c/skipSjzxXzjPage";
         }

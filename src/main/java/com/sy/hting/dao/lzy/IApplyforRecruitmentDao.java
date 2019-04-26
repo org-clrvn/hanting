@@ -59,6 +59,13 @@ public interface IApplyforRecruitmentDao {
     public List<Sharea> queryShareaList(@Param("pid") int pid);
 
     /**
+     * 判断用户是否注册
+     * @param userID
+     * @return
+     */
+    public String queryUserNameByUserID(@Param("userID")int userID);
+
+    /**
      * 提交申请商家入驻信息
      * @param user
      * @return

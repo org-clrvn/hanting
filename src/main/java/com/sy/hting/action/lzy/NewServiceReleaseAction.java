@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,15 +16,13 @@ import java.io.File;
 import java.lang.System;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @param
  * @author lizeyun
  * @return
  * @exception
- * @Time 2019/4/29 14:40
+ * @Time 2019/4/26 14:40
  */
 @SuppressWarnings("all")
 @Controller
@@ -69,7 +66,7 @@ public class NewServiceReleaseAction {
         service.setServiceImgUrlFour(File.separator + fileName5);
         serviceImgUrlFourTemp.transferTo(new File("E:\\myfile" + File.separator + fileName5));
 
-        service.setUserID(29);
+        service.setUserID(26);
 
         int count = newSerBiz.addServices(service);
 

@@ -2,13 +2,11 @@ package com.sy.hting.biz.lzy;
 
 import com.sy.hting.dao.lzy.IApplyforRecruitmentDao;
 import com.sy.hting.pojo.*;
-import com.sy.hting.pojo.System;
+
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.lang.System;
 import java.util.List;
 
 @Service
@@ -38,7 +36,7 @@ public class ApplyforRecruitmentBiz {
      * 申请商家入驻页面加载时，查询系统配置表的信息
      * @return
      */
-    public System loadSystem(){
+    public com.sy.hting.pojo.System loadSystem(){
         return recruitmentDao.loadSystem();
     }
 
@@ -79,6 +77,20 @@ public class ApplyforRecruitmentBiz {
      */
     public List<Sharea> findShareaList(int pid){
         return recruitmentDao.queryShareaList(pid);
+    }
+
+    /**
+     *@描述  判断用户是否注册
+     *@参数  [userID]
+     *@返回值  java.lang.String
+     *@创建人  lizeyun
+     *@创建时间  2019/4/22
+     *@修改人和其它信息
+     */
+    public String findUserNameByUserName(int userID){
+        String userName = recruitmentDao.queryUserNameByUserID(userID);
+        System.out.println(userName);
+        return userName;
     }
 
     /**

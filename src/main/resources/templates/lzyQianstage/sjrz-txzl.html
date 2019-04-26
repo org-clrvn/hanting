@@ -1085,7 +1085,6 @@
                 var vm = this;
                 var pid = sh_pid;
 
-                console.debug(pid);
                 $.getJSON("/lzy/api/shareas/" + pid + "/list", function (data) {
                     vm.sharea = data;
                 });

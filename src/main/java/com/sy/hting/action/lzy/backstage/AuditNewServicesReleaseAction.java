@@ -6,7 +6,6 @@ import com.sy.hting.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpSession;
  * @author lizeyun
  * @return
  * @exception
- * @Time 2019/4/29 15:08
+ * @Time 2019/4/26 15:08
  */
 @Controller
 @RequestMapping("/bt/lzy/c")
@@ -38,8 +37,8 @@ public class AuditNewServicesReleaseAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,29).getList());;
-        model.addAttribute("serList", newSerBiz.loadSerUserSertypeVoList(num, size, 29));
+        System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,26).getList());;
+        model.addAttribute("serList", newSerBiz.loadSerUserSertypeVoList(num, size, 26));
 
         return "backstage/Refund_Management";
     }
@@ -57,7 +56,7 @@ public class AuditNewServicesReleaseAction {
         User user = (User)session.getAttribute("user");
         //user.getUserID();
 
-        model.addAttribute("serData", newSerBiz.findSerUserSertypeVoByServiceID(29, serviceID));
+        model.addAttribute("serData", newSerBiz.findSerUserSertypeVoByServiceID(26, serviceID));
 
         return "backstage/Update_audit";
     }
@@ -72,14 +71,7 @@ public class AuditNewServicesReleaseAction {
      */
     @PostMapping("/modifyServicesByServiceID")/*int recommendBool, String adminOpinion, int shelfState, int auditStatus, int serviceID*/
     public String modifyServicesByServiceID(Services services){
-        int count = newSerBiz.modifyServicesByServiceID(services);
-
-        if (count > 0){
-            return "redirect:/bt/lzy/c/loadSerUserSertypeVoList?num=1&size=2";
-        }else {
-            return "redirect:/bt/lzy/c/findSerUserSertypeVoByServiceID?serviceID=42";
-        }
-
+        return newSerBiz.modifyServicesByServiceID(services)>0 ? "redirect:/bt/lzy/c/loadSerUserSertypeVoList?num=1&size=2":"redirect:/bt/lzy/c/findSerUserSertypeVoByServiceID?serviceID=42";
     }
 
 }
