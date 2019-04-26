@@ -19,7 +19,7 @@ public class AuditApplyforRecruitmentAction {
      * @param model
      * @return
      */
-    @GetMapping("/skipMerchantsMoveIn")
+    @GetMapping("skipMerchantsMoveIn")
     public String skipMerchantsMoveIn(Model model){
         //后台加载查询商家申请入驻的信息
         model.addAttribute("userItems", auditBiz.loadUserList());

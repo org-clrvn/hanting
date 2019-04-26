@@ -18,7 +18,7 @@
     </select>
 
     <select id="loadServicesList" resultType="Services">
-        select * from services where userID = #{userID}
+        select * from services where userID = #{userID} order by releaseTime desc
     </select>
 
     <resultMap id="OrdersMapServices" type="Orders">

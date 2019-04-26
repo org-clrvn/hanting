@@ -25,6 +25,6 @@ public interface IAuditRefundDao {
     public UserOrderServicesRefundVo queryUOSRByRefundID(@Param("refundID") int refundID);
 
 
-    public int updateRefund(@Param("refundVo")UserOrderServicesRefundVo refundVo);
+    public int updateRefund(@Param("refundVo") UserOrderServicesRefundVo refundVo);
 
 }

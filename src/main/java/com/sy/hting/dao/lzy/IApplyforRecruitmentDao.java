@@ -63,7 +63,7 @@ public interface IApplyforRecruitmentDao {
      * @param userID
      * @return
      */
-    public String queryUserNameByUserID(@Param("userID")int userID);
+    public String queryUserNameByUserID(@Param("userID") int userID);
 
     /**
      * 提交申请商家入驻信息

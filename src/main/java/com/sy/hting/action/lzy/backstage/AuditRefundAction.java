@@ -1,5 +1,6 @@
 package com.sy.hting.action.lzy.backstage;
 
+import com.alibaba.fastjson.JSON;
 import com.sy.hting.biz.lzy.backstage.AuditRefundBiz;
 import com.sy.hting.vo.lzy.UserOrderServicesRefundVo;
 import org.springframework.stereotype.Controller;
@@ -40,7 +41,8 @@ public class AuditRefundAction {
 
     @GetMapping("/findUOSRByRefundID")
     public String findUOSRByRefundID(int refundID, Model model){
-        System.out.println(refundBiz.findUOSRByRefundID(refundID).getRefundstatus());
+        System.out.println("refundID = " + refundID);
+       // System.out.println(refundBiz.findUOSRByRefundID(refundID).getRefundstatus());
         model.addAttribute("data", refundBiz.findUOSRByRefundID(refundID));
 
         return "backstage/Refund";
@@ -49,18 +51,21 @@ public class AuditRefundAction {
 
     @PostMapping("/modifyRefund")
     public String modifyRefund(UserOrderServicesRefundVo refundVo, String sign[]){
+        System.out.println("JSON.toJSON(refundVo) = " + JSON.toJSON(refundVo));
         for (int i=0;i<sign.length;i++){
+            System.err.println(sign[i]);
             if (sign[i] != null){
                 if ("同意退款".equals(sign[i])){
                     refundVo.setAdminStatus(2);
                 }else if ("拒绝退款".equals(sign[i])){
                     refundVo.setAdminStatus(3);
                 }
+                System.out.println("adminStatus = " + refundVo.getAdminStatus());
                 continue;
             }
         }
         System.out.println(refundVo.getAdminStatus());
-        return refundBiz.modifyRefund(refundVo)>0 ? "redirect:/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2":"redirect:/bt/lzy/c/findUOSRByRefundID?refundID=10";
+        return refundBiz.modifyRefund(refundVo)>0 ? "redirect:/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2":"redirect:/bt/lzy/c/findUOSRByRefundID?refundID=43";
     }
 
 }

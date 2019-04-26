@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sy.hting.dao.lzy.backstage.IAuditNewServicesReleaseDao">
 
+    <sql id="releaseTime">
+        order by releaseTime desc
+    </sql>
 
     <select id="loadSerUserSertypeVoList" resultType="SerUserSertypeVo">
         SELECT * FROM services AS s
@@ -12,6 +15,7 @@ ON s.`userID` = u.`userID`
 INNER JOIN `servicetype` AS t
 ON s.`stid` = t.`stid`
 WHERE s.`userID` = #{userID}
+        <include refid="releaseTime" />
     </select>
 
     <select id="querySerUserSertypeVoByServiceID" resultType="SerUserSertypeVo">
@@ -21,6 +25,7 @@ ON s.`userID` = u.`userID`
 INNER JOIN `servicetype` AS t
 ON s.`stid` = t.`stid`
 WHERE s.`userID` = #{userID} AND s.`serviceID` = #{serviceID}
+<include refid="releaseTime" />
     </select>
 
     <update id="updateServicesByServiceID">
