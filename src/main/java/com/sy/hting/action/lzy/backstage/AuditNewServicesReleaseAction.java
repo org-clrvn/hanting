@@ -34,7 +34,7 @@ public class AuditNewServicesReleaseAction {
      */
     @GetMapping("/loadSerUserSertypeVoList")
     public String loadSerUserSertypeVoList(int num, int size, Model model, HttpSession session){
-        User user = (User)session.getAttribute("user");
+        User user = (User)session.getAttribute("Admin");
         //user.getUserID();
 
         System.err.println(newSerBiz.loadSerUserSertypeVoList(num, size ,26).getList());;
