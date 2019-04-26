@@ -1094,7 +1094,7 @@
             identityCardVerify: function () {
                 var identityCard = $("[name=identityNumder]").val().trim();
 
-                $.getJSON("/lzy/api/identityCardVerify" + identityCard, function (data) {
+                $.getJSON("/lzy/api/identityCardVerify/" + identityCard, function (data) {
                     if (data.resultcode != 200) {
                         alert("请输入正确的身份证号码！");
                     }
@@ -1104,7 +1104,7 @@
             phoneVerify: function () {
                 var phone = $("[name=merchantPhone]").val().trim();
 
-                $.getJSON("/lzy/api/phoneVerify" + phone, function (data) {
+                $.getJSON("/lzy/api/phoneVerify/" + phone, function (data) {
                     if (data.resultcode != 200) {
                         alert("请输入正确的电话号码！");
                     }
