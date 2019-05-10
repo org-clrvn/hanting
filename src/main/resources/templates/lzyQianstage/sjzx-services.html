@@ -72,7 +72,14 @@
         <div class="member_right sj_right_box">
 			<div class="member_system_r_top top_nor">
 				<div class="search_right_box">
-					<div class="search_sec"><form method="post" action=""><input type="text" name="serviceTitle" placeholder="输入服务名称" class="s_sec_input" /><input type="submit" value="" class="s_sec_btn" /><input type="hidden" name="__hash__" value="aecafd74baafde5cba034372c675d0de_99b2b45687447cdb2188e7372f3fbe73" /></form></div>
+					<div class="search_sec">
+                        <form method="get" action="/lzy/c/getServicesListByUserID">
+                            <input type="text" name="serviceTitle" placeholder="输入服务名称" class="s_sec_input" />
+                            <input type="hidden" name="num" value="1" />
+                            <input type="hidden" name="size" value="3" />
+                            <input type="submit" value="" class="s_sec_btn" /><input type="hidden" name="__hash__" value="aecafd74baafde5cba034372c675d0de_99b2b45687447cdb2188e7372f3fbe73" />
+                        </form>
+                    </div>
 				</div>
 				<span class="fl">我发布的服务&nbsp;&nbsp;<a href="/lzy/c/loadFirBecServiceIDByUserID" class="btn_jy_a btn_jy_a3" >发布新服务</a></span>
 							</div>
@@ -84,9 +91,14 @@
                     <th width="80">价格</th>
                     <th width="60">预定量</th>
                     <th width="70">
-						<select class="sel_zt" name="zt" onchange="gotourl(this.value)">
-							<option value="0">全部</option> 
-							<option value="1" >待审核</option><option value="2" >审核成功</option><option value="3" >未通过</option>						</select>
+						<form method="get" action="/lzy/c/getServicesListByUserID">
+                            <select class="sel_zt" name="zt" onchange="gotourl(this.value)">
+                                <option value="0">全部</option>
+                                <option value="1" >待审核</option>
+                                <option value="2" >审核成功</option>
+                                <option value="3" >未通过</option>
+                            </select>
+                        </form>
 					</th>
                     <th width="90">发布时间</th>
                     <th width="40">操作</th>

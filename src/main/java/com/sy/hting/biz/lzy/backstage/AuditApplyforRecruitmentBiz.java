@@ -1,5 +1,6 @@
 package com.sy.hting.biz.lzy.backstage;
 
+import com.sy.hting.dao.lzy.ISjrzOrderDao;
 import com.sy.hting.dao.lzy.backstage.IAuditApplyforRecruitmentDao;
 import com.sy.hting.pojo.User;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class AuditApplyforRecruitmentBiz {
 
     @Resource
     private IAuditApplyforRecruitmentDao auditDao;
+
+    @Resource
+    private ISjrzOrderDao orderDao;
 
     /**
      * 后台加载查询商家申请入驻的信息
@@ -46,6 +50,10 @@ public class AuditApplyforRecruitmentBiz {
      * @param user
      * @return
      */
-    public int modifyUser(User user){ return auditDao.updateUser(user); }
+    public int modifyUser(User user){
+        int[] data = auditDao.queryFirSecByUserID(user.getUserID());
+        System.err.println("data="+ data);
+        return auditDao.updateUser(user, data);
+    }
 
 }

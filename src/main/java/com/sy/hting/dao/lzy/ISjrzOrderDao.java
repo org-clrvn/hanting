@@ -24,7 +24,7 @@ public interface ISjrzOrderDao {
      * 加载查询商家中心-订单列表-服务表(商品表)
      * @return
      */
-    public List<Services> loadServicesList(@Param("userID") int userID);
+    public List<Services> loadServicesList(@Param("userID")int userID, @Param("serviceTitle")String serviceTitle);
 
 
     public int judgeServices(@Param("userID") int userID);

@@ -43,12 +43,12 @@ var leftNav = [ {
 	"text": "服务管理",
 	"leftNav_id": "12",
 	"name": "退款管理",
-	"href": "/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2"
+	"href": "http://127.0.0.1:1111/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2"
 },{
 	"text": "会员管理",
 	"leftNav_id": "14",
 	"name": "会员审核",
-	"href": "/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2"
+	"href": "http://127.0.0.1:1111/bt/lzy/c/loadUserOrderServicesRefundVo?num=1&size=2"
 }, {
 	"text": "会员管理",
 	"leftNav_id": "15",
@@ -58,9 +58,7 @@ var leftNav = [ {
 	"text": "会员管理",
 	"leftNav_id": "16",
 	"name": "商家入驻",
-	"href": "/bt/lzy/c/skipMerchantsMoveIn"
-	///bt/lzy/c/skipMerchantsMoveIn
-
+	"href": "http://127.0.0.1:1111/bt/lzy/c/skipMerchantsMoveIn"
 }
 , {
 	"text": "会员管理",

@@ -24,30 +24,16 @@ public class SjrzOrderBiz {
     @Resource
     private ISjrzOrderDao orderDao;
 
-    /**
-     *@描述
-     *@参数  [pageNum, pageSize, userID]
-     *@返回值  com.github.pagehelper.PageInfo<com.sy.hting.pojo.Services>
-     *@创建人  lizeyun
-     *@创建时间  2019/4/17
-     *@修改人和其它信息
-     */
-    public PageInfo<Services> loadServicesList(int pageNum, int pageSize, int userID){
+
+    public PageInfo<Services> loadServicesList(int pageNum, int pageSize, int userID, String serviceTitle){
         PageHelper.startPage(pageNum, pageSize);
 
-        PageInfo<Services> pageInfo = new PageInfo<Services>(orderDao.loadServicesList(userID));
+        PageInfo<Services> pageInfo = new PageInfo<Services>(orderDao.loadServicesList(userID, serviceTitle));
 
         return pageInfo;
     }
 
-    /**
-     *@描述
-     *@参数  [userID]
-     *@返回值  java.util.List<com.sy.hting.pojo.Orders>
-     *@创建人  lizeyun
-     *@创建时间  2019/4/17
-     *@修改人和其它信息
-     */
+
     public PageInfo<Orders> loadOrdersList(int userID, int pageNum, int pageSize){
         PageHelper.startPage(pageNum, pageSize);
         //System.out.println("biz:"+ JSON.toJSON(orderDao.loadOrdersList(userID).get(0)));

@@ -30,11 +30,13 @@ public interface IAuditApplyforRecruitmentDao {
      */
     public User queryUserByUserID(@Param("userID") int UserID);
 
+    public int[] queryFirSecByUserID(@Param("userID") int userID);
+
     /**
      * 后台,管理员审核
      * @param user
      * @return
      */
-    public int updateUser(@Param("user") User user);
+    public int updateUser(@Param("user") User user, @Param("data")int[] data);
 
 }

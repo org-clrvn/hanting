@@ -9,4 +9,84 @@
         SELECT * FROM `user` WHERE userID = #{userID}
     </select>
 
+    <!--加载查询商家中心- -我提交的鉴定-->
+    <select id="loadAppraisalapplyList" resultType="AppSertypeVo">
+        SELECT * FROM AppraisalApply AS a
+        JOIN `servicetype` AS s
+        ON a.`stid` = s.`stid`
+        WHERE a.userID = #{userID}
+    </select>
+
+    <!--提交鉴定-->
+    <update id="updateAppraisalapplyByApplyID">
+        UPDATE `appraisalapply`
+        SET
+            <!--<if test="appType=4">
+                `name` = #{appraisalapply.name},
+                `sex` = #{appraisalapply.sex},
+                `visaType` = #{appraisalapply.visaType},
+                `documentType` = #{appraisalapply.documentType},
+                `certificates` = #{appraisalapply.certificates},
+                `translateType` = #{appraisalapply.translateType},
+                `translate` = #{appraisalapply.translate},
+                `office` = #{appraisalapply.office},
+                `officeCountry` = #{appraisalapply.officeCountry},
+                `officeProvince` = #{appraisalapply.officeProvince},
+                `officeCity` = #{appraisalapply.officeCity},
+                `officeDetailed` = #{appraisalapply.officeDetailed},
+                `koreaLicense` = #{appraisalapply.koreaLicense},
+                `translateWebsite` = #{appraisalapply.translateWebsite},
+                `inKorea` = #{appraisalapply.inKorea},
+                `phone` = #{appraisalapply.phone},
+                `email` = #{appraisalapply.email},
+                `country` = #{appraisalapply.country},
+                `provincialID` = #{appraisalapply.provincialID},
+                `cityID` = #{appraisalapply.cityID},
+                `cityID` = #{appraisalapply.cityID},
+                `schoolReport` = #{appraisalapply.schoolReport},
+            </if>
+            `submitTime` = NOW(),
+            `auditStatus` = 1-->
+        `name` = #{appraisalapply.name},
+        `sex` = #{appraisalapply.sex},
+        `height` = #{appraisalapply.height},
+        `constellation` = #{appraisalapply.constellation},
+        `age` = #{appraisalapply.age},
+        `visaType` = #{appraisalapply.visaType},
+        `documentType` = #{appraisalapply.documentType},
+        `certificates` = #{appraisalapply.certificates},
+        `experience` = #{appraisalapply.experience},
+        `vehicle` = #{appraisalapply.vehicle},
+        `guideCard` = #{appraisalapply.guideCard},
+        `inKorea` = #{appraisalapply.inKorea},
+        `phone` = #{appraisalapply.phone},
+        `email` = #{appraisalapply.email},
+        `country` = #{appraisalapply.country},
+        `provincialID` = #{appraisalapply.provincialID},
+        `cityID` = #{appraisalapply.cityID},
+        `detailed` = #{appraisalapply.detailed},
+        `hospitalLicense` = #{appraisalapply.hospitalLicense},
+        `cooperativeHospital` = #{appraisalapply.cooperativeHospital},
+        `cooperativeHospitalURL` = #{appraisalapply.cooperativeHospitalURL},
+        `hospitalPhone` = #{appraisalapply.hospitalPhone},
+        `translateType` = #{appraisalapply.translateType},
+        `translate` = #{appraisalapply.translate},
+        `office` = #{appraisalapply.office},
+        `officeCountry` = #{appraisalapply.officeCountry},
+        `officeProvince` = #{appraisalapply.officeProvince},
+        `officeCity` = #{appraisalapply.officeCity},
+        `officeDetailed` = #{appraisalapply.officeDetailed},
+        `koreaLicense` = #{appraisalapply.koreaLicense},
+        `translateWebsite` = #{appraisalapply.translateWebsite},
+        `studyMajor` = #{appraisalapply.studyMajor},
+        `schoolReport` = #{appraisalapply.schoolReport},
+        `officialNetworkURL` = #{appraisalapply.officialNetworkURL},
+        `submitTime` = NOW(),
+        `auditTime` = #{appraisalapply.auditTime},
+        `adminOpinion` = #{appraisalapply.adminOpinion},
+        `auditStatus` = 1,
+        `strength` = #{appraisalapply.strength}
+        WHERE `applyID` = #{appraisalapply.applyID}
+    </update>
+
 </mapper>

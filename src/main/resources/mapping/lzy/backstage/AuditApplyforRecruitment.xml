@@ -37,6 +37,13 @@
     <select id="queryUserByUserID" resultType="User">
         select * from `user` where userID = #{userID} and auditStatus != 0
     </select>
+    
+    <select id="queryFirSecByUserID" resultType="java.lang.Integer">
+        SELECT * FROM
+            (SELECT firstServiceID AS id FROM `user`  WHERE userID = #{userID}
+             UNION
+             SELECT secondServiceID AS id FROM `user`  WHERE userID = #{userID}) test
+    </select>
 
     <!--后台,管理员审核-->
     <update id="updateUser">
@@ -48,7 +55,15 @@
             <if test="user.auditStatus != ''">auditStatus = #{user.auditStatus},</if>
             <if test="user.reason != ''">reason = #{user.reason}</if>
         </set>
-        WHERE userID = #{user.userID} and auditStatus != 0
+        WHERE userID = #{user.userID} and auditStatus != 0;
+
+        INSERT INTO `appraisalapply`(userID,stid,auditStatus)
+        VALUES
+        <foreach   collection="data"  separator="," item="temp" >
+            (#{user.userID}, #{temp}, 0)
+        </foreach>
+
+
     </update>
 
 </mapper>

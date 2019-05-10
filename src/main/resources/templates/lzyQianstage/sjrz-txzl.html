@@ -154,7 +154,8 @@
                         <option value="2">护照号码</option>
                     </select>
                     <input @blur="identityCardVerify()" name="identityNumder" type="text" value=""
-                           class="input_c inf_inc8" id="idcard1">
+                           class="input_c inf_inc8" id="idcard1"><span id="sfz" style="color: red;display: none;font-size: 18px;">当前身份证号码不存在！</span>
+
                 </dd>
             </dl>
             <dl class="info_form_dl">
@@ -291,6 +292,7 @@
             <dd>
                 <input @blur="phoneVerify()" name="merchantPhone" type="tel"
                        class="input_c inf_inc3 validate[required,custom[number]]" id="tel" required="">
+            <span id="dhhm" style="color: red;display: none;font-size: 18px;">当前电话号码不存在！</span>
             </dd>
         </dl>
         <dl class="info_form_dl">
@@ -1099,7 +1101,9 @@
 
                 $.getJSON("/lzy/api/identityCardVerify/" + identityCard, function (data) {
                     if (data.resultcode != 200) {
-                        alert("请输入正确的身份证号码！");
+                        $("#sfz").css("display","block");
+                    }else {
+                        $("#sfz").css("display","none");
                     }
                 })
             },
@@ -1109,7 +1113,9 @@
 
                 $.getJSON("/lzy/api/phoneVerify/" + phone, function (data) {
                     if (data.resultcode != 200) {
-                        alert("请输入正确的电话号码！");
+                        $("#dhhm").css("display","block");
+                    }else {
+                        $("#dhhm").css("display","none");
                     }
                 })
             }

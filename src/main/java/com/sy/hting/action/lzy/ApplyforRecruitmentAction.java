@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("ALL")
 @Controller
@@ -27,7 +30,7 @@ public class ApplyforRecruitmentAction {
      * @return
      */
     @GetMapping("/skipSjrzYktsjPage")
-    public String skipSjrzYktsjPage() { return "lzyQianstage/sjrz-yktsj"; }
+    public String skipSjrzYktsjPage() { return "sjrz-yktsj"; }
 
     /**
      * 跳转到商家入驻的页面
@@ -39,7 +42,11 @@ public class ApplyforRecruitmentAction {
         if (user == null){
             return "";
         }else {//user.getUserID()
-            return orderBiz.judgeAuditStatusByUserID(user.getUserID())==2 ?"lzyQianstage/sjrz-yktsj":"lzyQianstage/sjrz-xz";
+            if (orderBiz.judgeAuditStatusByUserID(user.getUserID()) == 2){
+                return "sjrz-yktsj";
+            }else {
+                return "sjrz-xz";
+            }
         }
     }
 
@@ -51,10 +58,8 @@ public class ApplyforRecruitmentAction {
     int pid;
     @GetMapping("/skipRecruitmentPage")
     public String skipRecruitmentPage(HttpSession session, Model model){
-        User userCount = (User)session.getAttribute("USER");
-
         //保存登录用户的信息到HttpSession中
-        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(userCount.getUserID()));
+        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(29));
 
         //加载查询申请服务类别的所有信息
         model.addAttribute("sertypeItems", recruitmentBiz.loadServicetypeList());
@@ -72,9 +77,9 @@ public class ApplyforRecruitmentAction {
         model.addAttribute("shareaItems", recruitmentBiz.loadShareaItems(pid));
 
         //加载查询所在城市的信息
-        /*model.addAttribute("shareaList", recruitmentBiz.loadShareaList());*/
+       /* model.addAttribute("shareaList", recruitmentBiz.loadShareaList());*/
 
-        return "lzyQianstage/sjrz-txzl";
+        return "sjrz-txzl";
     }
 
     /**
@@ -83,41 +88,37 @@ public class ApplyforRecruitmentAction {
      * @return
      */
     @RequestMapping("/addRecruitmentUser")
-    public String modifyRecruitmentUser(HttpSession session, User user, String serviceID, MultipartFile shopImgTemp, MultipartFile identityPositiveImgTemp, MultipartFile identityNegativeImgTemp, MultipartFile identityHandImgTemp) throws Exception{
-        User userCount = (User)session.getAttribute("USER");
+    public String modifyRecruitmentUser(User user, String serviceID, MultipartFile shopImgTemp, MultipartFile identityPositiveImgTemp, MultipartFile identityNegativeImgTemp, MultipartFile identityHandImgTemp) throws Exception{
+        System.out.println(user.getUserID());
+        System.out.println(user.getLanguageNameText());
+        System.out.println(user.getMajorNameText());
 
-        if(("").equals(recruitmentBiz.findUserNameByUserName(userCount.getUserID()))){
-            //跳转注册页面
-            return "lzyQianstage/sjrz-xz";
-        }else {
-            System.out.println(user.getUserID());
-            System.out.println(user.getLanguageNameText());
-            System.out.println(user.getMajorNameText());
+        String fileName1 = shopImgTemp.getOriginalFilename();
+        user.setShopImg(File.separator + fileName1);
+        shopImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName1));
 
-            String fileName1 = shopImgTemp.getOriginalFilename();
-            user.setShopImg(File.separator + fileName1);
-            shopImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName1));
+        String fileName2 = identityPositiveImgTemp.getOriginalFilename();
+        user.setIdentityPositiveImg(File.separator + fileName2);
+        identityPositiveImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName2));
 
-            String fileName2 = identityPositiveImgTemp.getOriginalFilename();
-            user.setIdentityPositiveImg(File.separator + fileName2);
-            identityPositiveImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName2));
+        String fileName3 = identityNegativeImgTemp.getOriginalFilename();
+        user.setIdentityNegativeImg(File.separator + fileName3);
+        identityNegativeImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName3));
 
-            String fileName3 = identityNegativeImgTemp.getOriginalFilename();
-            user.setIdentityNegativeImg(File.separator + fileName3);
-            identityNegativeImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName3));
+        String fileName4 = identityHandImgTemp.getOriginalFilename();
+        user.setIdentityHandImg(File.separator + fileName4);
+        identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
 
-            String fileName4 = identityHandImgTemp.getOriginalFilename();
-            user.setIdentityHandImg(File.separator + fileName4);
-            identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
+        user.setUserID(29);
 
-            user.setUserID(userCount.getUserID());
+        String[] split = serviceID.split(",");
+        user.setFirstServiceID(Integer.parseInt(split[0]));
+        user.setSecondServiceID(Integer.parseInt(split[1]));
 
-            String[] split = serviceID.split(",");
-            user.setFirstServiceID(Integer.parseInt(split[0]));
-            user.setSecondServiceID(Integer.parseInt(split[1]));
+        int count = recruitmentBiz.modifyRecruitmentUser(user);
 
-            return recruitmentBiz.modifyRecruitmentUser(user) > 0 ? "redirect:/lzy/c/skipPage":"redirect:/lzy/c/skipRecruitmentPage";
-        }
+        return count > 0 ? "redirect:/lzy/c/skipPage":"redirect:/lzy/c/skipRecruitmentPage";
+
     }
 
     /**
@@ -126,14 +127,19 @@ public class ApplyforRecruitmentAction {
      */
     @GetMapping("/skipSjrzShzlPage")
     public String skipSjrzShzlPage(HttpSession session) {
-        User userCount = (User)session.getAttribute("USER");
+        User user = (User)session.getAttribute("user");
+        if (orderBiz.judgeAuditStatusByUserID(29) == 2){
+            return "redirect:/lzy/c/skipSjrzYktsjPage";
+        }else {
+            return "redirect:/lzy/c/SjrzShzlPage";
+        }
 
-        return orderBiz.judgeAuditStatusByUserID(userCount.getUserID()) == 2 ? "redirect:/lzy/c/skipSjrzYktsjPage":"redirect:/lzy/c/SjrzShzlPage";
     }
 
     @GetMapping("/SjrzShzlPage")
     public String SjrzShzlPage(HttpSession session) {
-        return "lzyQianstage/sjrz-shzl";
+        return "sjrz-shzl";
+
     }
 
 

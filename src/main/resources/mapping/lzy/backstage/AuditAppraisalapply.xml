@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sy.hting.dao.lzy.backstage.IAuditAppraisalapplyDao">
+
+    <select id="loadAppSertypeVo" resultType="AppSertypeVo">
+        SELECT *
+               ,a.`submitTime` AS appSubmitTime
+               ,a.`auditStatus` AS appAuditStatus
+               ,a.adminOpinion AS appAdminOpinion
+        FROM `appraisalapply` AS a
+        JOIN `user` AS u
+        ON a.`userID` = u.`userID`
+        JOIN `servicetype` AS st
+        ON a.`stid` = st.`stid`
+        <where>
+            <if test="applyID != 0">
+                `applyID` = #{applyID}
+            </if>
+        </where>
+        ORDER BY a.`submitTime` desc
+    </select>
+
+    <update id="updateAppSertypeVoByApplyID">
+        UPDATE `appraisalapply`
+        SET
+            `auditTime` = NOW(),
+            `auditStatus` = #{auditStatus},
+            `adminOpinion` = #{adminOpinion}
+        WHERE `applyID` = #{applyID}
+    </update>
+
+</mapper>

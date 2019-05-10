@@ -1,7 +1,10 @@
 package com.sy.hting.dao.lzy;
 
-import com.sy.hting.pojo.User;
+import com.sy.hting.pojo.*;
+import com.sy.hting.vo.lzy.AppSertypeVo;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 /**
@@ -19,5 +22,19 @@ public interface ISjzxIndexDao {
      * @return
      */
     public User loadUserByUserID(@Param("userID") int userID);
+
+    /**
+     * 加载查询商家中心--我提交的鉴定
+     * @param userID
+     * @return
+     */
+    List<AppSertypeVo> loadAppraisalapplyList(@Param("userID")int userID);
+
+    /**
+     * 提交鉴定
+     * @param appraisalapply
+     * @return
+     */
+    int updateAppraisalapplyByApplyID(@Param("appraisalapply")Appraisalapply appraisalapply);
 
 }

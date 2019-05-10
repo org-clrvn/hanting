@@ -38,7 +38,10 @@ public class SjrzOrderAction {
     @GetMapping("/loadOrdersList")
     public String loadOrdersList(int num, int size, Model model, HttpSession session){
         User userCount = (User) session.getAttribute("user");
+<<<<<<< Updated upstream
         /*userCount.getUserID()*/
+=======
+>>>>>>> Stashed changes
 
         //加载查询商家中心-订单列表-订单表
         PageInfo<Orders> data = orderBiz.loadOrdersList(num, size, 26);
@@ -56,6 +59,7 @@ public class SjrzOrderAction {
      *@修改人和其它信息
      */
     @GetMapping("/getServicesListByUserID")
+<<<<<<< Updated upstream
     public String getServicesListByUserID(int num, int size, HttpSession session, Model model){
         User userCount = (User) session.getAttribute("USER");
         /*userCount.getUserID()*/
@@ -65,6 +69,12 @@ public class SjrzOrderAction {
         /*if (orderBiz.judgeServices(12) > 0){
 
         }*/
+=======
+    public String getServicesListByUserID(int num, int size, HttpSession session, Model model, String serviceTitle){
+        User userCount = (User) session.getAttribute("USER");
+        System.out.println("serviceTitle = " + serviceTitle);
+        model.addAttribute("ServicesList", orderBiz.loadServicesList(num, size, userCount.getUserID(), serviceTitle));
+>>>>>>> Stashed changes
 
         return "lzyQianstage/sjzx-services";
     }
@@ -72,7 +82,11 @@ public class SjrzOrderAction {
     @GetMapping("/loadFirBecServiceIDByUserID")
     public String loadFirBecServiceIDByUserID(HttpSession session, Model model){
         User userCount = (User) session.getAttribute("USER");
+<<<<<<< Updated upstream
         /*userCount.getUserID()*/
+=======
+
+>>>>>>> Stashed changes
         User user = orderBiz.loadFirBecServiceIDByUserID(userCount.getUserID());
 
         if (user != null){
@@ -82,6 +96,7 @@ public class SjrzOrderAction {
         return "lzyQianstage/sjzx-xzfwlb";
     }
 
+<<<<<<< Updated upstream
     @GetMapping("/clickSjzx")
     public String clickSjzx(HttpSession session){
         User userCount = (User)session.getAttribute("USER");
@@ -91,6 +106,25 @@ public class SjrzOrderAction {
             if (orderBiz.judgeAuditStatusByUserID(userCount.getUserID()) == 2){
                 return "lzyQianstage/sjrz-yktsj"; //商家中心中转页面
             }else {
+=======
+    /**
+     *@描述  首页点击商家入驻
+     *@参数  [session]
+     *@返回值  java.lang.String
+     *@创建人  lizeyun
+     *@创建时间  2019/4/27
+     *@修改人和其它信息
+     */
+    @GetMapping("/clickGoSjzx")
+    public String clickGoSjzx(HttpSession session){
+        User userCount = (User)session.getAttribute("USER");
+        if (userCount == null){ //未登录
+            return "fw-loginHint"; //跳登录页面
+        }else { //已登录
+            if (orderBiz.judgeAuditStatusByUserID(userCount.getUserID()) == 2){ //已开通商家
+                return "lzyQianstage/sjrz-yktsj"; //商家中心中转页面
+            }else { //未开通商家
+>>>>>>> Stashed changes
                 return "lzyQianstage/sjrz-xz"; //商家入驻(下一步)页面
             }
         }
@@ -109,7 +143,10 @@ public class SjrzOrderAction {
     @GetMapping("/skipPage")
     public String skipSjrzShzlPage(HttpSession session){
         User userCount = (User)session.getAttribute("USER");
+<<<<<<< Updated upstream
         //user.getUserID()
+=======
+>>>>>>> Stashed changes
 
         return orderBiz.judgeAuditStatusByUserID(userCount.getUserID()) == 2 ? "lzyQianstage/sjrz-yktsj":"lzyQianstage/sjrz-shzl";
     }
@@ -126,6 +163,7 @@ public class SjrzOrderAction {
         return "lzyQianstage/sjrz-yktsj";
     }
 
+<<<<<<< Updated upstream
 
     @GetMapping("/skipSjzxFbfwPage")
     public String skipSjzxFbfwPage(){
@@ -137,6 +175,18 @@ public class SjrzOrderAction {
     public String skipSjzxHwfyfbPage(){
 
         return "lzyQianstage/sjzx-hwfyfb";
+=======
+    @GetMapping("/skipSjzxServicesPage")
+    public String skipSjzxServicesPage(){
+
+        return "lzyQianstage/sjzx-services";
+    }
+
+    @GetMapping("/skipSjzxZjyfbfwPage")
+    public String skipSjzxZjyfbfwPage(){
+
+        return "lzyQianstage/sjzx-zjyfbfw";
+>>>>>>> Stashed changes
     }
 
     @GetMapping("/skipSjzxWzxfbPage")
@@ -145,6 +195,7 @@ public class SjrzOrderAction {
         return "lzyQianstage/sjzx-wzxfb";
     }
 
+<<<<<<< Updated upstream
     @GetMapping("/skipSjzxXxzyfbPage")
     public String skipSjzxXxzyfbPage(){
 
@@ -167,6 +218,24 @@ public class SjrzOrderAction {
     public String skipSjzxServicesPage(){
 
         return "lzyQianstage/sjzx-services";
+=======
+    @GetMapping("/skipSjzxFbfwPage")
+    public String skipSjzxFbfwPage(){
+
+        return "lzyQianstage/sjzx-fbfw";
+    }
+
+    @GetMapping("/skipSjzxHwfyfbPage")
+    public String skipSjzxHwfyfbPage(){
+
+        return "lzyQianstage/sjzx-hwfyfb";
+    }
+
+    @GetMapping("/skipSjzxXxzyfbPage")
+    public String skipSjzxXxzyfbPage(){
+
+        return "lzyQianstage/sjzx-xxzyfb";
+>>>>>>> Stashed changes
     }
 
 }
