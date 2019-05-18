@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 
 <title>商家中心_韩汀社区</title>
-<link rel="shortcut icon" href="../../public/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../../../Public/images/favicon.ico" type="image/x-icon" />
 
-<script type="text/javascript" src="../../public/js/jquery-1.8.3.min.js"></script>
-<link href="../../public/css/owl.carousel.css" rel="stylesheet" />
-<link href="../../public/css/common.css" rel="stylesheet" />
+<script type="text/javascript" src="../../../Public/js/jquery-1.8.3.min.js"></script>
+<link href="../../../Public/css/owl.carousel.css" rel="stylesheet" />
+<link href="../../../Public/css/common.css" rel="stylesheet" />
 
-<link rel="stylesheet" type="text/css" href="../../public/css/swiper-3.4.2.min.css">
+<link rel="stylesheet" type="text/css" href="../../../Public/css/swiper-3.4.2.min.css">
 
 
 <meta property="wb:webmaster" content="1a0bb5a2cb580b9f" />
@@ -25,9 +25,9 @@
 			<div class="top_nav"><a href="#">首页</a><span class="ht_line"></span><a href="#">商家入驻</a><span class="ht_line"></span><a href="#">帮助中心</a><span class="ht_line"></span><a href="#">关于韩汀</a><span class="ht_line"></span><a href="#">联系我们</a></div>
 			
 			<div class="top_right">
-									<a href="sjzx-index.html">.2304</a>			<span class="ht_line"></span><a href="#">退出</a>
-            <span class="ht_line"></span><a href="#"><img src="../../public/images/e_i.png" alt="" /></a>
-           
+									<a href="sjzx-index.html">[[${user.userName}]]</a>			<span class="ht_line"></span><a href="#">退出</a>
+            <span class="ht_line"></span><a href="#"><img src="../../../Public/images/e_i.png" alt="" /></a>
+
 			</div>
 		</div>
 	</div>
@@ -36,13 +36,13 @@
 		<a class="logo my_logo" href="#">御品韩汀</a>
 		<ul class="member_nav_ul">
         	<li class="cur" id="li1"><a href="/lzy/c/loadUserOrderList?num=1&size=2">商家中心</a><span class="my_nav_i"></span></li>
-<style type="text/css">
-.layui-layer-btn .layui-layer-btn0{ background:#4c1b98; }
-.layui-layer-btn .layui-layer-btn0:hover{ background:#340d6f;}
-</style>        	<li  id="li2"><a href="#">个人中心</a><span class="my_nav_i"></span></li>
-            <li  id="li3"><a href="#">账户设置</a><span class="my_nav_i"></span></li>
-            <li  id="li4"><a href="#">消息</a><span class="my_nav_i"></span></li>
-            
+			<style type="text/css">
+			.layui-layer-btn .layui-layer-btn0{ background:#4c1b98; }
+			.layui-layer-btn .layui-layer-btn0:hover{ background:#340d6f;}
+			</style>
+			<li id="li2"><a href="#">个人中心</a><span class="my_nav_i"></span></li>
+            <li id="li3"><a href="#">账户设置</a><span class="my_nav_i"></span></li>
+            <li id="li4"><a href="#">消息</a><span class="my_nav_i"></span></li>
         </ul>
 	</div>
 </div>
@@ -84,7 +84,7 @@
             	<li ><a href="/c/szy/order/queryAllOrder?orderStatus=0&refundstatus=-1&pageNum=1&pageSize=5&orderID="><span class="msp2 pre_c1"></span>我收到的预定</a></li>
             	<li ><a href="/lzy/c/getServicesListByUserID?num=1&size=3&serviceTitle=null"><span class="msp2 pre_c2"></span>我发布的服务</a></li>
                 <li ><a href="/lzy/c/loadAppraisalapplyList"><span class="msp2 pre_c3"></span>我提交的鉴定</a></li>
-                <li ><a href="/zg/c/queryEvaluation?pageNum=1&pageSize=2"><span class="msp2 pre_c4"></span>我收到的评价</a></li>
+                <li ><a href="/lzy/c/loadEvaUserSerVo?num=1&size=3"><span class="msp2 pre_c4"></span>我收到的评价</a></li>
                 <li ><a href="#"><span class="msp2 pre_c5"></span>我发出的物流</a></li>
                 <li ><a href="#"><span class="msp2 pre_c6"></span>我收到的退款<span class="sp_acon_1"></span></a></li>
                 <li ><a href="#"><span class="msp2 pre_c3"></span>我的服务类别</a></li>
@@ -93,7 +93,6 @@
 			<div class="ad_left_1"></div>        
 		</div>
 
-		
         <!--member right-->
         <div class="member_right sj_right_box">
 			<!--ad-->
@@ -104,7 +103,7 @@
 				<ul class="jp_ul_list">
 					<li>留学达人</li>	
 				</ul>
-				<span class="busi_c_name"><span class="open_status" >
+				<span class="busi_c_name"><span class="open_status">
 				<span style="color:green;" th:if="${user.businessState==1}">正在营业</span>
 				<span style="color:green;" th:if="${user.businessState==2}">已暂停</span>
 				<span style="color:green;" th:if="${user.businessState==3}">已关闭</span>
@@ -113,20 +112,27 @@
 				<!--<span class="busi_c_name"><span style="font-size: 14px;color:green;border:2px solid black;border-radius:9px; border:solid 1px #b5118c; padding: 0 10px;text-align: center;"><span style="color:green;">开启</span>&nbsp;</span></span>-->
 				<!--&lt;!&ndash;<span> <a class="edit_a">开启</a></span>&ndash;&gt;-->
 			</div>
-
 				<div class="business_c_info">
-					<a href="javascript:void(0)">店铺信息</a><span class="bbs_line"></span>
-					<a href="javascript:void(0)" target="_blank">店铺主页 </a>
+					<a href="javascript:void(0);">店铺信息</a><span class="bbs_line"></span>
+					<a href="javascript:void(0);" target="_blank">店铺主页</a>
 					<span class="bbs_line"></span> 
 					<a href="javascript:void(0);">保证金[[${user.guaranteeMoney}]]金币<span class="bzj_i"></span></a>
 					<span class="bbs_line"></span>
 					<a href="javascript:void(0);" th:if="${user.trusteeship==1}">已托管<span></span></a>
 					<a href="javascript:void(0);" th:if="${user.trusteeship==0}">未托管<span></span></a>
-					<span class="bbs_line"></span>服务类别
-					<span class="business_c_a"> 
-						<a href="javascript:void(0)" name="stid" th:if="${user.firstServiceID}!=null">[[${user.firstServiceID}]]</a>
-						<a href="javascript:void(0)" name="stid" th:if="${user.secondServiceID}!=null">[[${user.secondServiceID}]]</a>
-						<a href="#" class="btna_s2">申请鉴定</a>
+					<span class="bbs_line"></span>服务类别:
+					<span class="business_c_a">
+						<a href="javascript:void(0)" name="stid" th:if="${user.firstServiceID==1}">自驾游</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.firstServiceID==2}">微整形</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.firstServiceID==3}">留学中介</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.firstServiceID==4}">韩语翻译</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.firstServiceID==5}">学习资源</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.secondServiceID==1}">自驾游</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.secondServiceID==2}">微整形</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.secondServiceID==3}">留学中介</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.secondServiceID==4}">韩语翻译</a>
+						<a href="javascript:void(0)" name="stid" th:if="${user.secondServiceID==5}">学习资源</a>
+						<a href="/lzy/c/loadAppraisalapplyList" class="btna_s2">申请鉴定</a>
 					</span>
 					
 				</div>
@@ -169,7 +175,7 @@
 <div class="footer community_footer_dl">
 	<dl class="footer_dl">
 		<dt>
-		<div class="footer_ewm_box"><img src="../../public/images/footer_ewm.png" alt="" /></div>
+		<div class="footer_ewm_box"><img src="../../../Public/images/footer_ewm.png" alt="" /></div>
 			<span class="ft_ewm_name">御品韩汀</span>
 		</dt>
 		<dd>
@@ -186,13 +192,13 @@
 <!--right nav-->
 <ul class="right_nav">
 	<li><a href="javascript:void(0);" class="rn_tel">客服电话</a><div class="over_show kf_tel">0731-2286-7673</div></li>
-	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
+	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../../Public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
 	<li><a href="tencent://Message/?Uin=3119683838&websiteName=http://yphting.zglxkj.com=&Menu=yes" class="rn_kf">在线客服</a></li>
 	<li><a href="#" class="rn_top">Back top</a></li>
 </ul>
 <!--right nav end-->
 
-<link rel="stylesheet" href="../../public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
+<link rel="stylesheet" href="../../../Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
 
 <div class="pop_contact">
 	<a href="javascript:void(0);" class="close_pop_contact"></a>

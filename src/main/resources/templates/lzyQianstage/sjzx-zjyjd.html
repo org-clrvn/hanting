@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8"> 
 <title>自驾游鉴定申请_韩汀社区</title>
-<link rel="shortcut icon" href="../../public/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="../../../Public/images/favicon.ico" type="image/x-icon" />
 
-<link href="../../public/css/owl.carousel.css" rel="stylesheet" />
-<link href="../../public/css/common.css" rel="stylesheet" />
-<script src="../../public/js/jquery-1.8.3.min.js"></script>
-<script src="../../public/js/common.js"></script>
-<script src="../../public/js/layer/layer.js"></script>
-<script type="text/javascript" src="../../public/js/jcarousellite.min.js"></script>
+<link href="../../../Public/css/owl.carousel.css" rel="stylesheet" />
+<link href="../../../Public/css/common.css" rel="stylesheet" />
+<script src="../../../Public/js/jquery-1.8.3.min.js"></script>
+<script src="../../../Public/js/common.js"></script>
+<script src="../../../Public/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../../Public/js/jcarousellite.min.js"></script>
 
-<script type="text/javascript" src="../../public/js/swiper-3.4.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../public/css/swiper-3.4.2.min.css">
+<script type="text/javascript" src="../../../Public/js/swiper-3.4.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../Public/css/swiper-3.4.2.min.css">
 
 
 <meta property="wb:webmaster" content="1a0bb5a2cb580b9f" />
 <meta name="__hash__" content="00fd76137441bbcf731c0da75b913018_4aab40ad98e31edc37eb6a9f668f0827" /></head>
 <iframe name="topost" id="topost" style="display:none;"></iframe>
 
-<link rel="stylesheet" href="../../public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
+<link rel="stylesheet" href="../../../Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
 
 <script>
 function chkform()
@@ -50,7 +50,7 @@ function beforeCall(form, status){
 			
 			<div class="top_right">
 									<a href="/index.php/Home/Seller/index.html">.2304</a>			<span class="ht_line"></span><a href="/index.php/Home/Member/logout.html">退出</a>
-            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="../../public/images/e_i.png" alt="" /><span class="e_if"></span></a>
+            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="../../../Public/images/e_i.png" alt="" /><span class="e_if"></span></a>
 			</div>
 		</div>
 	</div>
@@ -119,6 +119,7 @@ $(function(){
 				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>姓名：</dt>
 					<dd>
+						<input type="hidden" th:value="${applyID}" name="applyID" />
 						<input type="text" class="input_c inf_inc validate[required]" name="name" value=""/>
 					</dd>
 				</dl>
@@ -176,14 +177,14 @@ $(function(){
 				</dl>																				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>是否有车：</dt>
 					<dd class="mtb">
-						<label><input type="radio" name="vehicle" value="true"  class="radio_input validate[required]" />有</label>&nbsp;&nbsp;&nbsp;&nbsp;
-						<label><input type="radio" name="vehicle" value="false"  class="radio_input" />无</label>
+						<label><input type="radio" name="vehicle" value="1"  class="radio_input validate[required]" />有</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						<label><input type="radio" name="vehicle" value="2"  class="radio_input" />无</label>
 					</dd>
 				</dl>				<dl class="info_form_dl info_form_dl2">
 					<dt><span class="c_x">*</span>导游证：</dt>
 					<dd class="mtb">
-						<label><input type="radio" name="guideCard" value="true"  class="radio_input validate[required]" />有</label>&nbsp;&nbsp;&nbsp;&nbsp;
-						<label><input type="radio" name="guideCard" value="false"  class="radio_input" />无</label>
+						<label><input type="radio" name="guideCard" value="1"  class="radio_input validate[required]" />有</label>&nbsp;&nbsp;&nbsp;&nbsp;
+						<label><input type="radio" name="guideCard" value="2"  class="radio_input" />无</label>
 					</dd>
 				</dl>								
 													<dl class="info_form_dl info_form_dl2">
@@ -243,7 +244,7 @@ $(function(){
 <div class="footer community_footer_dl">
 	<dl class="footer_dl">
 		<dt>
-		<div class="footer_ewm_box"><img src="../../public/images/footer_ewm.png" alt="" /></div>
+		<div class="footer_ewm_box"><img src="../../../Public/images/footer_ewm.png" alt="" /></div>
 			<span class="ft_ewm_name">御品韩汀</span>
 		</dt>
 		<dd>
@@ -260,7 +261,7 @@ $(function(){
 <!--right nav-->
 <ul class="right_nav">
 	<li><a href="javascript:void(0);" class="rn_tel">客服电话</a><div class="over_show kf_tel">0731-2286-7673</div></li>
-	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
+	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../../Public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
 	<li><a href="tencent://Message/?Uin=3119683838&websiteName=http://yphting.zglxkj.com=&Menu=yes" class="rn_kf">在线客服</a></li>
 	<li><a href="#" class="rn_top">Back top</a></li>
 </ul>
@@ -270,11 +271,11 @@ $(function(){
 
 
 
-<script src="../../public/js/jquery.scrollto.js"></script>
+<script src="../../../Public/js/jquery.scrollto.js"></script>
 
-<script type="text/javascript" th:src="@{../../public/js/jquery-1.8.3.min.js}"></script>
-<script src="../../public/js/ajaxupload.js" type="text/javascript"></script>
-<script type="text/javascript" src="../../public/js/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" th:src="@{../../../Public/js/jquery-1.8.3.min.js}"></script>
+<script src="../../../Public/js/ajaxupload.js" type="text/javascript"></script>
+<script type="text/javascript" src="../../../Public/js/kindeditor/kindeditor-min.js"></script>
 <script type="text/javascript">
 $(function(){
 	//选择预览图片
@@ -305,8 +306,8 @@ $(function(){
 
 </script>
 </body>
-<script type="text/javascript" src="../../public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="../../public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="../../public/js/sjzx-href.js"></script>
-<script type="text/javascript" src="../../public/js/grzx-interlinkage.js"></script>
+<script type="text/javascript" src="../../../Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="../../../Public/js/headLeftNav.js"></script>
+<script type="text/javascript" src="../../../Public/js/sjzx-href.js"></script>
+<script type="text/javascript" src="../../../Public/js/grzx-interlinkage.js"></script>
 </html>

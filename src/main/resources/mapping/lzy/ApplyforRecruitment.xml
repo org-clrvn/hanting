@@ -71,6 +71,7 @@
         `user`
         SET
         `userRealName` = #{user.userRealName},
+        `userMoney` = userMoney - 500,
         `country` = #{user.country},
         `provincialID` = #{user.provincialID},
         `cityID` = #{user.cityID},

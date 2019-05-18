@@ -4,28 +4,19 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.sy.hting.biz.lzy.SjrzOrderBiz;
 import com.sy.hting.biz.lzy.SjzxIndexBiz;
-<<<<<<< Updated upstream
 import com.sy.hting.pojo.Orders;
 import com.sy.hting.pojo.User;
-=======
 import com.sy.hting.pojo.*;
-import com.sy.hting.vo.lzy.AppSertypeVo;
->>>>>>> Stashed changes
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< Updated upstream
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-=======
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.lang.System;
->>>>>>> Stashed changes
+
 
 /**
  * @param
@@ -34,10 +25,7 @@ import java.lang.System;
  * @exception
  * @Time 2019/4/15 21:57
  */
-<<<<<<< Updated upstream
-=======
-@SuppressWarnings("all")
->>>>>>> Stashed changes
+
 @Controller
 @RequestMapping("/lzy/c")
 public class SjzxIndexAction {
@@ -67,8 +55,6 @@ public class SjzxIndexAction {
         }
     }
 
-<<<<<<< Updated upstream
-=======
     @GetMapping("/loadAppraisalapplyList")
     public String loadAppraisalapplyList(HttpSession session, Model model){
         User userCount = (User)session.getAttribute("USER");
@@ -146,5 +132,39 @@ public class SjzxIndexAction {
         return "redirect:/lzy/c/loadAppraisalapplyList";
     }
 
->>>>>>> Stashed changes
+    @GetMapping("/skipSjzxServicecatsPage")
+    public String skipSjzxServicecatsPage(){
+        return "sjzx-servicecats";
+    }
+
+    @GetMapping("/skipSjzxTrustservicePage")
+    public String skipSjzxTrustservicePage(){
+        return "sjzx-trustservice";
+    }
+
+    @GetMapping("/loadTrusteeship")
+    public String loadTrusteeship(HttpSession session, Model model){
+        User userCount = (User)session.getAttribute("USER");
+
+        model.addAttribute("data", indexBiz.loadTrusteeship(userCount.getUserID()));
+
+        return "lzyQianstage/sjzx-trustservice";
+    }
+
+    /**
+     *@描述  根据用户编号查询评价信息
+     *@参数  [num, size, session, model]
+     *@返回值  java.lang.String
+     *@创建人  lizeyun
+     *@创建时间  2019/5/14
+     *@修改人和其它信息
+     */
+    @GetMapping("/loadEvaUserSerVo")
+    public String loadEvaUserSerVo(int num, int size, HttpSession session, Model model){
+        User userCount = (User)session.getAttribute("USER");
+
+        model.addAttribute("data", indexBiz.loadEvaUserSerVoList(num, size, userCount.getUserID()));
+
+        return "lzyQianstage/sjzx-comment";
+    }
 }

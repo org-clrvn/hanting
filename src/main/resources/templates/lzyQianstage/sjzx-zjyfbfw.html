@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link href="../../public/css/owl.carousel.css" rel="stylesheet" />
-<link href="../../public/css/common.css" rel="stylesheet" />
-<script src="../../public/js/jquery-1.8.3.min.js"></script>
-<script src="../../public/js/common.js"></script>
-<script src="../../public/js/layer/layer.js"></script>
-<script type="text/javascript" src="../../public/js/jcarousellite.min.js"></script>
+<link href="../../../Public/css/owl.carousel.css" rel="stylesheet" />
+<link href="../../../Public/css/common.css" rel="stylesheet" />
+<script src="../../../Public/js/jquery-1.8.3.min.js"></script>
+<script src="../../../Public/js/common.js"></script>
+<script src="../../../Public/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../../Public/js/jcarousellite.min.js"></script>
 
-<script type="text/javascript" src="../../public/js/swiper-3.4.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../public/css/swiper-3.4.2.min.css">
+<script type="text/javascript" src="../../../Public/js/swiper-3.4.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../Public/css/swiper-3.4.2.min.css">
 
 <script>
 _weburl = 'http://yphting.zglxkj.com';
@@ -20,9 +20,9 @@ _weburl = 'http://yphting.zglxkj.com';
 <meta name="__hash__" content="1aa3de3389ea2ea3058b11a9aec112d6_4cc213949ba8028357daf06b5ffc916b" /></head>
 <iframe name="topost" id="topost" style="display:none;"></iframe>
 
-<link rel="stylesheet" href="../../public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
-<script src="../../public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="../../../Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
+<script src="../../../Public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../Public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
 function chkform()
@@ -149,7 +149,7 @@ function chkServ(){
 	z-index: 3;
 	height: 24px;
 	width: 24px;
-	background: #f9f7f7 url(../../public/images/jcropx.png) no-repeat 50% 50%;
+	background: #f9f7f7 url(../../../Public/images/jcropx.png) no-repeat 50% 50%;
 }
 .jcropu_a {
 	position: absolute;
@@ -158,7 +158,7 @@ function chkServ(){
 	z-index: 3;
 	height: 24px;
 	width: 24px;
-	background: #f9f7f7 url(../../public/images/jcropu.png) no-repeat 50% 50%;
+	background: #f9f7f7 url(../../../Public/images/jcropu.png) no-repeat 50% 50%;
 }
 
 .upload_a {
@@ -168,7 +168,7 @@ function chkServ(){
 	z-index: 3;
 	height: 24px;
 	width: 24px;
-	background: #f9f7f7 url(../../public/images/add_i.png) no-repeat 50% 50%;
+	background: #f9f7f7 url(../../../Public/images/add_i.png) no-repeat 50% 50%;
 }
 .upload_img_name {
 	text-align: center;
@@ -193,7 +193,7 @@ p.upload_img_name{
 	z-index: 3;
 	height: 24px;
 	width: 24px;
-	background: #f9f7f7 url(../../public/images/c_btna1.png) no-repeat 50% 50%;
+	background: #f9f7f7 url(../../../Public/images/c_btna1.png) no-repeat 50% 50%;
 }
 /*.zjy_upload_img img{ width: 148px; height:98px;}*/
 </style>
@@ -207,7 +207,7 @@ p.upload_img_name{
 			
 			<div class="top_right">
 									<a href="/index.php/Home/Seller/index.html">.2304</a>			<span class="ht_line"></span><a href="/index.php/Home/Member/logout.html">退出</a>
-            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="../../public/images/e_i.png" alt="" /></a>
+            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="../../../Public/images/e_i.png" alt="" /></a>
             <script>$('.top_right').addClass('login_right');</script>
 					<!-- 	<span style="font-size:14px;"> &nbsp;&nbsp;| 切换到：<select  id="lang" onchange="changelang();"><option value="" >请选择</option><option value="zh-cn" >简体中文</option> <option value="en-us" >English</option> </select> -->
 			<script language="javascript">
@@ -292,7 +292,7 @@ function showcitys(countryid){
 		<form method="post" id="formpost" enctype="multipart/form-data" action="/lzy/c/addServices" ><!--  onSubmit="return chkServ();"-->
 			<input   type="hidden"  name="stid" value="1">	
 			<dl class="info_form_dl">
-				<dt>服务类别</dt>
+				<dt><span class="c_x">*</span>服务类别</dt>
 				<dd>
 					<!--<select class="sel_f sel_f2 sel_b5 validate[required]" name="catid">-->
 						<select class="sel_f sel_f2 sel_b5 " name="resourceID">
@@ -309,14 +309,14 @@ function showcitys(countryid){
 			</dl>
 			
 			<dl class="info_form_dl">
-				<dt>标题</dt>
+				<dt><span class="c_x">*</span>标题</dt>
 				<dd class="mt10">
 					<input type="text" name="serviceTitle" value="" class="input_c inf_inc validate[required]" />
 				</dd>
 			</dl>
 			
 			<dl class="info_form_dl">
-				<dt class="mopa">国家</dt>
+				<dt class="mopa"><span class="c_x">*</span>国家</dt>
 				<dd class="c_4 f14">
 					<select class="sel_f sel_f2 sel_b2" onChange="showcitys(this.value)" name="countryid" >
 						<option value="" >请选择</option>
@@ -324,12 +324,12 @@ function showcitys(countryid){
 				</dd>
 			</dl>
 			<dl class="info_form_dl city" style="display:none;">
-				<dt class="mopa">服务城市</dt>
+				<dt class="mopa"><span class="c_x">*</span>服务城市</dt>
 				<dd class="city_list_dd">
 					<span class="mrsp_10 ocity city399"><label><input type="checkbox" id="checkbox399" onclick="selectallcitys('399')"  class="checkbox_input" />全部</label></span><span class="mrsp_10 ocity city400"><label><input type="checkbox" id="checkbox400" onclick="selectallcitys('400')"  class="checkbox_input" />全部</label></span><span class="mrsp_10 ocity city1023"><label><input type="checkbox" id="checkbox1023" onclick="selectallcitys('1023')"  class="checkbox_input" />全部</label></span>					<span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="首尔特别市"  />首尔特别市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="釜山广域市"  />釜山广域市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="大邱广域市"  />大邱广域市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="仁川广域市"  />仁川广域市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="光州广域市"  />光州广域市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="大田广域市"  />大田广域市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="蔚山广域市"  />蔚山广域市</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="济州特别自治道"  />济州特别自治道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="江原道"  />江原道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="庆尚北道"  />庆尚北道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="庆尚南道"  />庆尚南道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="忠清北道"  />忠清北道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="忠清南道"  />忠清南道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="全罗北道"  />全罗北道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="全罗南道"  />全罗南道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="京畿道"  />京畿道</label></span><span class="mrsp_10 ocity city400" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox400" name="areaids"  value="世宗特别自治市"  />世宗特别自治市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="天元区"  />天元区</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="荷塘区"  />荷塘区</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="芦淞区"  />芦淞区</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="石峰区"  />石峰区</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="北京市"  />北京市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="上海市"  />上海市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="天津市"  />天津市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="重庆市"  />重庆市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="河北市"  />河北市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="山西"  />山西</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="南京市"  />南京市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="长沙市"  />长沙市</label></span><span class="mrsp_10 ocity city399" style="display:none;" ><label><input type="checkbox" class="checkbox_input checkbox399" name="areaids"  value="株洲市"  />株洲市</label></span>
 			</dl>
 			<dl class="info_form_dl">
-				<dt class="mopa">上传服务图片</dt>
+				<dt class="mopa"><span class="c_x">*</span>上传服务图片</dt>
 				<dd>
 					<p class="c_4 pat1 dx_text zc_info">请上传服务图片, 图片尺寸请保持<span class="xx_sp">750px*500px</span>, 最多5张<br />格式要求：支持.jpg .jpeg .bmp .gif .png格式照片，大小不超过2M。</p>
 					<ul class="jcrop_upload_ul" id="pic1">
@@ -442,26 +442,26 @@ function showcitys(countryid){
 				</dd>
 			</dl>
 						<dl class="info_form_dl">
-				<dt>副标题</dt>
+				<dt><span class="c_x">*</span>副标题</dt>
 				<dd>
 					<input type="text" class="input_c inf_inc validate[required]" value="" name="serviceFuTitle" />
 				</dd>
 			</dl>
 			<dl class="info_form_dl">
-				<dt>金币价格</dt>
+				<dt><span class="c_x">*</span>金币价格</dt>
 				<dd class="mt10">				
 					<input type="text" value="" class="input_c inf_inc9 mt5 validate[required,custom[integer]]" name="servicePrice" />
 					<input type="text" value="" style="width:150px;" class="input_c sel_b4 mt5 validate[required]" placeholder="小时/每天" name="serviceHour" /><p class="c_4 zc_info">我们会对您的交易收取10%的服务费</p>
 				</dd>
 			</dl>
 						<dl class="info_form_dl">
-				<dt>可预订日期</dt>
+				<dt><span class="c_x">*</span>可预订日期</dt>
 				<dd>
 					起始时间:<input  name="serviceStartDate" type="date" />
 					结束时间:<input  name="serviceEndDate" type="date" />
 				</dd>
 			</dl>			<dl class="info_form_dl">
-				<dt class="mopa">费用包含</dt>
+				<dt class="mopa"><span class="c_x">*</span>费用包含</dt>
 				<dd>
 					<span class="mrsp_10"><label><input type="checkbox" name="serviceCostInclude" value="小费" class="checkbox_input validate[required]"  /> 小费</label></span><span class="mrsp_10"><label><input type="checkbox" name="serviceCostInclude" value="油费" class="checkbox_input validate[required]"  /> 油费</label></span><span class="mrsp_10"><label><input type="checkbox" name="serviceCostInclude" value="过路费" class="checkbox_input validate[required]"  /> 过路费</label></span><span class="mrsp_10"><label><input type="checkbox" name="serviceCostInclude" value="导游费" class="checkbox_input validate[required]"  /> 导游费</label></span><span class="mrsp_10"><label><input type="checkbox" name="serviceCostInclude" value="报名费" class="checkbox_input validate[required]"  /> 报名费</label></span>				</dd>
 			</dl>			<dl class="info_form_dl">
@@ -477,7 +477,7 @@ function showcitys(countryid){
 				</dd>
 			</dl>
 			<dl class="info_form_dl">
-				<dt>服务内容下载</dt>
+				<dt><span class="c_x">*</span>服务内容下载</dt>
 				<dd>
 					<div class="bodys">
 										<div>
@@ -509,7 +509,7 @@ function showcitys(countryid){
 <div class="footer community_footer_dl">
 	<dl class="footer_dl">
 		<dt>
-		<div class="footer_ewm_box"><img src="../../public/images/footer_ewm.png" alt="" /></div>
+		<div class="footer_ewm_box"><img src="../../../Public/images/footer_ewm.png" alt="" /></div>
 			<span class="ft_ewm_name">御品韩汀</span>
 		</dt>
 		<dd>
@@ -526,22 +526,22 @@ function showcitys(countryid){
 <!--right nav-->
 <ul class="right_nav">
 	<li><a href="javascript:void(0);" class="rn_tel">客服电话</a><div class="over_show kf_tel">0731-2286-7673</div></li>
-	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
+	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../../Public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
 	<li><a href="tencent://Message/?Uin=3119683838&websiteName=http://yphting.zglxkj.com=&Menu=yes" class="rn_kf">在线客服</a></li>
 	<li><a href="#" class="rn_top">Back top</a></li>
 </ul>
 <!--right nav end-->
 
-<link rel="stylesheet" href="../../public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
-<script src="../../public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8">
+<link rel="stylesheet" href="../../../Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
+<script src="../../../Public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8">
 </script>
-<script src="../../public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+<script src="../../../Public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
 </script>
 
 
 
 
-<script src="../../public/js/jquery.scrollto.js"></script>
+<script src="../../../Public/js/jquery.scrollto.js"></script>
 
 
 <script>
@@ -551,8 +551,8 @@ function removefile(obj){
 }
 </script>
 
-<script type="text/javascript" th:src="@{../../public/js/jquery-1.8.3.min.js}"></script>
-<script type="text/javascript" src="../../public/js/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" th:src="@{../../../Public/js/jquery-1.8.3.min.js}"></script>
+<script type="text/javascript" src="../../../Public/js/kindeditor/kindeditor-min.js"></script>
 <script language="javascript">
 $(function(){
 	//选择预览图片
@@ -586,8 +586,8 @@ $(function(){
 </script>
 
 </body>
-<script type="text/javascript" src="../../public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="../../public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="../../public/js/sjzx-href.js"></script>
-<script type="text/javascript" src="../../public/js/grzx-interlinkage.js"></script>
+<script type="text/javascript" src="../../../Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="../../../Public/js/headLeftNav.js"></script>
+<script type="text/javascript" src="../../../Public/js/sjzx-href.js"></script>
+<script type="text/javascript" src="../../../Public/js/grzx-interlinkage.js"></script>
 </html>

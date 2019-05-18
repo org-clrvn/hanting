@@ -1,9 +1,11 @@
 package com.sy.hting.biz.lzy;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sy.hting.dao.lzy.ISjzxIndexDao;
 import com.sy.hting.pojo.*;
 import com.sy.hting.vo.lzy.AppSertypeVo;
+import com.sy.hting.vo.lzy.EvaUserSerVo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -54,6 +56,26 @@ public class SjzxIndexBiz {
      */
     public int modifyAppraisalapplyByApplyID(Appraisalapply appraisalapply){
         return indexDao.updateAppraisalapplyByApplyID(appraisalapply);
+    }
+
+
+    public List<Trusteeship> loadTrusteeship(int userID){
+        return indexDao.loadTrusteeship(userID);
+    }
+
+    /**
+     *@描述  根据用户编号查询评价信息
+     *@参数  [pageNum, pageSize, userID]
+     *@返回值  com.github.pagehelper.PageInfo<com.sy.hting.vo.lzy.EvaUserSerVo>
+     *@创建人  lizeyun
+     *@创建时间  2019/5/14
+     *@修改人和其它信息
+     */
+    public PageInfo<EvaUserSerVo> loadEvaUserSerVoList(int pageNum, int pageSize, int userID){
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo<EvaUserSerVo> pageInfo = new PageInfo<EvaUserSerVo>(indexDao.loadEvaUserSerVoList(userID));
+
+        return pageInfo;
     }
 
 }

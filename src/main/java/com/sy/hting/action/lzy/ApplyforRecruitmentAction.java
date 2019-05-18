@@ -30,7 +30,7 @@ public class ApplyforRecruitmentAction {
      * @return
      */
     @GetMapping("/skipSjrzYktsjPage")
-    public String skipSjrzYktsjPage() { return "sjrz-yktsj"; }
+    public String skipSjrzYktsjPage() { return "lzyQianstage/sjrz-yktsj"; }
 
     /**
      * 跳转到商家入驻的页面
@@ -43,9 +43,9 @@ public class ApplyforRecruitmentAction {
             return "";
         }else {//user.getUserID()
             if (orderBiz.judgeAuditStatusByUserID(user.getUserID()) == 2){
-                return "sjrz-yktsj";
+                return "lzyQianstage/sjrz-yktsj";
             }else {
-                return "sjrz-xz";
+                return "lzyQianstage/sjrz-xz";
             }
         }
     }
@@ -58,8 +58,9 @@ public class ApplyforRecruitmentAction {
     int pid;
     @GetMapping("/skipRecruitmentPage")
     public String skipRecruitmentPage(HttpSession session, Model model){
+        User userCount = (User)session.getAttribute("USER");
         //保存登录用户的信息到HttpSession中
-        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(29));
+        session.setAttribute("user", recruitmentBiz.loginQueryUserByUserID(userCount.getUserID()));
 
         //加载查询申请服务类别的所有信息
         model.addAttribute("sertypeItems", recruitmentBiz.loadServicetypeList());
@@ -79,7 +80,7 @@ public class ApplyforRecruitmentAction {
         //加载查询所在城市的信息
        /* model.addAttribute("shareaList", recruitmentBiz.loadShareaList());*/
 
-        return "sjrz-txzl";
+        return "lzyQianstage/sjrz-txzl";
     }
 
     /**
@@ -88,28 +89,38 @@ public class ApplyforRecruitmentAction {
      * @return
      */
     @RequestMapping("/addRecruitmentUser")
-    public String modifyRecruitmentUser(User user, String serviceID, MultipartFile shopImgTemp, MultipartFile identityPositiveImgTemp, MultipartFile identityNegativeImgTemp, MultipartFile identityHandImgTemp) throws Exception{
+    public String modifyRecruitmentUser(HttpSession session, User user, String serviceID, MultipartFile shopImgTemp, MultipartFile identityPositiveImgTemp, MultipartFile identityNegativeImgTemp, MultipartFile identityHandImgTemp) throws Exception{
+        User userCount = (User)session.getAttribute("USER");
+
         System.out.println(user.getUserID());
         System.out.println(user.getLanguageNameText());
         System.out.println(user.getMajorNameText());
 
-        String fileName1 = shopImgTemp.getOriginalFilename();
-        user.setShopImg(File.separator + fileName1);
-        shopImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName1));
+        if (shopImgTemp != null){
+            String fileName1 = shopImgTemp.getOriginalFilename();
+            user.setShopImg(File.separator + fileName1);
+            shopImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName1));
+        }
 
-        String fileName2 = identityPositiveImgTemp.getOriginalFilename();
-        user.setIdentityPositiveImg(File.separator + fileName2);
-        identityPositiveImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName2));
+        if (identityPositiveImgTemp != null){
+            String fileName2 = identityPositiveImgTemp.getOriginalFilename();
+            user.setIdentityPositiveImg(File.separator + fileName2);
+            identityPositiveImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName2));
+        }
 
-        String fileName3 = identityNegativeImgTemp.getOriginalFilename();
-        user.setIdentityNegativeImg(File.separator + fileName3);
-        identityNegativeImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName3));
+        if (identityNegativeImgTemp != null){
+            String fileName3 = identityNegativeImgTemp.getOriginalFilename();
+            user.setIdentityNegativeImg(File.separator + fileName3);
+            identityNegativeImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName3));
+        }
 
-        String fileName4 = identityHandImgTemp.getOriginalFilename();
-        user.setIdentityHandImg(File.separator + fileName4);
-        identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
+        if (identityHandImgTemp != null){
+            String fileName4 = identityHandImgTemp.getOriginalFilename();
+            user.setIdentityHandImg(File.separator + fileName4);
+            identityHandImgTemp.transferTo(new File("E:\\myfile" + File.separator + fileName4));
+        }
 
-        user.setUserID(29);
+        user.setUserID(userCount.getUserID());
 
         String[] split = serviceID.split(",");
         user.setFirstServiceID(Integer.parseInt(split[0]));
@@ -118,7 +129,6 @@ public class ApplyforRecruitmentAction {
         int count = recruitmentBiz.modifyRecruitmentUser(user);
 
         return count > 0 ? "redirect:/lzy/c/skipPage":"redirect:/lzy/c/skipRecruitmentPage";
-
     }
 
     /**
@@ -127,19 +137,18 @@ public class ApplyforRecruitmentAction {
      */
     @GetMapping("/skipSjrzShzlPage")
     public String skipSjrzShzlPage(HttpSession session) {
-        User user = (User)session.getAttribute("user");
-        if (orderBiz.judgeAuditStatusByUserID(29) == 2){
+        User userCount = (User)session.getAttribute("user");
+
+        if (orderBiz.judgeAuditStatusByUserID(userCount.getUserID()) == 2){
             return "redirect:/lzy/c/skipSjrzYktsjPage";
         }else {
             return "redirect:/lzy/c/SjrzShzlPage";
         }
-
     }
 
     @GetMapping("/SjrzShzlPage")
     public String SjrzShzlPage(HttpSession session) {
-        return "sjrz-shzl";
-
+        return "lzyQianstage/sjrz-shzl";
     }
 
 

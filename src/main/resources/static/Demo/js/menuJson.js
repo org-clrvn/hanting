@@ -64,7 +64,7 @@ var leftNav = [ {
 	"text": "会员管理",
 	"leftNav_id": "17",
 	"name": "鉴定审核",
-	"href": "/gsh/getAppraisal?p=1&s=10&userName=0&auditStatus=0"
+	"href": "/bt/lzy/c/loadAppSertypeVo?num=1&size=6"
 }
 , {
 	"text": "会员管理",

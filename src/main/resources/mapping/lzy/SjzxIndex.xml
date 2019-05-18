@@ -89,4 +89,29 @@
         WHERE `applyID` = #{appraisalapply.applyID}
     </update>
 
+    <resultMap id="TrusteeshipMapUser" type="Trusteeship">
+        <id column="truID" property="truID"></id>
+        <result column="userID" property="userID"></result>
+        <association property="user" column="userID" javaType="User" select="queryUser">
+            <id column="userID" property="userID"></id>
+        </association>
+    </resultMap>
+
+    <select id="loadTrusteeship" resultMap="TrusteeshipMapUser">
+        SELECT * FROM Trusteeship WHERE userID = #{userID}
+    </select>
+    <select id="queryUser" resultType="User">
+        select * from user where userID = #{userID}
+    </select>
+
+
+    <select id="loadEvaUserSerVoList" resultType="EvaUserSerVo">
+        SELECT * FROM EvaluationService AS e
+        JOIN `user` AS u
+        ON e.`userID` = u.`userID`
+        JOIN `services` AS s
+        ON e.`serviceID` = s.`serviceID`
+        WHERE e.`userID` = #{userID}
+    </select>
+
 </mapper>

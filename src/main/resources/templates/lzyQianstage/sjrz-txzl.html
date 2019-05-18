@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>商家入驻填写资料_韩汀社区</title>
-    <link rel="stylesheet" href="../../public/css/common.css"/>
-    <link rel="stylesheet" href="../../public/css/default.css"/>
+    <link rel="stylesheet" href="../../../Public/css/common.css"/>
+    <link rel="stylesheet" href="../../../Public/css/default.css"/>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                 <a href="" th:value="${session.user.userName}"></a> <span class="ht_line"></span>
                 <a href="">退出</a>
                 <span class="ht_line"></span>
-                <a href=""><img src="../../public/images/e_i.png" alt=""></a>
+                <a href=""><img src="../../../Public/images/e_i.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -238,7 +238,7 @@
                         <a href="javascript:void(0);" class="sel_file_a" id="picbt3"
                            onclick="identityhandimgData.click();">上传图片</a>
                     </div>
-                    <div class="sfz_al"><img src="../../public/images/sfz_sf.jpg" alt=""></div>
+                    <div class="sfz_al"><img src="../../../Public/images/sfz_sf.jpg" alt=""></div>
                 </dd>
             </dl>
         </div>
@@ -994,7 +994,7 @@
     <dl class="footer_dl">
         <dt>
             <div class="footer_ewm_box">
-                <img src="../../public/images/footer_ewm.png" alt="">
+                <img src="../../../Public/images/footer_ewm.png" alt="">
             </div>
             <span class="ft_ewm_name">御品韩汀</span>
         </dt>
@@ -1023,7 +1023,7 @@
     </li>
     <li>
         <a href="" class="rn_wx">官方微信</a>
-        <div class="over_show"><img src="../../public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
+        <div class="over_show"><img src="../../../Public/images/r_ewm.jpg" alt="" class="gw_ewm"></div>
     </li>
     <li>
         <a href="" class="rn_kf">在线客服</a>
@@ -1034,11 +1034,11 @@
 </ul>
 <!--right nav end-->
 </body>
-<script type="text/javascript" src="../../public/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="../../public/js/vue.js"></script>
-<script type="text/javascript" src="../../public/js/kindeditor/kindeditor-all-min.js"></script>
-<script type="text/javascript" src="../../public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="../../public/js/headLeftNav.js"></script>
+<script type="text/javascript" src="../../../Public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../../../Public/js/vue.js"></script>
+<script type="text/javascript" src="../../../Public/js/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="../../../Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="../../../Public/js/headLeftNav.js"></script>
 <script th:inline="javascript">
     var sh_pid;
     var vm = new Vue({
@@ -1146,7 +1146,7 @@
     KindEditor.ready(function (k) {
         editor = k.create('#content', {
             resizeType: 0,
-            cssPath: ['../../public/js/kindeditor/plugins/code/prettify.css'],
+            cssPath: ['../../../Public/js/kindeditor/plugins/code/prettify.css'],
             filterMode: true,
             allowFileManager: true,
             /* uploadJson: '/c/lzy/kindeditor/upload',

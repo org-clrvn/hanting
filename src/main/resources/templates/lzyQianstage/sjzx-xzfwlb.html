@@ -2,15 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<link href="../../public/css/owl.carousel.css" rel="stylesheet" />
-<link href="../../public/css/common.css" rel="stylesheet" />
-<script src="../../public/js/jquery-1.8.3.min.js"></script>
-<script src="../../public/js/common.js"></script>
-<script src="../../public/js/layer/layer.js"></script>
-<script type="text/javascript" src="../../public/js/jcarousellite.min.js"></script>
+<link href="../../../Public/css/owl.carousel.css" rel="stylesheet" />
+<link href="../../../Public/css/common.css" rel="stylesheet" />
+<script src="../../../Public/js/jquery-1.8.3.min.js"></script>
+<script src="../../../Public/js/common.js"></script>
+<script src="../../../Public/js/layer/layer.js"></script>
+<script type="text/javascript" src="../../../Public/js/jcarousellite.min.js"></script>
 
-<script type="text/javascript" src="../../public/js/swiper-3.4.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../public/css/swiper-3.4.2.min.css">
+<script type="text/javascript" src="../../../Public/js/swiper-3.4.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../Public/css/swiper-3.4.2.min.css">
 
 <script>
 _weburl = 'http://yphting.zglxkj.com';
@@ -28,7 +28,7 @@ _weburl = 'http://yphting.zglxkj.com';
 			
 			<div class="top_right">
 									<a href="/index.php/Home/Seller/index.html">.2304</a>			<span class="ht_line"></span><a href="/index.php/Home/Member/logout.html">退出</a>
-            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="../../public/images/e_i.png" alt="" /></a>
+            <span class="ht_line"></span><a href="/index.php/Home/Member/sms.html"><img src="../../../Public/images/e_i.png" alt="" /></a>
             <script>$('.top_right').addClass('login_right');</script>
 					<!-- 	<span style="font-size:14px;"> &nbsp;&nbsp;| 切换到：<select  id="lang" onchange="changelang();"><option value="" >请选择</option><option value="zh-cn" >简体中文</option> <option value="en-us" >English</option> </select> -->
 			<script language="javascript">
@@ -98,18 +98,18 @@ function orderShou(_oid){
 		<h2 class="sev_h2_title">选择发布服务类别</h2>
 		<ul class="sss_ul" >
 			<li th:switch="${user.firstServiceID}" class="cur" id="liCilck1">
-				<a href="javascript:void(0)" th:case="1" rel="4" class="a" value="1"><span class="sel_style_sev sss4"></span>自驾游</a>
-				<a href="javascript:void(0)" th:case="2" rel="4" class="a"><span class="sel_style_sev sss4"></span>微整形</a>
-				<a href="javascript:void(0)" th:case="3" rel="4" class="a"><span class="sel_style_sev sss4"></span>留学中介</a>
-				<a href="javascript:void(0)" th:case="4" rel="4" class="a"><span class="sel_style_sev sss4"></span>韩语翻译</a>
-				<a href="javascript:void(0)" th:case="5" rel="4" class="a"><span class="sel_style_sev sss4"></span>学习资源</a>
+				<a href="/lzy/c/skipSjzxZjyfbfwPage" th:case="1" rel="4" class="a" value="1"><span class="sel_style_sev sss4"></span>自驾游</a>
+				<a href="/lzy/c/skipSjzxWzxfbPage" th:case="2" rel="4" class="a"><span class="sel_style_sev sss4"></span>微整形</a>
+				<a href="/lzy/c/skipSjzxFbfwPage" th:case="3" rel="4" class="a"><span class="sel_style_sev sss4"></span>留学中介</a>
+				<a href="/lzy/c/skipSjzxHwfyfbPage" th:case="4" rel="4" class="a"><span class="sel_style_sev sss4"></span>韩语翻译</a>
+				<a href="/lzy/c/skipSjzxXxzyfbPage" th:case="5" rel="4" class="a"><span class="sel_style_sev sss4"></span>学习资源</a>
 			</li>
 			<li th:switch="${user.secondServiceID}" id="liCilck2">
-				<a href="javascript:void(0)" th:case="1" rel="4" class="a"><span class="sel_style_sev sss4"></span>自驾游</a>
-				<a href="javascript:void(0)" th:case="2" rel="4" class="a"><span class="sel_style_sev sss4"></span>微整形</a>
-				<a href="javascript:void(0)" th:case="3" rel="4" class="a"><span class="sel_style_sev sss4"></span>留学中介</a>
-				<a href="javascript:void(0)" th:case="4" rel="4" class="a"><span class="sel_style_sev sss4"></span>韩语翻译</a>
-				<a href="javascript:void(0)" th:case="5" rel="4" class="a"><span class="sel_style_sev sss4"></span>学习资源</a>
+				<a href="/lzy/c/skipSjzxZjyfbfwPage" th:case="1" rel="4" class="a"><span class="sel_style_sev sss4"></span>自驾游</a>
+				<a href="/lzy/c/skipSjzxWzxfbPage" th:case="2" rel="4" class="a"><span class="sel_style_sev sss4"></span>微整形</a>
+				<a href="/lzy/c/skipSjzxFbfwPage" th:case="3" rel="4" class="a"><span class="sel_style_sev sss4"></span>留学中介</a>
+				<a href="/lzy/c/skipSjzxHwfyfbPage" th:case="4" rel="4" class="a"><span class="sel_style_sev sss4"></span>韩语翻译</a>
+				<a href="/lzy/c/skipSjzxXxzyfbPage" th:case="5" rel="4" class="a"><span class="sel_style_sev sss4"></span>学习资源</a>
 			</li>	
 		</ul>
 		
@@ -146,7 +146,7 @@ function toadd(){
         }else if (idVal1 == '微整形'){
             location.href = "http://127.0.0.1:1111/lzy/c/skipSjzxWzxfbPage";
         }else if (idVal1 == '留学中介'){
-            location.href = "http://127.0.0.1:11117/lzy/c/skipSjzxFbfwPage";
+            location.href = "http://127.0.0.1:1111/lzy/c/skipSjzxFbfwPage";
         }else if (idVal1 == '韩语翻译'){
             location.href = "http://127.0.0.1:1111/lzy/c/skipSjzxHwfyfbPage";
         }else if (idVal1 == '学习资源'){
@@ -186,7 +186,7 @@ function toadd(){
 <div class="footer community_footer_dl">
 	<dl class="footer_dl">
 		<dt>
-		<div class="footer_ewm_box"><img src="../../public/images/footer_ewm.png" alt="" /></div>
+		<div class="footer_ewm_box"><img src="../../../Public/images/footer_ewm.png" alt="" /></div>
 			<span class="ft_ewm_name">御品韩汀</span>
 		</dt>
 		<dd>
@@ -203,16 +203,16 @@ function toadd(){
 <!--right nav-->
 <ul class="right_nav">
 	<li><a href="javascript:void(0);" class="rn_tel">客服电话</a><div class="over_show kf_tel">0731-2286-7673</div></li>
-	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
+	<li><a href="javascript:void(0);" class="rn_wx">官方微信</a><div class="over_show"><img src="../../../Public/images/r_ewm.jpg" alt="" class="gw_ewm" /></div></li>
 	<li><a href="tencent://Message/?Uin=3119683838&websiteName=http://yphting.zglxkj.com=&Menu=yes" class="rn_kf">在线客服</a></li>
 	<li><a href="#" class="rn_top">Back top</a></li>
 </ul>
 <!--right nav end-->
 
-<link rel="stylesheet" href="../../public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
-<script src="../../public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8">
+<link rel="stylesheet" href="../../../Public/js/valid/css/validationEngine.jquery.css" type="text/css"/>
+<script src="../../../Public/js/valid/languages/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="utf-8">
 </script>
-<script src="../../public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+<script src="../../../Public/js/valid/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
 </script>
 <script>
 function beforeCall2(form, status){
@@ -244,13 +244,13 @@ function chktop(){
 
 
 
-<script src="../../public/js/jquery.scrollto.js"></script>
+<script src="../../../Public/js/jquery.scrollto.js"></script>
 
 
 
 </body>
-<script type="text/javascript" src="../../public/js/sessionHeader.js"></script>
-<script type="text/javascript" src="../../public/js/headLeftNav.js"></script>
-<script type="text/javascript" src="../../public/js/sjzx-href.js"></script>
-<script type="text/javascript" src="../../public/js/grzx-interlinkage.js"></script>
+<script type="text/javascript" src="../../../Public/js/sessionHeader.js"></script>
+<script type="text/javascript" src="../../../Public/js/headLeftNav.js"></script>
+<script type="text/javascript" src="../../../Public/js/sjzx-href.js"></script>
+<script type="text/javascript" src="../../../Public/js/grzx-interlinkage.js"></script>
 </html>

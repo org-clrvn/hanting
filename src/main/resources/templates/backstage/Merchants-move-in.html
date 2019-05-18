@@ -216,7 +216,7 @@ copy
                 </THEAD>
                     <tbody>
                     
-                <tr th:each="temp,iterState:${userItems}">
+                <tr th:each="temp,iterState:${userItems}" th:style="${temp.auditStatus}==1 ? 'background-color:red':'background-color:green'">
 						<!--
                         <td align="center"><input  value="318" type="checkbox" name="userid[]"></td>
 						-->
@@ -283,5 +283,7 @@ copy
 </FORM>
         <H4>&nbsp;</H4><!-- end #mainContent --></DIV>
         <DIV id=footer>
-        <P>&nbsp;</P><!-- end #footer --></DIV><!-- end #container --></DIV></BODY>
+        <P>&nbsp;</P><!-- end #footer --></DIV><!-- end #container --></DIV>
+</BODY>
+<script type="text/javascript" src="../../../Public/js/jquery-1.8.3.min.js"></script>
 </html>
